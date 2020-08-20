@@ -1,0 +1,266 @@
+#include "Player.h"
+
+Player::Player(Game2D::Pos2 pos) : GameObject(Game2D::Rect(pos,5,10))
+{
+	walkAnim = Game2D::AnimatedSprite(Game2D::Sprite(Game2D::Rect(pos, 5, 10), Game2D::Rect(0.0f, 0.1f, 0.4f, 0.195f)));
+	walkAnim.addFrame(Game2D::Rect(0.1f, 0.1f, 0.4f, 0.198f));
+	walkAnim.addFrame(Game2D::Rect(0.2f, 0.1f, 0.4f, 0.198f));
+	walkAnim.addFrame(Game2D::Rect(0.3f, 0.1f, 0.4f, 0.198f));
+	walkAnim.addFrame(Game2D::Rect(0.4f, 0.1f, 0.4f, 0.198f));
+	walkAnim.addFrame(Game2D::Rect(0.5f, 0.1f, 0.4f, 0.198f));
+	walkAnim.reset();
+	walkAnim.setFrameTime(0.75f);
+	walkAnim.play();
+	walkAnim.setLooping(true);
+	fliped = false;
+	idleSprite = Game2D::Sprite(Game2D::Rect(pos, 5, 10), Game2D::Rect(0.9f, 0.1f, 0.4f, 0.195f));
+	jumpSprite = Game2D::Sprite(Game2D::Rect(pos, 5, 10), Game2D::Rect(0.7f, 0.1f, 0.2f, 0.195f));
+	fallSprite = Game2D::Sprite(Game2D::Rect(pos, 5, 10), Game2D::Rect(0.8f, 0.1f, 0.2f, 0.195f));
+	landSprite = Game2D::Sprite(Game2D::Rect(pos, 5, 10), Game2D::Rect(0.9f, 0.1f, 0.2f, 0.195f));
+
+	idleSprite.setColour(Game2D::Colour::Cyan);
+}
+
+Player::Player(Game2D::Rect rect) : GameObject(rect)
+{
+	//hitBox.changePoints(x, x + width, y, y + height);
+}
+
+Player::Player()
+{
+	Player(Game2D::Pos2(0,0));
+}
+
+void Player::moveSansRot(Game2D::Pos2 pos)
+{
+	switch ((int)rot)
+	{
+		case 0:
+		case 360:
+			move(pos);
+			//rotateBox->move(+x, +y);
+			break;
+		case 90:
+			move(Game2D::Pos2(-pos.y,pos.x));
+			//rotateBox->move(-y, +x);
+			break;
+		case 180:
+			move(Game2D::Pos2(-pos.x,-pos.y));
+			//rotateBox->move(-x, -y);
+			break;
+		case 270:
+			move(Game2D::Pos2(pos.y,-pos.x));
+			//rotateBox->move(+y, -x);
+			break;
+		default:
+			break;
+	}
+
+	for(auto it = walkAnim.begin(); it != walkAnim.end(); it++) { it->setPos(pos); }
+	//walkAnim.setPos(pos);
+	idleSprite.setPos(pos);
+	jumpSprite.setPos(pos);
+	fallSprite.setPos(pos);
+	landSprite.setPos(pos);
+}
+
+void Player::move(Game2D::Pos2 pos)
+{
+//	posX += x;
+//	posY += y;
+//	hitBox.move(x, y);
+//	rotateBox->move(x, y);
+	for(auto it = walkAnim.begin(); it != walkAnim.end(); it++) { it->setPos(pos); }
+	//walkAnim->setPos(posX, posY);
+	idleSprite.setPos(pos);
+	jumpSprite.setPos(pos);
+	fallSprite.setPos(pos);
+	landSprite.setPos(pos);
+}
+
+bool Player::willCollideX(const GameObject& a, float velocity)
+{
+	//float temp = getHitBox().willCollideX(a.getHitBox(), velocity);
+	float temp = 0;
+
+	if (temp == 0)
+	{
+		return false;
+	}
+	else
+	{
+		//move the player
+		if (temp != -1)
+		{
+			if (velocity > 0)
+				move(Game2D::Pos2(+temp, 0));
+			else
+				move(Game2D::Pos2(-temp, 0));
+		}
+		return true;
+	}
+}
+
+bool Player::willCollideY(const GameObject& a, float velocity)
+{
+	//float temp = getHitBox().willCollideY(a.getHitBox(), velocity);
+	float temp = 0;
+
+	if (temp == 0)
+	{
+		return false;
+	}
+	else
+	{
+		//move the player
+		if (temp != -1)
+		{
+			if (velocity > 0)
+				move(Game2D::Pos2(0, temp));
+			else
+				(move(Game2D::Pos2(0, -temp)));
+		}
+		return true;
+	}
+}
+
+bool Player::willCollideXY(const GameObject& a, float velocityX, float velocityY)
+{
+	return false;
+	//return getHitBox().willCollideXY(a.getHitBox(), velocityX, velocityY);
+}
+
+void Player::setPos(Game2D::Pos2 pos)
+{
+	/*
+	posX = x;
+	posY = y;
+	hitBox.changePoints(x, x + width, y, y + height);
+	rotateBox->changePoints(x - 2.5f, x + 7.5f, y, y + 10);*/
+	//walkAnim->setPos(posX, posY);
+	GameObject::setPos(pos);
+	idleSprite.setPos(pos);
+	jumpSprite.setPos(pos);
+	fallSprite.setPos(pos);
+	landSprite.setPos(pos);
+}
+/*
+void Player::rotate(float r)
+{
+	rot += r;
+	if (rot > 360)
+	{
+		rot -= 360;//stop rot reaching float max and causing undifined behaviour
+	}
+	else if (rot < 0)
+	{
+		rot += 360;
+	}
+
+	if (rot == 0 || rot == 180 || rot == 360)
+		hitBox.changePoints(posX, (posX + width), posY, (posY + height));
+	else if ((rot == 90 || rot == 270))
+		hitBox.changePoints((posX - (height / 4)), (posX + (3 * height / 4)), posY + (width / 2), posY + (3 * width / 2));
+
+	rotateBox->changePoints(posX - 2.5f, posX + 7.5f, posY, posY + 10);
+
+	walkAnim->setRotate(rot);
+	idleSprite->setRotate(rot);
+	jump->setRotate(rot);
+	fall->setRotate(rot);
+	land->setRotate(rot);
+}
+
+void Player::setRot(float r)
+{
+	Player::rotate(r - rot);
+}
+
+void Player::update(float time)
+{
+	walkAnim.update(time);
+}
+
+void Player::setSpriteColours()
+{
+	/*
+	walkAnim.setColour(r,g,b,a);
+	idleSprite.setColour(r, g, b, a);
+	jump->setColour(r, g, b, a);
+	fall->setColour(r, g, b, a);
+	land->setColour(r, g, b, a);
+	*
+}*/
+
+void Player::draw(float velocityX,float velocityY, bool spinning)
+{
+	idleSprite.draw();
+	/*
+	glPushMatrix();
+	glColor4f(r, g, b, 0);
+
+	setSpriteColours();
+
+	glTranslatef(posX+(width/2), posY+(height/2), 0);
+	glRotatef(rot, 0, 0, 1);
+
+	glBegin(GL_POLYGON);
+	glVertex2f(-(width / 2), -(height / 2));
+	glVertex2f(-(width / 2), +(height / 2));
+	glVertex2f(+(width / 2), +(height / 2));
+	glVertex2f(+(width / 2), -(height / 2));
+	glEnd();
+
+	glPopMatrix();
+
+	glPushMatrix();
+	if (spinning)
+	{
+		idleSprite->drawLikePlayer();
+	}
+	else if (velocityY > 0)
+	{
+		jump->drawLikePlayer();
+	}
+	else if (velocityY < 0)
+	{
+		fall->drawLikePlayer();
+		falling = true;
+	}
+	else if (velocityY == 0 && falling)
+	{
+		land->drawLikePlayer();
+		falling = false;
+	}
+	else if (velocityX == 0)
+	{
+		idleSprite->drawLikePlayer();
+	}
+	else if (velocityX > 0)
+	{
+		if (fliped)
+		{
+			fliped = false;
+			walkAnim->flipAllX();
+			jump->flipX();
+			fall->flipX();
+		}
+		walkAnim->drawLikePlayer();
+	}
+	else if (velocityX < 0)
+	{
+		if (!fliped)
+		{
+			fliped = true;
+			walkAnim->flipAllX();
+			jump->flipX();
+			fall->flipX();
+		}
+		walkAnim->drawLikePlayer();
+	}
+	glPopMatrix();
+
+	getHitBox().draw();
+	rotateBox->draw();
+	*/
+}

@@ -1,0 +1,42 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
+#include "GameObject.h"
+#include "AnimatedSprite.h"
+
+class Player : public GameObject
+{
+private:
+	Game2D::AnimatedSprite walkAnim;
+	Game2D::Sprite idleSprite;
+	Game2D::Sprite jumpSprite;
+	Game2D::Sprite fallSprite;
+	Game2D::Sprite landSprite;
+	bool fliped;
+	bool falling;
+
+	void setSpriteColours();
+public:
+	Player(Game2D::Pos2 pos);
+	Player(Game2D::Rect rect);
+	Player();
+
+	void moveSansRot(Game2D::Pos2 pos);
+	void move(Game2D::Pos2 pos);
+	bool willCollideX(const GameObject& a, float velocity);
+	bool willCollideY(const GameObject& a, float velocity);
+	bool willCollideXY(const GameObject& a, float velocityX, float velocityY);
+
+	void setPos(Game2D::Pos2 pos);
+//	inline void setPos(Game2D::Pos2 pos) { GameObject::setPos(pos); }
+//	inline void setRot(float rot) { GameObject::setRot(rot); }
+
+	void update(float time);
+
+//	inline Game2D::Pos2 getPos() const { return GameObject::getPos(); }
+
+	void draw(float velocityX, float velocityY, bool spinning);
+};
+
+
+#endif //PLAYER_H
