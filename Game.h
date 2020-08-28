@@ -13,6 +13,10 @@
 #include "MainMenu.h"
 #include "Level.h"
 #include "Fonts.h"
+#include <string>
+#include <fstream>
+#include <filesystem>
+//#include <experimental/filesystem>
 
 
 class Game
@@ -44,7 +48,12 @@ private:
 	//static Clock startTime;
 	//static Clock endTime;
 	 */
-	static Level testLevel;
+	//static Level testLevel;
+	static int currentLevel;
+	static std::vector<Level> levels;
+	//static int currentLevel;
+
+	static void loadLevelsFromFile();
 public:
 	Game();
 

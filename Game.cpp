@@ -10,8 +10,11 @@ std::map<int,Game2D::KeyState> Game::mouseButtons;
 //Game2D::KeyMap Game::mouseButtons;
 std::map<int,Game2D::KeyState::State> Game::previousMouseStates;
 MainMenu Game::mainMenu;
-Level Game::testLevel;
+//Level Game::testLevel;
 InputManager Game::inputManager;
+int Game::currentLevel;
+std::vector<Level> Game::levels;
+//int Game::currentLevel;
 /*
 GameObject Game::testObject;
 Player Game::testPlayer;
@@ -33,6 +36,7 @@ Game::Game()
 	testPlayer.setPos(Game2D::Pos2(0,-30));
 */
 
+	/*
 	testLevel.addWall(Game2D::Rect(0, -95, 200, 5));
 	testLevel.addWall(Game2D::Rect(0, +95, 200, 5));
 	testLevel.addWall(Game2D::Rect(-100, 0, 5 ,200));
@@ -42,6 +46,8 @@ Game::Game()
 	testLevel.addWall(Game2D::Rect(-55, -55, 20, 5));
 
 	testLevel.setStartPos(Game2D::Pos2(-90, -87.5f));
+	testLevel.setExitPos(Game2D::Pos2(+90, -87.5f));
+	*/
 /*
 	keyMap.insert(std::pair<int,bool>(GLFW_KEY_W,false));
 	keyMap.insert(std::pair<int,bool>(GLFW_KEY_A,false));
@@ -60,6 +66,75 @@ Game::Game()
 	//!Key actions
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
+	currentLevel = 0;
+}
+
+void Game::loadLevelsFromFile()
+{
+	//std::experimental::filesystem::directory_iterator("levels");
+	for (auto it : std::filesystem::directory_iterator("levels")) {
+		//std::cout << it.path() << "\n";
+		levels.push_back(Level());
+
+		std::ifstream levelFile;
+		levelFile.open(it.path());
+
+		std::string line;
+		std::getline(levelFile, line);
+
+		float a, b;
+
+		Game2D::Pos2 playerStartPos;
+		std::sscanf(line.c_str(), "%f %f", &a, &b);
+
+		playerStartPos.x = a;
+		playerStartPos.y = b;
+
+		levels.back().setStartPos(playerStartPos);
+
+		std::getline(levelFile, line);
+		Game2D::Rect exitRect;
+		int exitType;
+		std::sscanf(line.c_str(), "%f %f %d", &a, &b, &exitType);
+
+		exitRect.pos.x = a;
+		exitRect.pos.y = b;
+
+		if (exitType == 0) {
+			exitRect.width = 6;
+			exitRect.height = 11;
+		} else {
+			exitRect.width = 11;
+			exitRect.height = 6;
+		}
+
+		//std::cout << playerStartPos << "\t" << exitRect << "\n";
+
+		levels.back().setExitRext(exitRect);
+
+		/*
+		*player start pos
+		*exit rect
+		*0 - wall
+		*1 - kill plane
+		*/
+		while (std::getline(levelFile, line)) {
+			//std::cout << "Another line\n";
+			//std::cout << line << "\n";
+			switch (line[0])
+			{
+			case '0':
+				float a, b, c, d, e;
+				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
+				//std::cout << a << " " << b << " " << c << " " << d << "\n";
+				levels.back().addWall(Game2D::Rect(a, b, c, d));
+				break;
+			case '1':
+				break;
+			}
+		}
+	}
+	std::cout << levels.size() << " levels loaded\n";
 }
 
 void Game::display()
@@ -75,7 +150,7 @@ void Game::display()
 	switch (currentState)
 	{
 		case PLAYING:
-			testLevel.draw();
+			levels.at(currentLevel).draw();
 			break;
 		case PAUSED:
 			break;
@@ -119,8 +194,9 @@ void Game::init()
 	blue.setColour(Game2D::Colour::Blue);
 	testButton.addStateSprites(red,yellow,green,blue,red);
 
-	testLevel.init();
-
+	levels.at(currentLevel).init();
+	//testLevel.init();
+	currentLevel = 0;
 
 	//fonts
 	Game2D::Font::init(screenHeight);
@@ -199,7 +275,18 @@ void Game::update()
 			if(keyMap.at(GLFW_KEY_S))
 				testPlayer.move(Game2D::Pos2(0,-50*elapsedTime));*/
 			inputManager.update();
-			testLevel.update(inputManager);
+			//testLevel.update(inputManager);
+			switch (levels.at(currentLevel).update(inputManager)) {
+			case 1:
+				if (++currentLevel == levels.size()) {
+					currentState = MAIN_MENU;
+					break;
+				}
+				levels.at(currentLevel).init();
+				break;
+			default:
+				break;
+			}
 			break;
 		case PAUSED:
 			break;
@@ -270,7 +357,8 @@ void Game::processMainMenu()
 	switch (mainMenu.getResult())
 	{
 		case 1:
-			testLevel.init();
+			//testLevel.init();
+			levels.at(currentLevel).init();
 			currentState = PLAYING;
 			break;
 		case 2:
@@ -288,6 +376,8 @@ int Game::mainLoop()
 		return -1;
 
 	glfwSwapInterval(1);
+
+	loadLevelsFromFile();
 
 	init();
 
