@@ -6,8 +6,17 @@ Player::Player() : GameObject(Game2D::Rect(0,0,5,10))
 	rotateBox = Game2D::Rect(0, 0, 10, 10);
 	//setRect(Game2D::Rect(0,0,5,10));
 	setColour(Game2D::Colour::Cyan);
+	rotateLock = false;
 }
 
+void Player::setCanRotate(bool rotate)
+{
+	if (!rotateLock)
+	{
+		canRotate = rotate;
+		canRotate ? setColour(Game2D::Colour::Cyan) : setColour(Game2D::Colour(1, 0.4f, 0));
+	}
+}
 
 void Player::setRot(float rot)
 {

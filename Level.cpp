@@ -32,17 +32,21 @@ void Level::processActions(const InputManager& actions, float time_us)
 		//player.move(Game2D::Pos2(0, +moveSpeedY*time_us));}
 	}
 
-	if ((actions.getAction(ROTATE_ANTICLOCKWISE) == InputManager::DOWN) && player.getRotate()) {
+	if ((actions.getAction(ROTATE_ANTICLOCKWISE) == InputManager::DOWN) && player.getCanRotate()) {
 		rotating = true;
 		levelRotation += 90;
 		previousPlayerRot = player.getRot();
 		playerRot -= 90;
+		player.setCanRotate(false);
+		player.lockRotate();
 	}
-	if ((actions.getAction(ROTATE_CLOCKWISE) == InputManager::DOWN) && player.getRotate()) {
+	if ((actions.getAction(ROTATE_CLOCKWISE) == InputManager::DOWN) && player.getCanRotate()) {
 		rotating = true;
 		previousPlayerRot = player.getRot();
 		levelRotation -= 90;
 		playerRot += 90;
+		player.setCanRotate(false);
+		player.lockRotate();
 	}
 
 	//if (previousPlayerRot > 360) { previousPlayerRot -= 360; }
@@ -104,6 +108,65 @@ bool Level::checkCollision(GameObject a, Game2D::Rect b)
 
 void Level::checkPlayerCollision(float time_us)
 {
+
+	//check collision in the y direction
+	player.moveSansRot(Game2D::Pos2(0, player.velocityY * time_us), levelRotation);
+
+	//check to see if the player is colliding with the wall
+	for (const auto& wall : walls) {
+		if (checkCollision(wall, player) || checkCollision(player, wall)) {
+			//std::cout << "1\n";
+			if (player.velocityY > 0) {
+				//player is moving up so need to move them down
+				float moveDist = 0;
+				switch ((int)levelRotation) {
+				case 360:
+				case 0:
+					moveDist = ((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
+					break;
+				case 90:
+					moveDist = ((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
+					break;
+				case 180:
+					moveDist = -((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
+					break;
+				case 270:
+					moveDist = -((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
+					break;
+				}
+				player.moveSansRot(Game2D::Pos2(0, moveDist), levelRotation);
+				player.velocityY = 0;
+			}
+			else {
+				float moveDist = 0;
+				switch ((int)levelRotation) {
+				case 360:
+				case 0:
+					moveDist = ((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
+					break;
+				case 90:
+					//std::cout << "cheacking falling at 90\n";
+					moveDist = ((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
+					break;
+				case 180:
+					//std::cout << wall.getPos().y << " " << (wall.getRect().height / 2.0f) << " " << player.getPos().y << " " << (player.getRect().height / 2.0f) << "\n";
+					moveDist = -((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
+					break;
+				case 270:
+					moveDist = -((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
+					break;
+				}
+				//std::cout << player.getRect() << "\n";
+				//std::cout << moveDist << "\n";
+				player.moveSansRot(Game2D::Pos2(0, moveDist), levelRotation);
+				player.velocityY = 0;
+				//player has hit the floor
+				player.inAir = false;
+				player.unlockRotate();
+			}
+		}
+	}
+
 	//check collision in the x direction
 	player.moveSansRot(Game2D::Pos2(player.velocityX * time_us, 0),levelRotation);
 
@@ -158,62 +221,6 @@ void Level::checkPlayerCollision(float time_us)
 		}
 	}
 
-	//check collision in the y direction
-	player.moveSansRot(Game2D::Pos2(0,player.velocityY * time_us),levelRotation);
-
-	//check to see if the player is colliding with the wall
-	for (const auto& wall : walls) {
-		if (checkCollision(wall, player) || checkCollision(player,wall)) {
-			//std::cout << "1\n";
-			if (player.velocityY > 0) {
-				//player is moving up so need to move them down
-				float moveDist = 0;
-				switch ((int)levelRotation) {
-				case 360:
-				case 0:
-					moveDist = ((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
-					break;
-				case 90:
-					moveDist = ((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
-					break;
-				case 180:
-					moveDist = -((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
-					break;
-				case 270:
-					moveDist = -((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
-					break;
-				}
-				player.moveSansRot(Game2D::Pos2(0, moveDist),levelRotation);
-				player.velocityY = 0;
-			}
-			else {
-				float moveDist = 0;
-				switch ((int)levelRotation) {
-				case 360:
-				case 0:
-					moveDist = ((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
-					break;
-				case 90:
-					//std::cout << "cheacking falling at 90\n";
-					moveDist = ((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
-					break;
-				case 180:
-					//std::cout << wall.getPos().y << " " << (wall.getRect().height / 2.0f) << " " << player.getPos().y << " " << (player.getRect().height / 2.0f) << "\n";
-					moveDist = -((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
-					break;
-				case 270:
-					moveDist = -((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
-					break;
-				}
-				//std::cout << player.getRect() << "\n";
-				//std::cout << moveDist << "\n";
-				player.moveSansRot(Game2D::Pos2(0, moveDist),levelRotation);
-				player.velocityY = 0;
-				//player has hit the floor
-				player.inAir = false;
-			}
-		}
-	}
 }
 
 bool Level::checkKillPlanes(float time_us)
@@ -230,12 +237,12 @@ void Level::checkRotate()
 {
 	for (const auto it : walls) {
 		if (checkCollision(player.getRotateBox(), it) || checkCollision(it, player.getRotateBox())) {
-			player.setRotate(false);
+			player.setCanRotate(false);
 			return;
 		}
 	}
 
-	player.setRotate(true);
+	player.setCanRotate(true);
 }
 
 int Level::update(const InputManager& actions)
@@ -270,6 +277,13 @@ int Level::update(const InputManager& actions)
 		applyGravity(elapsedTime);
 
 		checkPlayerCollision(elapsedTime);
+
+		//check to see if the player has walked off an edge
+		if (player.velocityY < 0) {
+			//if they have set them to be in air
+			player.inAir = true;
+		}
+
 		if (checkKillPlanes(elapsedTime)) {
 			init();
 		}

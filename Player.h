@@ -11,6 +11,7 @@ private:
 	Game2D::Rect headBox;
 	Game2D::Rect footBox;
 	bool canRotate;
+	bool rotateLock;
 public:
 	Player();
 
@@ -21,15 +22,19 @@ public:
 	void move(Game2D::Pos2 pos) { headBox.pos += pos; footBox.pos += pos; rotateBox.pos += pos; GameObject::move(pos); }
 	void moveSansRot(Game2D::Pos2 pos, float rot);
 
-	inline void setRotate(bool rotate) { canRotate = rotate; canRotate ? setColour(Game2D::Colour::Cyan) : setColour(Game2D::Colour(1, 0.4f, 0)); }
-	inline bool getRotate() const { return canRotate; }
+	void setCanRotate(bool rotate);
+	inline bool getCanRotate() const { return canRotate; }
 	
+	inline void lockRotate() { rotateLock = true; }
+	inline void unlockRotate() { rotateLock = false; }
+	/*
 	inline void draw() {
 		GameObject::draw(); 
 		Game2D::Sprite temp(rotateBox);
 		temp.setColour(Game2D::Colour(0, 1, 1, 0.5f));
 		temp.draw();
 	}
+	*/
 };
 
 #endif //PLAYER_H

@@ -121,20 +121,26 @@ void Game::loadLevelsFromFile()
 		while (std::getline(levelFile, line)) {
 			//std::cout << "Another line\n";
 			//std::cout << line << "\n";
+			float a, b, c, d, e;
 			switch (line[0])
 			{
-			case '0':
-				float a, b, c, d, e;
+			case '0':				
 				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
 				//std::cout << a << " " << b << " " << c << " " << d << "\n";
 				levels.back().addWall(Game2D::Rect(a, b, c, d));
 				break;
 			case '1':
+				//float a, b, c, d, e;
+				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
+				//std::cout << a << " " << b << " " << c << " " << d << "\n";
+				levels.back().addKillPlane(Game2D::Rect(a, b, c, d));
 				break;
 			}
 		}
 	}
+#ifdef _DEV
 	std::cout << levels.size() << " levels loaded\n";
+#endif // _DEV
 }
 
 void Game::display()
@@ -196,7 +202,7 @@ void Game::init()
 
 	levels.at(currentLevel).init();
 	//testLevel.init();
-	currentLevel = 0;
+	//currentLevel = 0;
 
 	//fonts
 	Game2D::Font::init(screenHeight);
@@ -280,6 +286,7 @@ void Game::update()
 			case 1:
 				if (++currentLevel == levels.size()) {
 					currentState = MAIN_MENU;
+					currentLevel = 0;
 					break;
 				}
 				levels.at(currentLevel).init();
