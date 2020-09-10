@@ -7,19 +7,31 @@ CMakeFiles/gamename69.dir/Game.cpp.o
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyMap.h
  /home/dan/CLionProjects/Game2D/KeyState.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
  /home/dan/CLionProjects/Game2D/Sprite.h
- /home/dan/CLionProjects/gamename69/Game.cpp
- /home/dan/CLionProjects/gamename69/Game.h
- /home/dan/CLionProjects/gamename69/GameObject.h
- /home/dan/CLionProjects/gamename69/InputManager.h
- /home/dan/CLionProjects/gamename69/Level.h
- /home/dan/CLionProjects/gamename69/MainMenu.h
- /home/dan/CLionProjects/gamename69/Player.h
- /home/dan/CLionProjects/gamename69/glew.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/gamename69Git/Game.cpp
+ /home/dan/CLionProjects/gamename69Git/Game.h
+ /home/dan/CLionProjects/gamename69Git/GameObject.h
+ /home/dan/CLionProjects/gamename69Git/InputManager.h
+ /home/dan/CLionProjects/gamename69Git/Level.h
+ /home/dan/CLionProjects/gamename69Git/LevelSelect.h
+ /home/dan/CLionProjects/gamename69Git/MainMenu.h
+ /home/dan/CLionProjects/gamename69Git/MovingPlatform.h
+ /home/dan/CLionProjects/gamename69Git/Player.h
+ /home/dan/CLionProjects/gamename69Git/glew.h
+ /home/dan/glfw/include/GLFW/glfw3.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/ft2build.h
 CMakeFiles/gamename69.dir/GameObject.cpp.o
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
@@ -27,29 +39,39 @@ CMakeFiles/gamename69.dir/GameObject.cpp.o
  /home/dan/CLionProjects/Game2D/Rect.h
  /home/dan/CLionProjects/Game2D/Sprite.h
  /home/dan/CLionProjects/Game2D/glew.h
- /home/dan/CLionProjects/gamename69/GameObject.cpp
- /home/dan/CLionProjects/gamename69/GameObject.h
+ /home/dan/CLionProjects/gamename69Git/GameObject.cpp
+ /home/dan/CLionProjects/gamename69Git/GameObject.h
 CMakeFiles/gamename69.dir/InputManager.cpp.o
- /home/dan/CLionProjects/gamename69/InputManager.cpp
- /home/dan/CLionProjects/gamename69/InputManager.h
- /home/dan/CLionProjects/gamename69/KeyMap.h
+ /home/dan/CLionProjects/gamename69Git/InputManager.cpp
+ /home/dan/CLionProjects/gamename69Git/InputManager.h
+ /home/dan/CLionProjects/gamename69Git/KeyMap.h
 CMakeFiles/gamename69.dir/KeyMap.cpp.o
- /home/dan/CLionProjects/gamename69/KeyMap.cpp
- /home/dan/CLionProjects/gamename69/KeyMap.h
+ /home/dan/CLionProjects/gamename69Git/KeyMap.cpp
+ /home/dan/CLionProjects/gamename69Git/KeyMap.h
 CMakeFiles/gamename69.dir/Level.cpp.o
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
  /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/freetype.h
  /home/dan/CLionProjects/Game2D/glew.h
- /home/dan/CLionProjects/gamename69/GameObject.h
- /home/dan/CLionProjects/gamename69/InputManager.h
- /home/dan/CLionProjects/gamename69/KeyMap.h
- /home/dan/CLionProjects/gamename69/Level.cpp
- /home/dan/CLionProjects/gamename69/Level.h
- /home/dan/CLionProjects/gamename69/Player.h
-CMakeFiles/gamename69.dir/MainMenu.cpp.o
+ /home/dan/CLionProjects/gamename69Git/GameObject.h
+ /home/dan/CLionProjects/gamename69Git/InputManager.h
+ /home/dan/CLionProjects/gamename69Git/KeyMap.h
+ /home/dan/CLionProjects/gamename69Git/Level.cpp
+ /home/dan/CLionProjects/gamename69Git/Level.h
+ /home/dan/CLionProjects/gamename69Git/MovingPlatform.h
+ /home/dan/CLionProjects/gamename69Git/Player.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/ft2build.h
+CMakeFiles/gamename69.dir/LevelSelect.cpp.o
  /home/dan/CLionProjects/Game2D/AnimatedSprite.h
  /home/dan/CLionProjects/Game2D/Button.h
  /home/dan/CLionProjects/Game2D/ClickableObject.h
@@ -58,10 +80,42 @@ CMakeFiles/gamename69.dir/MainMenu.cpp.o
  /home/dan/CLionProjects/Game2D/KeyState.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
  /home/dan/CLionProjects/Game2D/Sprite.h
  /home/dan/CLionProjects/Game2D/glew.h
- /home/dan/CLionProjects/gamename69/MainMenu.cpp
- /home/dan/CLionProjects/gamename69/MainMenu.h
+ /home/dan/CLionProjects/gamename69Git/LevelSelect.cpp
+ /home/dan/CLionProjects/gamename69Git/LevelSelect.h
+CMakeFiles/gamename69.dir/MainMenu.cpp.o
+ /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+ /home/dan/CLionProjects/Game2D/Button.h
+ /home/dan/CLionProjects/Game2D/ClickableObject.h
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
+ /home/dan/CLionProjects/Game2D/KeyState.h
+ /home/dan/CLionProjects/Game2D/Pos2.h
+ /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/gamename69Git/MainMenu.cpp
+ /home/dan/CLionProjects/gamename69Git/MainMenu.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/ft2build.h
+CMakeFiles/gamename69.dir/MovingPlatform.cpp.o
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Pos2.h
+ /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/Game2D/glew.h
+ /home/dan/CLionProjects/gamename69Git/GameObject.h
+ /home/dan/CLionProjects/gamename69Git/MovingPlatform.cpp
+ /home/dan/CLionProjects/gamename69Git/MovingPlatform.h
 CMakeFiles/gamename69.dir/Player.cpp.o
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
@@ -69,25 +123,47 @@ CMakeFiles/gamename69.dir/Player.cpp.o
  /home/dan/CLionProjects/Game2D/Rect.h
  /home/dan/CLionProjects/Game2D/Sprite.h
  /home/dan/CLionProjects/Game2D/glew.h
- /home/dan/CLionProjects/gamename69/GameObject.h
- /home/dan/CLionProjects/gamename69/Player.cpp
- /home/dan/CLionProjects/gamename69/Player.h
+ /home/dan/CLionProjects/gamename69Git/GameObject.h
+ /home/dan/CLionProjects/gamename69Git/Player.cpp
+ /home/dan/CLionProjects/gamename69Git/Player.h
+CMakeFiles/gamename69.dir/freetype.cpp.o
+ /home/dan/CLionProjects/gamename69Git/freetype.cpp
+ /home/dan/CLionProjects/gamename69Git/freetype.h
+ /home/dan/CLionProjects/gamename69Git/glew.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/ft2build.h
 CMakeFiles/gamename69.dir/main.cpp.o
  /home/dan/CLionProjects/Game2D/AnimatedSprite.h
  /home/dan/CLionProjects/Game2D/Button.h
  /home/dan/CLionProjects/Game2D/ClickableObject.h
  /home/dan/CLionProjects/Game2D/Colour.h
  /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Fonts.h
  /home/dan/CLionProjects/Game2D/KeyMap.h
  /home/dan/CLionProjects/Game2D/KeyState.h
  /home/dan/CLionProjects/Game2D/Pos2.h
  /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/ScreenCoord.h
  /home/dan/CLionProjects/Game2D/Sprite.h
- /home/dan/CLionProjects/gamename69/Game.h
- /home/dan/CLionProjects/gamename69/GameObject.h
- /home/dan/CLionProjects/gamename69/InputManager.h
- /home/dan/CLionProjects/gamename69/Level.h
- /home/dan/CLionProjects/gamename69/MainMenu.h
- /home/dan/CLionProjects/gamename69/Player.h
- /home/dan/CLionProjects/gamename69/glew.h
- /home/dan/CLionProjects/gamename69/main.cpp
+ /home/dan/CLionProjects/Game2D/freetype.h
+ /home/dan/CLionProjects/gamename69Git/Game.h
+ /home/dan/CLionProjects/gamename69Git/GameObject.h
+ /home/dan/CLionProjects/gamename69Git/InputManager.h
+ /home/dan/CLionProjects/gamename69Git/Level.h
+ /home/dan/CLionProjects/gamename69Git/LevelSelect.h
+ /home/dan/CLionProjects/gamename69Git/MainMenu.h
+ /home/dan/CLionProjects/gamename69Git/MovingPlatform.h
+ /home/dan/CLionProjects/gamename69Git/Player.h
+ /home/dan/CLionProjects/gamename69Git/glew.h
+ /home/dan/CLionProjects/gamename69Git/main.cpp
+ /home/dan/glfw/include/GLFW/glfw3.h
+ /usr/include/freetype2/freetype/config/ftheader.h
+ /usr/include/freetype2/freetype/freetype.h
+ /usr/include/freetype2/freetype/ftglyph.h
+ /usr/include/freetype2/freetype/ftoutln.h
+ /usr/include/freetype2/freetype/fttrigon.h
+ /usr/include/freetype2/ft2build.h

@@ -48,10 +48,10 @@ RM = /opt/clion/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dan/CLionProjects/gamename69
+CMAKE_SOURCE_DIR = /home/dan/CLionProjects/gamename69Git
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dan/CLionProjects/gamename69/cmake-build-debug
+CMAKE_BINARY_DIR = /home/dan/CLionProjects/gamename69Git/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dan/CLionProjects/gamename69/cmake-build-debug/CMakeFiles /home/dan/CLionProjects/gamename69/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles /home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dan/CLionProjects/gamename69/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -258,6 +258,33 @@ Level.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Level.cpp.s
 .PHONY : Level.cpp.s
 
+LevelSelect.o: LevelSelect.cpp.o
+
+.PHONY : LevelSelect.o
+
+# target to build an object file
+LevelSelect.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/LevelSelect.cpp.o
+.PHONY : LevelSelect.cpp.o
+
+LevelSelect.i: LevelSelect.cpp.i
+
+.PHONY : LevelSelect.i
+
+# target to preprocess a source file
+LevelSelect.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/LevelSelect.cpp.i
+.PHONY : LevelSelect.cpp.i
+
+LevelSelect.s: LevelSelect.cpp.s
+
+.PHONY : LevelSelect.s
+
+# target to generate assembly for a file
+LevelSelect.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/LevelSelect.cpp.s
+.PHONY : LevelSelect.cpp.s
+
 MainMenu.o: MainMenu.cpp.o
 
 .PHONY : MainMenu.o
@@ -285,6 +312,33 @@ MainMenu.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/MainMenu.cpp.s
 .PHONY : MainMenu.cpp.s
 
+MovingPlatform.o: MovingPlatform.cpp.o
+
+.PHONY : MovingPlatform.o
+
+# target to build an object file
+MovingPlatform.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/MovingPlatform.cpp.o
+.PHONY : MovingPlatform.cpp.o
+
+MovingPlatform.i: MovingPlatform.cpp.i
+
+.PHONY : MovingPlatform.i
+
+# target to preprocess a source file
+MovingPlatform.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/MovingPlatform.cpp.i
+.PHONY : MovingPlatform.cpp.i
+
+MovingPlatform.s: MovingPlatform.cpp.s
+
+.PHONY : MovingPlatform.s
+
+# target to generate assembly for a file
+MovingPlatform.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/MovingPlatform.cpp.s
+.PHONY : MovingPlatform.cpp.s
+
 Player.o: Player.cpp.o
 
 .PHONY : Player.o
@@ -311,6 +365,33 @@ Player.s: Player.cpp.s
 Player.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Player.cpp.s
 .PHONY : Player.cpp.s
+
+freetype.o: freetype.cpp.o
+
+.PHONY : freetype.o
+
+# target to build an object file
+freetype.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/freetype.cpp.o
+.PHONY : freetype.cpp.o
+
+freetype.i: freetype.cpp.i
+
+.PHONY : freetype.i
+
+# target to preprocess a source file
+freetype.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/freetype.cpp.i
+.PHONY : freetype.cpp.i
+
+freetype.s: freetype.cpp.s
+
+.PHONY : freetype.s
+
+# target to generate assembly for a file
+freetype.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/freetype.cpp.s
+.PHONY : freetype.cpp.s
 
 main.o: main.cpp.o
 
@@ -363,12 +444,21 @@ help:
 	@echo "... Level.o"
 	@echo "... Level.i"
 	@echo "... Level.s"
+	@echo "... LevelSelect.o"
+	@echo "... LevelSelect.i"
+	@echo "... LevelSelect.s"
 	@echo "... MainMenu.o"
 	@echo "... MainMenu.i"
 	@echo "... MainMenu.s"
+	@echo "... MovingPlatform.o"
+	@echo "... MovingPlatform.i"
+	@echo "... MovingPlatform.s"
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"
+	@echo "... freetype.o"
+	@echo "... freetype.i"
+	@echo "... freetype.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

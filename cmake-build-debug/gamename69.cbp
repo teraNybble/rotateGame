@@ -8,133 +8,153 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/dan/CLionProjects/gamename69/cmake-build-debug"/>
+				<Option working_dir="/home/dan/CLionProjects/gamename69Git/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/dan/CLionProjects/gamename69/cmake-build-debug"/>
+				<Option working_dir="/home/dan/CLionProjects/gamename69Git/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/dan/CLionProjects/gamename69/cmake-build-debug"/>
+				<Option working_dir="/home/dan/CLionProjects/gamename69Git/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gamename69">
-				<Option output="/home/dan/CLionProjects/gamename69/cmake-build-debug/gamename69" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dan/CLionProjects/gamename69/cmake-build-debug"/>
+				<Option output="/home/dan/CLionProjects/gamename69Git/cmake-build-debug/gamename69" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dan/CLionProjects/gamename69Git/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
+					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 gamename69"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 gamename69"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gamename69/fast">
-				<Option output="/home/dan/CLionProjects/gamename69/cmake-build-debug/gamename69" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dan/CLionProjects/gamename69/cmake-build-debug"/>
+				<Option output="/home/dan/CLionProjects/gamename69Git/cmake-build-debug/gamename69" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dan/CLionProjects/gamename69Git/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
+					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../include/c++/10.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 gamename69/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 gamename69/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/dan/CLionProjects/gamename69Git/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dan/CLionProjects/gamename69/Game.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Game.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/Game.h">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Game.h">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/GameObject.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/GameObject.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/GameObject.h">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/GameObject.h">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/InputManager.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/InputManager.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/InputManager.h">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/InputManager.h">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/KeyMap.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/KeyMap.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/KeyMap.h">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/KeyMap.h">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/Level.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Level.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/Level.h">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Level.h">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/MainMenu.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/LevelSelect.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/MainMenu.h">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/LevelSelect.h">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/Player.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/MainMenu.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/Player.h">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/MainMenu.h">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/main.cpp">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/MovingPlatform.cpp">
 			<Option target="gamename69"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/CMakeLists.txt">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/MovingPlatform.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Player.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Player.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/freetype.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/freetype.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/main.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/dan/CLionProjects/gamename69/cmake/Findglfw.cmake">
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/cmake/Findglfw.cmake">
 			<Option virtualFolder="CMake Files\cmake\"/>
 		</Unit>
 	</Project>

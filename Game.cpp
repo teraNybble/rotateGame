@@ -39,11 +39,14 @@ Game::Game()
 
 void Game::loadLevelsFromFile()
 {
+	//on linux the directorys  are in a random order will need to read in all levels sort them then load in the levels
 	for (auto it : std::filesystem::directory_iterator("levels")) {
 		levels.push_back(Level());
 
 		std::ifstream levelFile;
 		levelFile.open(it.path());
+
+		std::cout << it.path() << "\n";
 
 		std::string line;
 		std::getline(levelFile, line);

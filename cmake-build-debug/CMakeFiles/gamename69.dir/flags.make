@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dan/CLionProjects/Game2D -I/usr/include/freetype2 
+CXX_INCLUDES = -I/home/dan/CLionProjects/Game2D -I/home/dan/glfw/include -I/usr/include/freetype2 
 
