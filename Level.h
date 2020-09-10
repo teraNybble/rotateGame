@@ -8,6 +8,7 @@
 #include "InputManager.h"
 #include "Fonts.h"
 #include "ScreenCoord.h"
+#include "MovingPlatform.h"
 
 using Time = std::chrono::steady_clock;
 using Microseconds = std::chrono::microseconds;
@@ -25,6 +26,7 @@ private:
 	GameObject exit;
 	std::vector<GameObject> walls;
 	std::vector<Game2D::Rect> killPlanes;
+	std::vector<MovingPlatform> movingPlatforms;
 
 	Game2D::Pos2 startPos;
 
@@ -47,6 +49,7 @@ private:
 	void checkPlayerCollision(float time_us);
 	bool checkKillPlanes(float time_us);
 	void checkRotate();
+	void processMovingPlatforms(float time_us);
 public:
 	Level();
 	//level creation
@@ -55,6 +58,7 @@ public:
 	inline void setExitRext(Game2D::Rect rect) { exit.setRect(rect); }
 	inline void addWall(Game2D::Rect wall) { walls.push_back(GameObject(wall)); walls.back().setColour(Game2D::Colour::Green); }
 	inline void addKillPlane(Game2D::Rect plane) { killPlanes.push_back(plane); }
+	inline void addMovingPlatform(MovingPlatform platform) { movingPlatforms.push_back(platform); }
 	//end level creation
 
 	void init();

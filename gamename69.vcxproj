@@ -246,8 +246,10 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="KeyMap.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelSelect.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MovingPlatform.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -258,7 +260,9 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="KeyMap.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelSelect.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MovingPlatform.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

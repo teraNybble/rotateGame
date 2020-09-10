@@ -14,46 +14,14 @@ MainMenu Game::mainMenu;
 InputManager Game::inputManager;
 int Game::currentLevel;
 std::vector<Level> Game::levels;
-//int Game::currentLevel;
-/*
-GameObject Game::testObject;
-Player Game::testPlayer;
-std::chrono::steady_clock::time_point Game::startTime;
-std::chrono::steady_clock::time_point Game::endTime;
-float Game::elapsedTime;
-*/
+LevelSelect Game::levelSelect;
+
 Game::Game()
 {
 	screenWidth = 1280;
 	screenHeight = 720;
 	mousePos = Game2D::Pos2(screenWidth,screenHeight);
 	currentState = MAIN_MENU;
-/*
-	testObject = GameObject(Game2D::Rect(0,-45,100,5));
-	//Game2D::Sprite temp(Game2D::Rect(0,0,20,5));
-	//testObject.setSprite(temp);
-	testObject.setColour(Game2D::Colour::Green);
-	testPlayer.setPos(Game2D::Pos2(0,-30));
-*/
-
-	/*
-	testLevel.addWall(Game2D::Rect(0, -95, 200, 5));
-	testLevel.addWall(Game2D::Rect(0, +95, 200, 5));
-	testLevel.addWall(Game2D::Rect(-100, 0, 5 ,200));
-	testLevel.addWall(Game2D::Rect(+100, 0, 5, 200));
-
-	testLevel.addWall(Game2D::Rect(-75, -75, 20, 5));
-	testLevel.addWall(Game2D::Rect(-55, -55, 20, 5));
-
-	testLevel.setStartPos(Game2D::Pos2(-90, -87.5f));
-	testLevel.setExitPos(Game2D::Pos2(+90, -87.5f));
-	*/
-/*
-	keyMap.insert(std::pair<int,bool>(GLFW_KEY_W,false));
-	keyMap.insert(std::pair<int,bool>(GLFW_KEY_A,false));
-	keyMap.insert(std::pair<int,bool>(GLFW_KEY_S,false));
-	keyMap.insert(std::pair<int,bool>(GLFW_KEY_D,false));
-	*/
 
 	//Key actions
 	inputManager.addAction(Level::PLAYER_LEFT,GLFW_KEY_A);
@@ -71,9 +39,7 @@ Game::Game()
 
 void Game::loadLevelsFromFile()
 {
-	//std::experimental::filesystem::directory_iterator("levels");
 	for (auto it : std::filesystem::directory_iterator("levels")) {
-		//std::cout << it.path() << "\n";
 		levels.push_back(Level());
 
 		std::ifstream levelFile;
@@ -119,21 +85,23 @@ void Game::loadLevelsFromFile()
 		*1 - kill plane
 		*/
 		while (std::getline(levelFile, line)) {
-			//std::cout << "Another line\n";
-			//std::cout << line << "\n";
-			float a, b, c, d, e;
+			float a, b, c, d, e, f, g, h;
 			switch (line[0])
 			{
 			case '0':				
 				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
-				//std::cout << a << " " << b << " " << c << " " << d << "\n";
 				levels.back().addWall(Game2D::Rect(a, b, c, d));
 				break;
 			case '1':
-				//float a, b, c, d, e;
-				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
-				//std::cout << a << " " << b << " " << c << " " << d << "\n";
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f", &e, &a, &b, &c, &d);
 				levels.back().addKillPlane(Game2D::Rect(a, b, c, d));
+				break;
+			case '2':
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
+				MovingPlatform platform(Game2D::Rect(a, b, c, d));
+				platform.setEndPos(Game2D::Pos2(g, h));
+				platform.setTravelTime(f);
+				levels.back().addMovingPlatform(platform);
 				break;
 			}
 		}
@@ -152,13 +120,15 @@ void Game::display()
 
 	glLoadIdentity();
 
-	//testButton.draw();
 	switch (currentState)
 	{
 		case PLAYING:
 			levels.at(currentLevel).draw();
 			break;
 		case PAUSED:
+			break;
+		case LEVEL_SELECT:
+			levelSelect.draw();
 			break;
 		case MAIN_MENU:
 			mainMenu.draw();
@@ -201,14 +171,14 @@ void Game::init()
 	testButton.addStateSprites(red,yellow,green,blue,red);
 
 	levels.at(currentLevel).init();
-	//testLevel.init();
-	//currentLevel = 0;
 
 	//fonts
 	Game2D::Font::init(screenHeight);
 	Game2D::Font::insert(20);
 	Game2D::Font::initFonts();
 	//!fonts
+
+	levelSelect.init(levels.size());
 }
 
 void Game::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -243,7 +213,6 @@ void Game::cursor_position_callback(GLFWwindow* window, double xpos, double ypos
 	mousePos = Game2D::Pos2(
 			((xpos/screenWidth) * 100.0f * (screenWidth / (float)screenHeight))-((100.0f * (screenWidth / (float)screenHeight))/2.0f),
 			(((screenHeight - ypos)/screenHeight)*100)-50);
-	//std::cout << mousePos << "\n";
 }
 
 void Game::processKeys()
@@ -271,15 +240,6 @@ void Game::update()
 	switch (currentState)
 	{
 		case PLAYING:
-			/*
-			if(keyMap.at(GLFW_KEY_A))
-				testPlayer.move(Game2D::Pos2(-50*elapsedTime,0));
-			if(keyMap.at(GLFW_KEY_D))
-				testPlayer.move(Game2D::Pos2(+50*elapsedTime,0));
-			if(keyMap.at(GLFW_KEY_W))
-				testPlayer.move(Game2D::Pos2(0,+50*elapsedTime));
-			if(keyMap.at(GLFW_KEY_S))
-				testPlayer.move(Game2D::Pos2(0,-50*elapsedTime));*/
 			inputManager.update();
 			//testLevel.update(inputManager);
 			switch (levels.at(currentLevel).update(inputManager)) {
@@ -297,6 +257,24 @@ void Game::update()
 			break;
 		case PAUSED:
 			break;
+		case LEVEL_SELECT:
+		{
+			int result = levelSelect.update(mousePos, mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState(), 1);
+			switch (result)
+			{
+			case -1:
+				break;
+			case -2:
+				currentState = MAIN_MENU;
+				break;
+			default:
+				currentLevel = result;
+				levels.at(currentLevel).init();
+				currentState = PLAYING;
+				break;
+			}
+			break;
+		}
 		case MAIN_MENU:
 			processMainMenu();
 			break;
@@ -312,9 +290,6 @@ void Game::update()
 			std::cerr << "We're in an invalid game state" << std::endl;
 			break;
 	}
-	//std::chrono::time_point test;
-	//test = Time::now();
-	//startTime = Time::now();
 }
 
 bool Game::createWindow()
@@ -366,7 +341,8 @@ void Game::processMainMenu()
 		case 1:
 			//testLevel.init();
 			levels.at(currentLevel).init();
-			currentState = PLAYING;
+			currentState = LEVEL_SELECT;
+			//currentState = PLAYING;
 			break;
 		case 2:
 			currentState = OPTIONS_MENU;

@@ -16,13 +16,14 @@
 #include <string>
 #include <fstream>
 #include <filesystem>
+#include "LevelSelect.h"
 //#include <experimental/filesystem>
 
 
 class Game
 {
 private:
-	enum GameState { PLAYING, PAUSED, MAIN_MENU, OPTIONS_MENU, VICTORY, LOSS, QUITTING };
+	enum GameState { PLAYING, PAUSED, LEVEL_SELECT, MAIN_MENU, OPTIONS_MENU, VICTORY, LOSS, QUITTING };
 
 	static GameState currentState;
 	static std::map<int,bool> keyMap;
@@ -52,6 +53,8 @@ private:
 	static int currentLevel;
 	static std::vector<Level> levels;
 	//static int currentLevel;
+
+	static LevelSelect levelSelect;
 
 	static void loadLevelsFromFile();
 public:
