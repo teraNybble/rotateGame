@@ -181,6 +181,10 @@ void Game::init()
 	Game2D::Font::initFonts();
 	//!fonts
 
+	//textures
+	TextureManager::loadTextures("textures/buttonSprites.png", 1);
+	//!textures
+
 	levelSelect.init(levels.size());
 }
 

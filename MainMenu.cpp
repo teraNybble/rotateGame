@@ -2,10 +2,11 @@
 
 MainMenu::MainMenu()
 {
-	play	= Game2D::Button(Game2D::Rect(0,0,10,5));
-	options	= Game2D::Button(Game2D::Rect(0,-7,10,5));
-	quit	= Game2D::Button(Game2D::Rect(0,-14,10,5));
+	play	= Game2D::Button(Game2D::Rect(0,-10,20,10));
+	options	= Game2D::Button(Game2D::Rect(0,-20,20,10));
+	quit	= Game2D::Button(Game2D::Rect(0,-30,20,10));
 
+	/*
 	Game2D::Sprite red = Game2D::Sprite(Game2D::Rect(0,0,10,5));
 	red.setColour(Game2D::Colour::Red);
 	Game2D::Sprite yellow = Game2D::Sprite(Game2D::Rect(0,0,10,5));
@@ -14,9 +15,56 @@ MainMenu::MainMenu()
 	green.setColour(Game2D::Colour::Green);
 	Game2D::Sprite blue = Game2D::Sprite(Game2D::Rect(0,0,10,5));
 	blue.setColour(Game2D::Colour::Blue);
+	*/
 
-	play.addStateSprites(red,yellow,green,blue,red);
-	red.setPos(Game2D::Pos2(0,-7));
+	Game2D::Rect texRect(Game2D::Rect(0, 0, 0.1455f, 0.0762f));
+
+	Game2D::AnimatedSprite playSprites(Game2D::Rect(0, -10, 20, 10));
+	for (int i = 0; i < 4; i++) {
+		Game2D::Sprite tempSprite(Game2D::Rect(0, -10, 20, 10));
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = texRect;
+		//the play buton is the 4th sprite along
+		tempRect.pos.x = 3 * texRect.width;
+		tempRect.pos.y = i * texRect.height;
+		tempSprite.setTextureCoords(tempRect);
+		playSprites.addFrame(tempSprite);
+	}
+	playSprites.setFrameTime(0);
+	//what fram of the animation eath state starts at
+	int temp[5] = { 0,1,2,3,4 };
+	play.addAnims(playSprites, temp);
+
+	Game2D::AnimatedSprite optionsSprites(Game2D::Rect(0, -20, 20, 10));
+	for (int i = 0; i < 4; i++) {
+		Game2D::Sprite tempSprite(Game2D::Rect(0, -20, 20, 10));
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = texRect;
+		//the options buton is the 5th sprite along
+		tempRect.pos.x =4 * texRect.width;
+		tempRect.pos.y = i * texRect.height;
+		tempSprite.setTextureCoords(tempRect);
+		optionsSprites.addFrame(tempSprite);
+	}
+	optionsSprites.setFrameTime(0);
+	options.addAnims(optionsSprites, temp);
+
+	Game2D::AnimatedSprite quitSprites(Game2D::Rect(0, -30, 20, 10));
+	for (int i = 0; i < 4; i++) {
+		Game2D::Sprite tempSprite(Game2D::Rect(0, -30, 20, 10));
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = texRect;
+		//the quit buton is the 2nd sprite along
+		tempRect.pos.x = 1 * texRect.width;
+		tempRect.pos.y = i * texRect.height;
+		tempSprite.setTextureCoords(tempRect);
+		quitSprites.addFrame(tempSprite);
+	}
+	quitSprites.setFrameTime(0);
+	quit.addAnims(quitSprites, temp);
+
+	//play.addStateSprites(red,yellow,green,blue,red);
+	/*red.setPos(Game2D::Pos2(0,-7));
 	yellow.setPos(Game2D::Pos2(0,-7));
 	green.setPos(Game2D::Pos2(0,-7));
 	blue.setPos(Game2D::Pos2(0,-7));
@@ -25,7 +73,7 @@ MainMenu::MainMenu()
 	yellow.setPos(Game2D::Pos2(0,-14));
 	green.setPos(Game2D::Pos2(0,-14));
 	blue.setPos(Game2D::Pos2(0,-14));
-	quit.addStateSprites(red,yellow,green,blue,red);
+	quit.addStateSprites(red,yellow,green,blue,red);*/
 }
 
 void MainMenu::update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, float time)

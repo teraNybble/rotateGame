@@ -17,6 +17,7 @@
 #include <fstream>
 #include <filesystem>
 #include "LevelSelect.h"
+#include "TextureManager.h"
 //#include <experimental/filesystem>
 
 

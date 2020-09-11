@@ -251,6 +251,7 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MovingPlatform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="freetype.h" />
@@ -264,6 +265,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MovingPlatform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
