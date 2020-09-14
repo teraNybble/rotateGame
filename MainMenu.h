@@ -1,6 +1,7 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
+#include "TextureManager.h"
 #include <Button.h>
 #include "Fonts.h"
 

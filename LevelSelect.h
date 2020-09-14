@@ -4,6 +4,7 @@
 #include <ScreenCoord.h>
 #include <vector>
 #include <Button.h>
+#include "TextureManager.h"
 
 class LevelSelect
 {

@@ -420,6 +420,9 @@ void Level::init()
 	rotateTime = 0;
 	playerRot = previousPlayerRot = 0;
 	player.setRot(0);
+	for (auto& it : movingPlatforms) {
+		it.reset();
+	}
 }
 
 void Level::draw()

@@ -12,53 +12,87 @@ void LevelSelect::init(int noLevels)
 	//float tempX = -88.8 + (tempSpacing / 2.0f);
 	//float tempX = -60;
 	float tempY = 20;
-	//menuTexture = loadPNG("Textures/LevelSelectSprites.png");
 
-	Game2D::Sprite red = Game2D::Sprite(Game2D::Rect(20, -40, 20, 10));
-	red.setColour(Game2D::Colour::Red);
-	Game2D::Sprite yellow = Game2D::Sprite(Game2D::Rect(20, -40, 20, 10));
-	yellow.setColour(Game2D::Colour::Yellow);
-	Game2D::Sprite green = Game2D::Sprite(Game2D::Rect(20, -40, 20, 10));
-	green.setColour(Game2D::Colour::Green);
-	Game2D::Sprite blue = Game2D::Sprite(Game2D::Rect(20, -40, 20, 10));
-	blue.setColour(Game2D::Colour::Blue);
-	Game2D::Sprite grey = Game2D::Sprite(Game2D::Rect(20, -40, 20, 10));
-	grey.setColour(Game2D::Colour(0.7,0.7,0.7));
-	
+	Game2D::Rect texRect(Game2D::Rect(0, 0, 0.1455f, 0.0762f));
+
+	Game2D::AnimatedSprite backSprites(Game2D::Rect(20, -40, 20, 10));
+	for (int i = 0; i < 4; i++) {
+		Game2D::Sprite tempSprite(Game2D::Rect(20, -40, 20, 10));
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = texRect;
+		//the back buton is the 1st sprite along on the second row
+		tempRect.pos.x = 0 * texRect.width;
+		tempRect.pos.y = (i+4) * texRect.height;
+		tempSprite.setTextureCoords(tempRect);
+		backSprites.addFrame(tempSprite);
+	}
+	backSprites.setFrameTime(0);
+	int tempFrames[5] = { 4,1,2,3,3 };
+
 	buttons.push_back(Game2D::Button(Game2D::Rect(20, -40, 20, 10))); //back button
-	//buttons.back().setTextureCoords(Game2D::Rect(0.0f, 0.292f, 0.54296875f, 0.15234375f), 3);
-	buttons.back().addStateSprites(red, yellow, green, blue, grey);
+	buttons.back().addAnims(backSprites, tempFrames);
 
-	red.setRect(Game2D::Rect(-30, -40, 10, 10));
-	yellow.setRect(Game2D::Rect(-30, -40, 10, 10));
-	green.setRect(Game2D::Rect(-30, -40, 10, 10));
-	blue.setRect(Game2D::Rect(-30, -40, 10, 10));
-	grey.setRect(Game2D::Rect(-30, -40, 10, 10));
+	Game2D::Rect arrowTexture(0, 0, 0.0752f, 0.0762f);
+
+	Game2D::AnimatedSprite arrowSprites(Game2D::Rect(-30, -40, 10, 10));
+	for (int i = 0; i < 4; i++) {
+		Game2D::Sprite tempSprite(Game2D::Rect(-30, -40, 10, 10));
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = arrowTexture;
+		tempRect.pos.x = 0.8027f + arrowTexture.width;
+		tempRect.width = -arrowTexture.width;
+		tempRect.pos.y = i * arrowTexture.height;
+		tempSprite.setTextureCoords(tempRect);
+		arrowSprites.addFrame(tempSprite);
+	}
+	arrowSprites.setFrameTime(0);
+	//what fram of the animation eath state starts at
+	//int tempFrames[5] = { 4,1,2,3,3 };
 	buttons.push_back(Game2D::Button(Game2D::Rect(-30, -40, 10, 10)));//left arrow
-	//buttons.back().setTextureCoords(Game2D::Rect(0.292f, 0.150390625f, 0.390625f, 0.15234375f), 4);
-	buttons.back().addStateSprites(red, yellow, green, blue, grey);
+	buttons.back().addAnims(arrowSprites, tempFrames);
 	buttons.back().disable();
 
-	red.setPos(Game2D::Pos2(-18, -40));
-	yellow.setPos(Game2D::Pos2(-18, -40));
-	green.setPos(Game2D::Pos2(-18, -40));
-	blue.setPos(Game2D::Pos2(-18, -40));
-	grey.setPos(Game2D::Pos2(-18, -40));
+	Game2D::AnimatedSprite otherArrowSprites(Game2D::Rect(-18, -40, 10, 10));
+	for (int i = 0; i < 4; i++) {
+		Game2D::Sprite tempSprite(Game2D::Rect(-18, -40, 10, 10));
+		tempSprite.setColour(Game2D::Colour::White);
+		Game2D::Rect tempRect = arrowTexture;
+		tempRect.pos.x = 0.8027f;
+		tempRect.pos.y = i * arrowTexture.height;
+		tempSprite.setTextureCoords(tempRect);
+		otherArrowSprites.addFrame(tempSprite);
+	}
+	otherArrowSprites.setFrameTime(0);
+
 	buttons.push_back(Game2D::Button(Game2D::Rect(-18, -40, 10, 10)));//right arrow
-	buttons.back().addStateSprites(red, yellow, green, blue, grey);
-	//buttons.back().setTextureCoords(Game2D::Rect(0.442390625f, 0.150390625f, 0.390625f, 0.15234375f), 4);
+	buttons.back().addAnims(otherArrowSprites, tempFrames);
+
 
 	std::vector<Game2D::Button> temp;
+
+	Game2D::Rect levelRect(0, 0, 0.043f, 0.03125f);
 	for (unsigned int i = 0; i < /*Scores::noLevels*/noLevels; i++)
 	{
+		Game2D::AnimatedSprite tempAnim(Game2D::Rect(tempX, tempY, tempSpacing, 27.0f));
 		temp.push_back(Game2D::Button(Game2D::Rect(tempX, tempY, tempSpacing, 27.0f)));
 		//temp.back().setTextureCoords(Game2D::Rect(tempPos, tempWidth, 0, 0.03125f), 4);
-		red.setRect(Game2D::Rect(tempX, tempY, tempSpacing, 27.0f));
-		yellow.setRect(Game2D::Rect(tempX, tempY, tempSpacing, 27.0f));
-		green.setRect(Game2D::Rect(tempX, tempY, tempSpacing, 27.0f));
-		blue.setRect(Game2D::Rect(tempX,  tempY, tempSpacing, 27.0f));
-		temp.back().addStateSprites(red, yellow, green, blue, red);
+
+		for (int j = 0; j < 4; j++) {
+			Game2D::Sprite tempSprite(Game2D::Rect(tempX, tempY, tempSpacing, 27.0f));
+			tempSprite.setColour(Game2D::Colour::White);
+			Game2D::Rect tempRect = levelRect;
+			//the quit buton is the 2nd sprite along
+			//tempRect.pos.x = 1 * texRect.width;
+			tempRect.pos.y = j * levelRect.height;
+			tempSprite.setTextureCoords(tempRect);
+			tempAnim.addFrame(tempSprite);
+		}
+		tempAnim.setFrameTime(0);
+		temp.back().addAnims(tempAnim, tempFrames);
+		levelRect.pos.x += levelRect.width;
+
 		//if (i > Scores::getUnlockedLevels()) { temp.back().disable(); }
+		//if (i > 0) { temp.back().disable(); }
 
 		tempX += tempSpacing;
 		if (tempX >= (tempSpacing * 5) - tempX)
@@ -114,6 +148,7 @@ int LevelSelect::update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, fl
 
 void LevelSelect::draw()
 {
+	glBindTexture(GL_TEXTURE_2D, TextureManager::getTexture(1));
 	//align the back button to the left 
 	Game2D::ScreenCoord::alignLeft();
 	for (auto& it : buttons) {
@@ -124,6 +159,7 @@ void LevelSelect::draw()
 	}
 	Game2D::ScreenCoord::alignCentre();
 	
+	glBindTexture(GL_TEXTURE_2D, TextureManager::getTexture(2));
 	for (auto& it : pages.at(pageNo)) {
 		it.draw();
 		//it.debugDraw();

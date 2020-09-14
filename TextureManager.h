@@ -15,10 +15,10 @@ private:
 	//should be std::map
 	static std::map<int, GLuint> textures;
 	static bool loadPNGFromFile(const char* name, Game2D::Rect& rect, bool& outHasAlpha, GLubyte** outData);
-	static GLuint loadPNG(const char* path);
+	static GLuint loadPNG(const char* path,int filter);
 public:
 	static void loadTextures(std::string path, int identifier, int filter = GL_LINEAR);
-	static GLuint getTexture(int identifier);
+	static GLuint getTexture(int identifier) { return textures.at(identifier); }
 };
 
 #endif // !TEXTUREMANAGER_H

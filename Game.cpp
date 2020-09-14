@@ -96,11 +96,11 @@ void Game::loadLevelsFromFile()
 				levels.back().addWall(Game2D::Rect(a, b, c, d));
 				break;
 			case '1':
-				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f", &e, &a, &b, &c, &d);
+				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
 				levels.back().addKillPlane(Game2D::Rect(a, b, c, d));
 				break;
 			case '2':
-				std::sscanf(line.c_str(), "%f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
 				MovingPlatform platform(Game2D::Rect(a, b, c, d));
 				platform.setEndPos(Game2D::Pos2(g, h));
 				platform.setTravelTime(f);
@@ -154,7 +154,7 @@ void Game::display()
 
 void Game::init()
 {
-//	glfwSetWindowSizeCallback(window, reshape);
+	glfwSetWindowSizeCallback(window, resize_callback);
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
@@ -183,9 +183,19 @@ void Game::init()
 
 	//textures
 	TextureManager::loadTextures("textures/buttonSprites.png", 1);
+	TextureManager::loadTextures("textures/levelSelectSprites.png", 2,GL_NEAREST);
 	//!textures
 
 	levelSelect.init(levels.size());
+}
+
+void Game::resize_callback(GLFWwindow* window, int width, int height)
+{
+	screenWidth = width;
+	screenHeight = height;
+	glViewport(0, 0, width, height);
+	Game2D::ScreenCoord::init(width, height);
+	Game2D::ScreenCoord::alignCentre();
 }
 
 void Game::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -307,7 +317,7 @@ bool Game::createWindow()
 		return false;
 	}
 
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(screenWidth, screenHeight, "Rotate", NULL, NULL);

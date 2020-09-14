@@ -137,7 +137,7 @@ bool TextureManager::loadPNGFromFile(const char* name, Game2D::Rect& rect, bool&
 	return true;
 }
 
-GLuint TextureManager::loadPNG(const char* path)
+GLuint TextureManager::loadPNG(const char* path,int filter)
 {
 	//nv::Image img;
 	GLuint texID;
@@ -147,14 +147,14 @@ GLuint TextureManager::loadPNG(const char* path)
 
 	if (loadPNGFromFile(path, imageRect, hasAlpha, &image))
 	{
-		std::cout << imageRect << "\n";
-		std::cout << (hasAlpha ? "image has alpha" : "image doesn't have alpha") << "\n";
+		//std::cout << imageRect << "\n";
+		//std::cout << (hasAlpha ? "image has alpha" : "image doesn't have alpha") << "\n";
 		glGenTextures(1, &texID);
 		glBindTexture(GL_TEXTURE_2D, texID);
 		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 		glTexImage2D(GL_TEXTURE_2D, 0, (hasAlpha ? GL_RGBA : GL_RGB), imageRect.width, imageRect.height, 0, /*img.getFormat()*/(hasAlpha ? GL_RGBA : GL_RGB), GL_UNSIGNED_BYTE, image);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,(filter==GL_NEAREST ? GL_NEAREST_MIPMAP_NEAREST: GL_LINEAR_MIPMAP_LINEAR));
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, 16.0f);
@@ -170,6 +170,6 @@ GLuint TextureManager::loadPNG(const char* path)
 
 void TextureManager::loadTextures(std::string path, int identifier, int filter)
 {
-	GLuint texId = loadPNG(path.c_str());
+	GLuint texId = loadPNG(path.c_str(),filter);
 	textures.insert(std::pair<int, GLuint>(identifier, texId));
 }

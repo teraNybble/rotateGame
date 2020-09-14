@@ -6,17 +6,6 @@ MainMenu::MainMenu()
 	options	= Game2D::Button(Game2D::Rect(0,-20,20,10));
 	quit	= Game2D::Button(Game2D::Rect(0,-30,20,10));
 
-	/*
-	Game2D::Sprite red = Game2D::Sprite(Game2D::Rect(0,0,10,5));
-	red.setColour(Game2D::Colour::Red);
-	Game2D::Sprite yellow = Game2D::Sprite(Game2D::Rect(0,0,10,5));
-	yellow.setColour(Game2D::Colour::Yellow);
-	Game2D::Sprite green = Game2D::Sprite(Game2D::Rect(0,0,10,5));
-	green.setColour(Game2D::Colour::Green);
-	Game2D::Sprite blue = Game2D::Sprite(Game2D::Rect(0,0,10,5));
-	blue.setColour(Game2D::Colour::Blue);
-	*/
-
 	Game2D::Rect texRect(Game2D::Rect(0, 0, 0.1455f, 0.0762f));
 
 	Game2D::AnimatedSprite playSprites(Game2D::Rect(0, -10, 20, 10));
@@ -62,18 +51,6 @@ MainMenu::MainMenu()
 	}
 	quitSprites.setFrameTime(0);
 	quit.addAnims(quitSprites, temp);
-
-	//play.addStateSprites(red,yellow,green,blue,red);
-	/*red.setPos(Game2D::Pos2(0,-7));
-	yellow.setPos(Game2D::Pos2(0,-7));
-	green.setPos(Game2D::Pos2(0,-7));
-	blue.setPos(Game2D::Pos2(0,-7));
-	options.addStateSprites(red,yellow,green,blue,red);
-	red.setPos(Game2D::Pos2(0,-14));
-	yellow.setPos(Game2D::Pos2(0,-14));
-	green.setPos(Game2D::Pos2(0,-14));
-	blue.setPos(Game2D::Pos2(0,-14));
-	quit.addStateSprites(red,yellow,green,blue,red);*/
 }
 
 void MainMenu::update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, float time)
@@ -94,6 +71,8 @@ int MainMenu::getResult()
 
 void MainMenu::draw()
 {
+	glBindTexture(GL_TEXTURE_2D, TextureManager::getTexture(1));
+
 	play.draw();
 	options.draw();
 	quit.draw();

@@ -36,6 +36,7 @@ void MovingPlatform::update(float time_us)
 	setPos(Game2D::Pos2(
 		((endPos.x - startPos.x) * (elapsedTime_us / travelTime_us)) + startPos.x,
 		((endPos.y - startPos.y) * (elapsedTime_us / travelTime_us)) + startPos.y));
+
 }
 
 void MovingPlatform::moveOnTop(GameObject& object) {
@@ -55,6 +56,8 @@ void MovingPlatform::moveOnTop(GameObject& object) {
 
 void MovingPlatform::reset()
 {
+	elapsedTime_us = 0;
+
 	if (flipped) {
 		Game2D::Pos2 tempPos = startPos;
 		startPos = endPos;
@@ -62,4 +65,5 @@ void MovingPlatform::reset()
 	}
 
 	setPos(startPos);
+	previousPos = startPos;
 }
