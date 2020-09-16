@@ -41,6 +41,9 @@ private:
 	bool rotating;
 	float rotateTime;
 
+	int noRotates;
+	float elapsedLevelTime;
+
 	void processActions(const InputManager& actions, float time_us);
 	void applyGravity(float time_us);
 	bool checkCollision(GameObject a, GameObject b);

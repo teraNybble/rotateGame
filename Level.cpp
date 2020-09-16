@@ -29,6 +29,7 @@ void Level::processActions(const InputManager& actions, float time_us)
 		levelRotation += 90;
 		previousPlayerRot = player.getRot();
 		playerRot -= 90;
+		noRotates++;
 		player.setCanRotate(false);
 		player.lockRotate();
 	}
@@ -37,6 +38,7 @@ void Level::processActions(const InputManager& actions, float time_us)
 		previousPlayerRot = player.getRot();
 		levelRotation -= 90;
 		playerRot += 90;
+		noRotates++;
 		player.setCanRotate(false);
 		player.lockRotate();
 	}
@@ -332,6 +334,7 @@ int Level::update(const InputManager& actions)
 {
 	endTime = Time::now();
 	float elapsedTime = std::chrono::duration_cast<Microseconds>(endTime - startTime).count() / 1000000.0f;
+	elapsedLevelTime += elapsedTime;
 	//checkRotate();
 	
 	if (rotating) {
@@ -420,6 +423,8 @@ void Level::init()
 	rotateTime = 0;
 	playerRot = previousPlayerRot = 0;
 	player.setRot(0);
+	noRotates = 0;
+	elapsedLevelTime = 0.0f;
 	for (auto& it : movingPlatforms) {
 		it.reset();
 	}
@@ -428,21 +433,36 @@ void Level::init()
 void Level::draw()
 {
 	glPushMatrix();
-		glRotatef(drawRot, 0, 0, 1);
-		glTranslatef(panX, panY,0);
-		
-		exit.draw();
+	glRotatef(drawRot, 0, 0, 1);
+	glTranslatef(panX, panY, 0);
 
-		for(auto it = walls.begin(); it != walls.end(); it++)
-			it->draw();
+	exit.draw();
 
-		for (auto it : movingPlatforms) {
-			it.draw();
-		}
+	for (auto it = walls.begin(); it != walls.end(); it++)
+		it->draw();
 
-		player.draw();
+	for (auto it : movingPlatforms) {
+		it.draw();
+	}
+
+#if _DEV
+	for (auto it : killPlanes) {
+		Game2D::Sprite temp(it);
+		temp.setColour(Game2D::Colour(1, 0, 0, 0.5f));
+		temp.draw();
+	}
+#endif
+
+	player.draw();
 	glPopMatrix();
-	
+
+	Game2D::Colour(1, 1, 1).draw();
+	Game2D::ScreenCoord::alignLeft();
+	freetype::print(Game2D::Font::getFont(20), 2.5, 45, "Rotates:    %d", noRotates);
+	freetype::print(Game2D::Font::getFont(20), 2.5, 40, "Time:    %2.2f", elapsedLevelTime);
+	Game2D::ScreenCoord::alignCentre();
+
+	/*
 	Game2D::ScreenCoord::alignLeft();
 	Game2D::Colour(1, 1, 1).draw();
 	freetype::print(Game2D::Font::getFont(20), 0, 10, "Test text");
@@ -454,4 +474,5 @@ void Level::draw()
 	Game2D::Colour(1, 1, 1).draw();
 	freetype::print(Game2D::Font::getFont(20), 0 - temp, 10, "Test text");
 	Game2D::ScreenCoord::alignCentre();
+	*/
 }
