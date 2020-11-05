@@ -6,6 +6,15 @@ Level::Level()
 	exit.setColour(Game2D::Colour::Black);
 }
 
+void Level::addSprite(Game2D::Rect rect, Game2D::Rect sprite, SpriteFlip flip)
+{
+	sprites.push_back(Game2D::Sprite(rect, sprite));
+	sprites.back().setColour(Game2D::Colour::White);
+	if (flip & 0b001) { sprites.back().flipX(); }
+	if (flip & 0b010) { sprites.back().flipY(); }
+	if (flip & 0b100) { sprites.back().setRot(90); }
+}
+
 void Level::processActions(const InputManager& actions, float time_us)
 {
 	if(actions.getAction(RESET) == InputManager::DOWN)
@@ -433,10 +442,15 @@ void Level::init()
 void Level::draw()
 {
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, TextureManager::getTexture(3));
 	glRotatef(drawRot, 0, 0, 1);
 	glTranslatef(panX, panY, 0);
 
 	exit.draw();
+
+	for (auto it : sprites) {
+		it.draw();
+	}
 
 	for (auto it = walls.begin(); it != walls.end(); it++)
 		it->draw();

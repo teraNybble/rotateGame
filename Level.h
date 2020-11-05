@@ -9,6 +9,7 @@
 #include "Fonts.h"
 #include "ScreenCoord.h"
 #include "MovingPlatform.h"
+#include "TextureManager.h"
 
 using Time = std::chrono::steady_clock;
 using Microseconds = std::chrono::microseconds;
@@ -27,6 +28,7 @@ private:
 	std::vector<GameObject> walls;
 	std::vector<Game2D::Rect> killPlanes;
 	std::vector<MovingPlatform> movingPlatforms;
+	std::vector<Game2D::Sprite> sprites;
 
 	Game2D::Pos2 startPos;
 
@@ -54,6 +56,7 @@ private:
 	void checkRotate();
 	void processMovingPlatforms(float time_us);
 public:
+	enum SpriteFlip { NONE = 0b00, X = 0b01, Y = 0b10, BOTH = 0b11, ROT = 0b100, ROTX = 0b101, ROTY = 0b110, ROTXY = 0b111 };
 	Level();
 	//level creation
 	inline void setStartPos(Game2D::Pos2 pos) { startPos = pos; }
@@ -62,6 +65,7 @@ public:
 	inline void addWall(Game2D::Rect wall) { walls.push_back(GameObject(wall)); walls.back().setColour(Game2D::Colour::Green); }
 	inline void addKillPlane(Game2D::Rect plane) { killPlanes.push_back(plane); }
 	inline void addMovingPlatform(MovingPlatform platform) { movingPlatforms.push_back(platform); }
+	void addSprite(Game2D::Rect rect, Game2D::Rect sprite, SpriteFlip flip = SpriteFlip::NONE);
 	//end level creation
 
 	void init();

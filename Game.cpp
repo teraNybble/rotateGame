@@ -93,9 +93,12 @@ void Game::loadLevelsFromFile()
 		*exit rect
 		*0 - wall
 		*1 - kill plane
+		*2 - moving platform
+		*3 - sprite
 		*/
 		while (std::getline(levelFile, line)) {
-			float a, b, c, d, e, f, g, h;
+			//std::cout << "Reading new line\n";
+			float a, b, c, d, e, f, g, h, i, j;
 			switch (line[0])
 			{
 			case '0':				
@@ -107,11 +110,17 @@ void Game::loadLevelsFromFile()
 				levels.back().addKillPlane(Game2D::Rect(a, b, c, d));
 				break;
 			case '2':
+			{
 				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
 				MovingPlatform platform(Game2D::Rect(a, b, c, d));
 				platform.setEndPos(Game2D::Pos2(g, h));
 				platform.setTravelTime(f);
 				levels.back().addMovingPlatform(platform);
+				break;
+			}
+			case '3':
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i, &j);
+				levels.back().addSprite(Game2D::Rect(a, b, c, d), Game2D::Rect(f, g, h, i), (Level::SpriteFlip)((int)j));
 				break;
 			}
 		}
@@ -191,6 +200,7 @@ void Game::init()
 	//textures
 	TextureManager::loadTextures("textures/buttonSprites.png", 1);
 	TextureManager::loadTextures("textures/levelSelectSprites.png", 2,GL_NEAREST);
+	TextureManager::loadTextures("textures/LevelSprites.png", 3);
 	//!textures
 
 	levelSelect.init(levels.size());
