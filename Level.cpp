@@ -107,6 +107,22 @@ bool Level::checkCollision(GameObject a, Game2D::Rect b)
 		temp.contains(Game2D::Pos2(b.pos.x + (b.width / 2.0f), b.pos.y + (b.height / 2.0f)));
 }
 
+bool Level::checkCollision(Game2D::Rect a, Game2D::Rect b)
+{
+	
+	Game2D::Rect temp = Game2D::Rect(
+		a.pos.x - (a.width / 2.0f),
+		a.pos.y - (a.height / 2.0f),
+		a.width, a.height
+	); 
+
+	//Game2D::Rect temp = a;
+
+	return temp.contains(Game2D::Pos2(b.pos.x - (b.width / 2.0f), b.pos.y - (b.height / 2.0f))) ||
+		temp.contains(Game2D::Pos2(b.pos.x + (b.width / 2.0f), b.pos.y - (b.height / 2.0f))) ||
+		temp.contains(Game2D::Pos2(b.pos.x - (b.width / 2.0f), b.pos.y + (b.height / 2.0f))) ||
+		temp.contains(Game2D::Pos2(b.pos.x + (b.width / 2.0f), b.pos.y + (b.height / 2.0f)));
+}
 
 void Level::checkPlayerCollision(float time_us)
 {
@@ -339,6 +355,30 @@ void Level::processMovingPlatforms(float time_us)
 	}
 }
 
+bool Level::processEnemies(float time_us)
+{
+	for (auto& it : enemies) {
+		//if the enemy is alive update it
+		//std::cout << (it.second ? "true" : "false") << "\n";
+		if (it.second) {
+			it.first.update(time_us);
+			//std::cout << "checking\n";
+			if (checkCollision(player.getFootbox(), it.first.getHeadBox())) {
+				//std::cout << "Dead\n";
+				it.second = false;//it has been killed
+				player.velocityY = 3*moveSpeedY/4.0f;
+				player.unlockRotate();
+				player.setCanRotate(true);
+			}
+			else if (checkCollision(it.first, player) || checkCollision(player, it.first)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 int Level::update(const InputManager& actions)
 {
 	endTime = Time::now();
@@ -372,6 +412,9 @@ int Level::update(const InputManager& actions)
 		applyGravity(elapsedTime);
 		processMovingPlatforms(elapsedTime);
 		checkPlayerCollision(elapsedTime);
+		if (processEnemies(elapsedTime)) {
+			init();
+		}
 		//processMovingPlatforms(elapsedTime);
 		/*
 		for (auto& it : movingPlatforms) {
@@ -437,6 +480,9 @@ void Level::init()
 	for (auto& it : movingPlatforms) {
 		it.reset();
 	}
+	for (auto& it : enemies) {
+		it.second = true;//set all the enimies to alive
+	}
 }
 
 void Level::draw()
@@ -457,6 +503,12 @@ void Level::draw()
 
 	for (auto it : movingPlatforms) {
 		it.draw();
+	}
+
+	for (auto it : enemies) {
+		if (it.second) {
+			it.first.draw();
+		}
 	}
 
 #if _DEV

@@ -10,7 +10,9 @@ class MainMenu
 private:
 	Game2D::Button play,options,quit;
 public:
-	MainMenu();
+	//MainMenu();
+
+	void init();
 
 	void update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, float time);
 	int getResult();

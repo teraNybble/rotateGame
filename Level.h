@@ -10,6 +10,7 @@
 #include "ScreenCoord.h"
 #include "MovingPlatform.h"
 #include "TextureManager.h"
+#include "Enemy.h"
 
 using Time = std::chrono::steady_clock;
 using Microseconds = std::chrono::microseconds;
@@ -29,6 +30,7 @@ private:
 	std::vector<Game2D::Rect> killPlanes;
 	std::vector<MovingPlatform> movingPlatforms;
 	std::vector<Game2D::Sprite> sprites;
+	std::vector<std::pair<Enemy, bool>> enemies;
 
 	Game2D::Pos2 startPos;
 
@@ -51,10 +53,12 @@ private:
 	bool checkCollision(GameObject a, GameObject b);
 	bool checkCollision(Game2D::Rect a, GameObject b);
 	bool checkCollision(GameObject a, Game2D::Rect b);
+	bool checkCollision(Game2D::Rect a, Game2D::Rect b);
 	void checkPlayerCollision(float time_us);
 	bool checkKillPlanes(float time_us);
 	void checkRotate();
 	void processMovingPlatforms(float time_us);
+	bool processEnemies(float time_us);
 public:
 	enum SpriteFlip { NONE = 0b00, X = 0b01, Y = 0b10, BOTH = 0b11, ROT = 0b100, ROTX = 0b101, ROTY = 0b110, ROTXY = 0b111 };
 	Level();
@@ -65,6 +69,7 @@ public:
 	inline void addWall(Game2D::Rect wall) { walls.push_back(GameObject(wall)); walls.back().setColour(Game2D::Colour::Green); }
 	inline void addKillPlane(Game2D::Rect plane) { killPlanes.push_back(plane); }
 	inline void addMovingPlatform(MovingPlatform platform) { movingPlatforms.push_back(platform); }
+	inline void addEnemy(Enemy enemy) { enemies.push_back(std::pair<Enemy, bool>(enemy, true)); }
 	void addSprite(Game2D::Rect rect, Game2D::Rect sprite, SpriteFlip flip = SpriteFlip::NONE);
 	//end level creation
 

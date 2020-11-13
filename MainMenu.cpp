@@ -1,6 +1,6 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu()
+void MainMenu::init()
 {
 	play	= Game2D::Button(Game2D::Rect(0,-10,20,10));
 	options	= Game2D::Button(Game2D::Rect(0,-20,20,10));
@@ -30,7 +30,7 @@ MainMenu::MainMenu()
 		tempSprite.setColour(Game2D::Colour::White);
 		Game2D::Rect tempRect = texRect;
 		//the options buton is the 5th sprite along
-		tempRect.pos.x =4 * texRect.width;
+		tempRect.pos.x = 4 * texRect.width;
 		tempRect.pos.y = i * texRect.height;
 		tempSprite.setTextureCoords(tempRect);
 		optionsSprites.addFrame(tempSprite);
@@ -72,10 +72,9 @@ int MainMenu::getResult()
 void MainMenu::draw()
 {
 	glBindTexture(GL_TEXTURE_2D, TextureManager::getTexture(1));
-
+	
 	play.draw();
 	options.draw();
 	quit.draw();
-
 //	freetype::print(Game2D::Font::getFont(20), 30, 30, "Test text");
 }

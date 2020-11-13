@@ -4,6 +4,8 @@ Player::Player() : GameObject(Game2D::Rect(0,0,5,10))
 {
 	hitBox = Game2D::Rect(0, 0, 5, 10);
 	rotateBox = Game2D::Rect(0, 0, 10, 10);
+	headBox = Game2D::Rect(0, +2.5f, 5, 5);
+	footBox = Game2D::Rect(0, -4.5f, 5, 1);
 	//setRect(Game2D::Rect(0,0,5,10));
 	setColour(Game2D::Colour::Cyan);
 	rotateLock = false;
@@ -30,10 +32,14 @@ void Player::setRot(float rot)
 	case 180:
 		//GameObject::getPos
 		hitBox = (Game2D::Rect(getPos(), 5, 10));
+		headBox = (Game2D::Rect(getPos().x, getPos().y + (rot == 180 ? -2.5f : +2.5f), 5, 5));
+		footBox = (Game2D::Rect(getPos().x, getPos().y + (rot == 180 ? +4.5f : -4.5f), 5, 1));
 		break;
 	case 90:
 	case 270:
 		hitBox = (Game2D::Rect(getPos(), 10, 5));
+		headBox = (Game2D::Rect(getPos().x + (rot == 270 ? +2.5f : -2.5f), getPos().y, 5, 5));
+		footBox = (Game2D::Rect(getPos().x + (rot == 270 ? -4.5f : +4.5f), getPos().y, 1, 5));
 		break;
 	}
 }

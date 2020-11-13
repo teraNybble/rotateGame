@@ -18,10 +18,11 @@ LevelSelect Game::levelSelect;
 
 Game::Game()
 {
+	//std::cout << "Game constructor\n";
 	screenWidth = 1280;
 	screenHeight = 720;
 	mousePos = Game2D::Pos2(screenWidth,screenHeight);
-	currentState = MAIN_MENU;
+	currentState = Game::MAIN_MENU;
 
 	//Key actions
 	inputManager.addAction(Level::PLAYER_LEFT,GLFW_KEY_A);
@@ -95,6 +96,7 @@ void Game::loadLevelsFromFile()
 		*1 - kill plane
 		*2 - moving platform
 		*3 - sprite
+		*4 - enemy
 		*/
 		while (std::getline(levelFile, line)) {
 			//std::cout << "Reading new line\n";
@@ -122,6 +124,19 @@ void Game::loadLevelsFromFile()
 				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i, &j);
 				levels.back().addSprite(Game2D::Rect(a, b, c, d), Game2D::Rect(f, g, h, i), (Level::SpriteFlip)((int)j));
 				break;
+			case '4':
+			{
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g);
+				//levels.back().addEnemy(Game2D::Pos2(a, b));
+				Enemy temp(Game2D::Pos2(a, b));
+				temp.setEndPos(Game2D::Pos2(d, f));
+				temp.setTravelTime(c);
+				temp.setHead((Enemy::Direction)((int)(g)));
+				std::cout << c << "\n";
+				std::cout << d << " " << f << "\n";
+				levels.back().addEnemy(temp);
+				break;
+			}
 			}
 		}
 	}
@@ -138,7 +153,6 @@ void Game::display()
 	glClearColor(0.118f, 0.118f, 0.118f,1.0f);
 
 	glLoadIdentity();
-
 	switch (currentState)
 	{
 		case PLAYING:
@@ -163,7 +177,6 @@ void Game::display()
 		default:
 			break;
 	}
-
 	glDisable(GL_BLEND);
 	glFlush();
 }
@@ -202,6 +215,8 @@ void Game::init()
 	TextureManager::loadTextures("textures/levelSelectSprites.png", 2,GL_NEAREST);
 	TextureManager::loadTextures("textures/LevelSprites.png", 3);
 	//!textures
+
+	mainMenu.init();
 
 	levelSelect.init(levels.size());
 }
@@ -404,7 +419,6 @@ int Game::mainLoop()
 		display();
 
 		glfwSwapBuffers(window);
-
 		update();
 		//update glfw's mouse and keyboard events
 		glfwPollEvents();

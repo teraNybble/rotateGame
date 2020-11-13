@@ -2,7 +2,8 @@
 
 void LevelSelect::init(int noLevels)
 {
-	this->noLevels = noLevels;
+//	this->noLevels = noLevels;
+	LevelSelect::noLevels = noLevels;
 	float tempWidth = 0.04296875f;
 	float tempPos = 0.0f;
 	float tempSpacing = 41;

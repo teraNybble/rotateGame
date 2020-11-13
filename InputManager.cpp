@@ -32,9 +32,9 @@ InputManager::ActionState InputManager::getAction(int id) const
 
 void InputManager::updateKeys(int key, bool down)
 {
-	for(auto it = actions.begin(); it != actions.end(); it++)
-		it->second.updateKeys(key,down);
-
+	for (auto it = actions.begin(); it != actions.end(); it++) {
+		it->second.updateKeys(key, down);
+	}
 }
 
 void InputManager::update()
