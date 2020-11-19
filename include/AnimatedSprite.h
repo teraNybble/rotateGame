@@ -42,8 +42,10 @@ namespace Game2D
 		inline void reset() { AnimatedSprite(); }
 		inline void setElapsedTimeToZero() { elapsedTime = 0.0f; }
 
+		inline int getSize() const { return anim.size(); }
+
 		void update(float time);
-		void draw();
+		void draw() const;
 	};
 }
 

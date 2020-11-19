@@ -109,8 +109,10 @@ void LevelSelect::init(int noLevels)
 			temp.shrink_to_fit();
 			pages.push_back(temp);
 			temp.clear();
-			tempX = -30;
-			tempY = 60;
+			//tempX = -30;
+			//tempY = 60;
+			tempX = (-88.8 + (tempSpacing / 2.0f)) + ((177.7 - (tempSpacing * 4.0f)) / 2.0f);
+			tempY = 20;
 		}
 	}
 	temp.shrink_to_fit();
@@ -138,9 +140,19 @@ int LevelSelect::update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, fl
 	Game2D::Pos2 rightMousePos = mousePos;
 	rightMousePos.x -= (50 * (16.0f / 9.0f));
 	if (buttons[1].update(rightMousePos, state, time) == Game2D::ClickableObject::CLICK) {
+		if (pageNo > 0) { 
+			pageNo--; 
+			if (pageNo == 0) { buttons[1].disable(); }
+			if (pageNo < pages.size() - 1) { buttons[2].enable(); }
+		}
 		//return -3;
 	}
 	if (buttons[2].update(rightMousePos, state, time) == Game2D::ClickableObject::CLICK) {
+		if (pageNo < pages.size() - 1) { 
+			pageNo++; 
+			if (pageNo > 0) { buttons[1].enable(); }
+			if (pageNo == pages.size() - 1) { buttons[2].disable(); }
+		}
 		//return -4;
 	}
 

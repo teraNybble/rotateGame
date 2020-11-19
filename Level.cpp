@@ -109,7 +109,6 @@ bool Level::checkCollision(GameObject a, Game2D::Rect b)
 
 bool Level::checkCollision(Game2D::Rect a, Game2D::Rect b)
 {
-	
 	Game2D::Rect temp = Game2D::Rect(
 		a.pos.x - (a.width / 2.0f),
 		a.pos.y - (a.height / 2.0f),
@@ -252,6 +251,13 @@ bool Level::checkKillPlanes(float time_us)
 
 void Level::checkRotate()
 {
+	for (const auto& it : noRotateZones) {
+		if (checkCollision(it.getRect(), player)) {
+			player.setCanRotate(false);
+			return;
+		}
+	}
+
 	std::vector<GameObject> solidObjects = walls;
 	solidObjects.insert(solidObjects.end(), movingPlatforms.begin(), movingPlatforms.end());
 
@@ -284,8 +290,8 @@ void Level::processMovingPlatforms(float time_us)
 				break;
 			case 270:
 				//TODO make it so the collision rect sticks out one above 
-				collisionRect.width += collisionRect.width/2.0f;
-				break;
+collisionRect.width += collisionRect.width / 2.0f;
+break;
 		}
 		if (!(player.inAir) && (checkCollision(player, collisionRect) || checkCollision(collisionRect, player))) {
 			//std::cout << (player.inAir ? "true" : "false") << "\n";
@@ -362,11 +368,21 @@ bool Level::processEnemies(float time_us)
 		//std::cout << (it.second ? "true" : "false") << "\n";
 		if (it.second) {
 			it.first.update(time_us);
+			if (it.first.isInRadius(player.getRect())) {
+				//std::cout << "ATTACK!\n";
+#if _DEV
+				it.first.setRadiusColour(Game2D::Colour(1, 0, 1, 0.7));
+#endif
+			}
+#if _DEV
+			else { it.first.setRadiusColour(Game2D::Colour(0, 1, 1, 0.7)); }
+#endif
 			//std::cout << "checking\n";
-			if (checkCollision(player.getFootbox(), it.first.getHeadBox())) {
+			//check to make sure the head is on the top relative to the player
+			if (enemyAligned(it.first.getHead()) && (checkCollision(player.getFootbox(), it.first.getHeadBox()) || checkCollision(it.first.getHeadBox(), player.getFootbox()))) {
 				//std::cout << "Dead\n";
 				it.second = false;//it has been killed
-				player.velocityY = 3*moveSpeedY/4.0f;
+				player.velocityY = 3 * moveSpeedY / 4.0f;
 				player.unlockRotate();
 				player.setCanRotate(true);
 			}
@@ -374,6 +390,18 @@ bool Level::processEnemies(float time_us)
 				return true;
 			}
 		}
+	}
+
+	return false;
+}
+
+bool Level::enemyAligned(Enemy::Direction dir) {
+	if (dir == Enemy::NONE) { return false; } // enemy dosen't have a head so it will always be false
+	float tempRot = levelRotation;
+	if (tempRot == 360) { tempRot = 0; }
+
+	if (((((int)dir) - 1) * 90) == tempRot) {
+		return true;
 	}
 
 	return false;
@@ -481,6 +509,7 @@ void Level::init()
 		it.reset();
 	}
 	for (auto& it : enemies) {
+		it.first.reset();
 		it.second = true;//set all the enimies to alive
 	}
 }
@@ -520,6 +549,11 @@ void Level::draw()
 #endif
 
 	player.draw();
+
+	for (auto& it : noRotateZones) {
+		it.draw();
+	}
+
 	glPopMatrix();
 
 	Game2D::Colour(1, 1, 1).draw();

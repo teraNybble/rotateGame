@@ -31,6 +31,7 @@ private:
 	std::vector<MovingPlatform> movingPlatforms;
 	std::vector<Game2D::Sprite> sprites;
 	std::vector<std::pair<Enemy, bool>> enemies;
+	std::vector<Game2D::Sprite> noRotateZones;
 
 	Game2D::Pos2 startPos;
 
@@ -59,6 +60,7 @@ private:
 	void checkRotate();
 	void processMovingPlatforms(float time_us);
 	bool processEnemies(float time_us);
+	bool enemyAligned(Enemy::Direction dir);
 public:
 	enum SpriteFlip { NONE = 0b00, X = 0b01, Y = 0b10, BOTH = 0b11, ROT = 0b100, ROTX = 0b101, ROTY = 0b110, ROTXY = 0b111 };
 	Level();
@@ -70,6 +72,7 @@ public:
 	inline void addKillPlane(Game2D::Rect plane) { killPlanes.push_back(plane); }
 	inline void addMovingPlatform(MovingPlatform platform) { movingPlatforms.push_back(platform); }
 	inline void addEnemy(Enemy enemy) { enemies.push_back(std::pair<Enemy, bool>(enemy, true)); }
+	inline void addNoRotateZone(Game2D::Rect rect) { noRotateZones.push_back(Game2D::Sprite(rect)); noRotateZones.back().setColour(Game2D::Colour(1, 0, 0, 0.25f)); }
 	void addSprite(Game2D::Rect rect, Game2D::Rect sprite, SpriteFlip flip = SpriteFlip::NONE);
 	//end level creation
 

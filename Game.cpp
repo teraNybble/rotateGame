@@ -97,6 +97,7 @@ void Game::loadLevelsFromFile()
 		*2 - moving platform
 		*3 - sprite
 		*4 - enemy
+		*5 - no rotate zone
 		*/
 		while (std::getline(levelFile, line)) {
 			//std::cout << "Reading new line\n";
@@ -114,9 +115,9 @@ void Game::loadLevelsFromFile()
 			case '2':
 			{
 				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
-				MovingPlatform platform(Game2D::Rect(a, b, c, d));
-				platform.setEndPos(Game2D::Pos2(g, h));
-				platform.setTravelTime(f);
+				MovingPlatform platform(Game2D::Rect(a, b, c, d), Game2D::Pos2(g, h),f);
+				//platform.setEndPos(Game2D::Pos2(g, h));
+				//platform.setTravelTime(f);
 				levels.back().addMovingPlatform(platform);
 				break;
 			}
@@ -126,17 +127,20 @@ void Game::loadLevelsFromFile()
 				break;
 			case '4':
 			{
-				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g);
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
 				//levels.back().addEnemy(Game2D::Pos2(a, b));
-				Enemy temp(Game2D::Pos2(a, b));
-				temp.setEndPos(Game2D::Pos2(d, f));
-				temp.setTravelTime(c);
+				Enemy temp(Game2D::Pos2(a, b), Game2D::Pos2(d, f),c);
+				//temp.setEndPos(Game2D::Pos2(d, f));
+				//temp.setTravelTime(c);
 				temp.setHead((Enemy::Direction)((int)(g)));
-				std::cout << c << "\n";
-				std::cout << d << " " << f << "\n";
+				temp.setAttackRadius(h);
 				levels.back().addEnemy(temp);
 				break;
 			}
+			case '5':
+				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
+				levels.back().addNoRotateZone(Game2D::Rect(a, b, c, d));
+				break;
 			}
 		}
 	}

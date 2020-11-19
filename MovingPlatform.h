@@ -2,6 +2,7 @@
 #define MOVINGPLATFORM_H
 
 #include "GameObject.h"
+#include <vector>
 
 class MovingPlatform : public GameObject
 {
@@ -14,12 +15,16 @@ private:
 	bool flipped;
 	//used to see how far the platform has moved so we can move the player on top
 	Game2D::Pos2 previousPos;
+
+	std::vector<std::pair<Game2D::Pos2, float>> path;
+	int pathPos;
 public:
 	MovingPlatform();
-	MovingPlatform(Game2D::Rect rect);
+	MovingPlatform(Game2D::Rect rect, Game2D::Pos2 endPos, float travelTime);
 
-	inline void setEndPos(Game2D::Pos2 pos) { endPos = pos; }
-	inline void setTravelTime(float time_us) { travelTime_us = time_us; }
+	//inline void setEndPos(Game2D::Pos2 pos) { endPos = pos; }
+	//inline void setTravelTime(float time_us) { travelTime_us = time_us; }
+	inline void setPath(std::vector<std::pair<Game2D::Pos2, float>> path) { this->path = path; }
 
 	/*
 	inline void updateTime(float time) { elapsedTime_us += time; }

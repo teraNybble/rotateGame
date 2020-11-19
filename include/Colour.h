@@ -24,7 +24,7 @@ namespace Game2D
 		static const Colour Blue;
 		static const Colour Magenta;
 
-		inline void draw() { glColor4f(r, g, b, a); }
+		inline void draw() const { glColor4f(r, g, b, a); }
 
 		inline friend std::ostream& operator<<(std::ostream& os, const Colour& c)
 		{

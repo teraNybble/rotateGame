@@ -23,7 +23,7 @@ namespace Game2D
 		void flipX();
 		void flipY();
 
-		void draw();
+		void draw() const;
 	};
 }
 

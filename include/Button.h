@@ -36,32 +36,7 @@ namespace Game2D
 		inline void setID(int id) { this->id = id; }
 		inline int getID() const { return id; }
 
-		inline void debugDraw()
-		{
-			Game2D::Pos2 topLeft = Game2D::Pos2(getClickRegion().pos.x, getClickRegion().pos.y+getClickRegion().height);
-			Game2D::Pos2 topRight = Game2D::Pos2(getClickRegion().pos.x + getClickRegion().width, getClickRegion().pos.y + getClickRegion().height);
-
-			Game2D::Pos2 bottomLeft = Game2D::Pos2(getClickRegion().pos.x, getClickRegion().pos.y);
-			Game2D::Pos2 bottomRight = Game2D::Pos2(getClickRegion().pos.x+getClickRegion().width, getClickRegion().pos.y);
-
-
-			glPushMatrix();
-			Game2D::Colour colour(0, 1, 1, 0.5f);
-			colour.draw();
-
-			//glTranslatef(rect.pos.x, rect.pos.y, 0);
-			//glRotatef(rot, 0, 0, 1);
-
-			glBegin(GL_POLYGON);
-				glVertex2f(bottomLeft.x,bottomLeft.y);
-				glVertex2f(topLeft.x,topLeft.y);
-				glVertex2f(topRight.x,topRight.y);
-				glVertex2f(bottomRight.x,bottomRight.y);
-			glEnd();
-			glPopMatrix();
-		}
-
-		void draw();
+		void draw() const;
 	};
 }
 

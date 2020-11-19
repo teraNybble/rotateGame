@@ -31,7 +31,7 @@ namespace Game2D
 		inline void setColour(Colour c) { colour = c; }
 		inline Colour getColour() const { return colour; }
 
-		virtual void draw();
+		virtual void draw() const;
 	};
 }
 
