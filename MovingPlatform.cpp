@@ -24,8 +24,18 @@ MovingPlatform::MovingPlatform(Game2D::Rect rect, Game2D::Pos2 endPos, float tra
 	path.push_back(std::pair<Game2D::Pos2, float>(endPos, travelTime));
 }
 
-void MovingPlatform::update(float time_us)
+void MovingPlatform::setPath(std::vector<std::pair<Game2D::Pos2, float>> path)
 {
+	this->path = path; 
+	elapsedTime_us = 0; 
+	pathPos = 0;
+	endPos = path[pathPos].first;
+	travelTime_us = path[pathPos].second;
+}
+
+bool MovingPlatform::update(float time_us)
+{
+	bool returnVal = false;
 	elapsedTime_us += time_us;
 
 	previousPos = getPos();
@@ -57,6 +67,7 @@ void MovingPlatform::update(float time_us)
 			startPos = path[path.size() - 1].first;
 			endPos = path[pathPos].first;
 			travelTime_us = path[pathPos].second;
+			returnVal = true;
 		}
 	}
 
@@ -64,6 +75,7 @@ void MovingPlatform::update(float time_us)
 		((endPos.x - startPos.x) * (elapsedTime_us / travelTime_us)) + startPos.x,
 		((endPos.y - startPos.y) * (elapsedTime_us / travelTime_us)) + startPos.y));
 
+	return returnVal;
 }
 
 void MovingPlatform::moveOnTop(GameObject& object) {

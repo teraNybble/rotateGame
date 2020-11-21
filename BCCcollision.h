@@ -27,6 +27,7 @@ public:
 
 	void setPoints(Game2D::Pos2 start, Game2D::Pos2 end, float r);
 	inline void setRadius(float r) { radius = r; }
+	inline float getRadius() const { return radius; }
 
 	inline void move(Game2D::Pos2 p) { minPos += p; maxPos += p; }
 

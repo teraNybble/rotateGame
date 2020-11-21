@@ -24,7 +24,7 @@ public:
 
 	//inline void setEndPos(Game2D::Pos2 pos) { endPos = pos; }
 	//inline void setTravelTime(float time_us) { travelTime_us = time_us; }
-	inline void setPath(std::vector<std::pair<Game2D::Pos2, float>> path) { this->path = path; }
+	void setPath(std::vector<std::pair<Game2D::Pos2, float>> path);
 
 	/*
 	inline void updateTime(float time) { elapsedTime_us += time; }
@@ -33,7 +33,7 @@ public:
 
 	void reset();
 
-	void update(float time_us);
+	bool update(float time_us);//returns true if it reaches the end of the vector
 	void moveOnTop(GameObject& object);
 	inline Game2D::Pos2 getPreviousPos() { return previousPos; }
 

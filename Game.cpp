@@ -12,6 +12,7 @@ std::map<int,Game2D::KeyState::State> Game::previousMouseStates;
 MainMenu Game::mainMenu;
 //Level Game::testLevel;
 InputManager Game::inputManager;
+//bool Game::paused;
 int Game::currentLevel;
 std::vector<Level> Game::levels;
 LevelSelect Game::levelSelect;
@@ -29,9 +30,11 @@ Game::Game()
 	inputManager.addAction(Level::PLAYER_RIGHT,GLFW_KEY_D);
 	inputManager.addAction(Level::PLAYER_JUMP,GLFW_KEY_W);
 
-	inputManager.addAction(Level::RESET,GLFW_KEY_R);
 	inputManager.addAction(Level::ROTATE_CLOCKWISE,GLFW_KEY_E);
 	inputManager.addAction(Level::ROTATE_ANTICLOCKWISE,GLFW_KEY_Q);
+
+	inputManager.addAction(Level::RESET, GLFW_KEY_R);
+	inputManager.addAction(Level::PAUSE, GLFW_KEY_ESCAPE);
 	//!Key actions
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
@@ -127,9 +130,9 @@ void Game::loadLevelsFromFile()
 				break;
 			case '4':
 			{
-				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i);
 				//levels.back().addEnemy(Game2D::Pos2(a, b));
-				Enemy temp(Game2D::Pos2(a, b), Game2D::Pos2(d, f),c);
+				Enemy temp(Game2D::Pos2(a, b), Game2D::Pos2(d, f),c, (Enemy::Type)((int)i));
 				//temp.setEndPos(Game2D::Pos2(d, f));
 				//temp.setTravelTime(c);
 				temp.setHead((Enemy::Direction)((int)(g)));
@@ -141,6 +144,13 @@ void Game::loadLevelsFromFile()
 				std::sscanf(line.c_str(), "%f %f %f %f %f", &e, &a, &b, &c, &d);
 				levels.back().addNoRotateZone(Game2D::Rect(a, b, c, d));
 				break;
+#if _DEV
+			case '!':
+				//comment I want printed out (use # for a comment in the file
+				//std::sscanf()
+				//print out the line sans the '!'
+				std::cout << line.substr(1, line.size() - 1) << "\n";
+#endif // _DEV
 			}
 		}
 	}
@@ -163,7 +173,13 @@ void Game::display()
 			levels.at(currentLevel).draw();
 			break;
 		case PAUSED:
+		{
+			levels.at(currentLevel).draw();
+			Game2D::Sprite tempSprite(Game2D::Rect(0, 0, 100 * Game2D::ScreenCoord::getAspectRatio(), 100));
+			tempSprite.setColour(Game2D::Colour(0, 0, 0, 0.5f));
+			tempSprite.draw();
 			break;
+		}
 		case LEVEL_SELECT:
 			levelSelect.draw();
 			break;
@@ -220,6 +236,7 @@ void Game::init()
 	TextureManager::loadTextures("textures/LevelSprites.png", 3);
 	//!textures
 
+	//paused = false;
 	mainMenu.init();
 
 	levelSelect.init(levels.size());
@@ -289,11 +306,16 @@ void Game::update()
 	//testButton.update(mousePos,mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState(),1);
 	//auto temp = std::chrono::duration<Microseconds>(endTime - startTime);
 	//elapsedTime = std::chrono::duration_cast<Microseconds>(endTime - startTime).count() / 1000000.0f;
-//	std::cout << "elapsedTime:\t" << elapsedTime << "\n";
+//	std::cout << "elapsedTime:\t" << elapsedTime << "\n";			
+	inputManager.update();
 	switch (currentState)
 	{
 		case PLAYING:
-			inputManager.update();
+
+			if (inputManager.getAction(Level::PAUSE) == InputManager::WAS_DOWN) {
+				//paused = true;;
+				currentState = PAUSED;
+			}
 			//testLevel.update(inputManager);
 			switch (levels.at(currentLevel).update(inputManager)) {
 			case 1:
@@ -309,6 +331,11 @@ void Game::update()
 			}
 			break;
 		case PAUSED:
+			if (inputManager.getAction(Level::PAUSE) == InputManager::WAS_DOWN) {
+				//paused = true;;
+				currentState = PLAYING;
+				levels.at(currentState).unPause();
+			}
 			break;
 		case LEVEL_SELECT:
 		{
@@ -356,7 +383,11 @@ bool Game::createWindow()
 	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	/* Create a windowed mode window and its OpenGL context */
+#if _DEV
+	window = glfwCreateWindow(screenWidth, screenHeight, "Rotate - Developer Build", NULL, NULL);
+#else
 	window = glfwCreateWindow(screenWidth, screenHeight, "Rotate", NULL, NULL);
+#endif //_DEV
 	if (!window)
 	{
 		std::cerr << "failed to create window\n";

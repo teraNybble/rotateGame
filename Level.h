@@ -63,6 +63,7 @@ private:
 	bool enemyAligned(Enemy::Direction dir);
 public:
 	enum SpriteFlip { NONE = 0b00, X = 0b01, Y = 0b10, BOTH = 0b11, ROT = 0b100, ROTX = 0b101, ROTY = 0b110, ROTXY = 0b111 };
+	enum LevelActions { PLAYER_LEFT, PLAYER_RIGHT, PLAYER_JUMP, RESET, ROTATE_CLOCKWISE, ROTATE_ANTICLOCKWISE, PAUSE };
 	Level();
 	//level creation
 	inline void setStartPos(Game2D::Pos2 pos) { startPos = pos; }
@@ -78,9 +79,9 @@ public:
 
 	void init();
 
-	enum LevelActions { PLAYER_LEFT, PLAYER_RIGHT, PLAYER_JUMP, RESET, ROTATE_CLOCKWISE, ROTATE_ANTICLOCKWISE};
-
 	int update(const InputManager& actions);
+
+	inline void unPause() { startTime = Time::now(); }
 
 	void draw();
 };

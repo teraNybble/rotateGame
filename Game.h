@@ -51,6 +51,7 @@ private:
 	//static Clock endTime;
 	 */
 	//static Level testLevel;
+	//static bool paused;
 	static int currentLevel;
 	static std::vector<Level> levels;
 	//static int currentLevel;
