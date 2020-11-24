@@ -10,6 +10,7 @@ std::map<int,Game2D::KeyState> Game::mouseButtons;
 //Game2D::KeyMap Game::mouseButtons;
 std::map<int,Game2D::KeyState::State> Game::previousMouseStates;
 MainMenu Game::mainMenu;
+PauseMenu Game::pauseMenu;
 //Level Game::testLevel;
 InputManager Game::inputManager;
 //bool Game::paused;
@@ -178,6 +179,7 @@ void Game::display()
 			Game2D::Sprite tempSprite(Game2D::Rect(0, 0, 100 * Game2D::ScreenCoord::getAspectRatio(), 100));
 			tempSprite.setColour(Game2D::Colour(0, 0, 0, 0.5f));
 			tempSprite.draw();
+			pauseMenu.draw();
 			break;
 		}
 		case LEVEL_SELECT:
@@ -238,6 +240,7 @@ void Game::init()
 
 	//paused = false;
 	mainMenu.init();
+	pauseMenu.init();
 
 	levelSelect.init(levels.size());
 }
@@ -335,6 +338,8 @@ void Game::update()
 				//paused = true;;
 				currentState = PLAYING;
 				levels.at(currentState).unPause();
+			} else {
+				processPauseMenu();
 			}
 			break;
 		case LEVEL_SELECT:
@@ -434,6 +439,29 @@ void Game::processMainMenu()
 		case 3:
 			currentState = QUITTING;
 			break;
+	}
+}
+
+void Game::processPauseMenu()
+{
+	pauseMenu.update(mousePos, mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState(), 1);
+	switch (pauseMenu.getResult())
+	{
+	case 1:
+		//testLevel.init();
+		//levels.at(currentLevel).init();
+		//currentState = LEVEL_SELECT;
+		//currentState = PLAYING;
+		//rrstd::cout << "Unpause\n";
+		currentState = PLAYING;
+		levels.at(currentLevel).unPause();
+		break;
+	case 2:
+		currentState = MAIN_MENU;
+		break;
+	case 3:
+		currentState = QUITTING;
+		break;
 	}
 }
 

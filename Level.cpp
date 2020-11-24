@@ -368,13 +368,22 @@ bool Level::processEnemies(float time_us)
 		//std::cout << (it.second ? "true" : "false") << "\n";
 		if (it.second) {
 			it.first.update(time_us);
+			if (it.first.isInRadius(player.getRect()) && it.first.getType()) {
+				//do a rotate thing
+				rotating = true;
+				previousPlayerRot = player.getRot();
+				levelRotation += 90;
+				playerRot -= 90;
+				noRotates++;
+				player.setCanRotate(false);
+				player.lockRotate();
+			}
+
+#if _DEV
 			if (it.first.isInRadius(player.getRect())) {
 				//std::cout << "ATTACK!\n";
-#if _DEV
 				it.first.setRadiusColour(Game2D::Colour(1, 0, 1, 0.7));
-#endif
 			}
-#if _DEV
 			else { it.first.setRadiusColour(Game2D::Colour(0, 1, 1, 0.7)); }
 #endif
 			//std::cout << "checking\n";

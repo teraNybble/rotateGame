@@ -16,6 +16,9 @@ private:
 	BCCcollision attackRadius;
 	std::vector<std::pair<Game2D::Pos2, float>> originalPath;
 	bool swooping;
+	bool playerInRadius;
+	bool canRotate;
+	float recharge;
 	float attackSpeed;
 	Type type;
 public:
@@ -50,6 +53,7 @@ public:
 		}
 	}
 	inline Enemy::Direction getHead() const { return headDirection; }
+	inline Type getType() const { return type; }
 
 	void update(float time_us);
 	bool isInRadius(Game2D::Rect r);

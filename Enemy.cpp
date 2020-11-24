@@ -18,6 +18,7 @@ Enemy::Enemy(Game2D::Pos2 pos, Game2D::Pos2 endPos, float time, Type type) : Mov
 	swooping = false;
 	attackSpeed = 1.0f;
 	this->type = type;
+	canRotate = true;
 }
 
 void Enemy::update(float time_us) {
@@ -27,6 +28,30 @@ void Enemy::update(float time_us) {
 		MovingPlatform::reset();
 	}
 	headBox.pos = getPos() + headBoxOffset;
+	switch (type)
+	{
+	case Enemy::STILL:
+		break;
+	case Enemy::MOVING:
+		break;
+	case Enemy::SWOOPING:
+		break;
+	case Enemy::ROTATING:
+		if (!canRotate) {
+			recharge += time_us;
+			if (recharge > attackSpeed) {
+				canRotate = true;
+				recharge = 0;
+			}
+		}
+		break;
+	case Enemy::SHOOTING:
+		break;
+	case Enemy::BOSS:
+		break;
+	default:
+		break;
+	}
 }
 
 bool Enemy::isInRadius(Game2D::Rect r)
@@ -50,7 +75,7 @@ bool Enemy::isInRadius(Game2D::Rect r)
 				swoopPath.clear();
 				swoopPath.push_back(std::pair<Game2D::Pos2, float>(Game2D::Pos2(getPos().x, getPos().y), 0000.0f));
 				swoopPath.push_back(std::pair<Game2D::Pos2, float>(Game2D::Pos2(getPos().x, (getPos().y - (swoopDirection * radius * 0.56f))), 0.5f * attackSpeed));
-				swoopPath.push_back(std::pair<Game2D::Pos2, float>(Game2D::Pos2(getPos().x, (getPos().y - (swoopDirection * radius * 0.56f))), 0.5f));
+				swoopPath.push_back(std::pair<Game2D::Pos2, float>(Game2D::Pos2(getPos().x, (getPos().y - (swoopDirection * radius * 0.56f))), 0.75f));
 				swoopPath.push_back(std::pair<Game2D::Pos2, float>(Game2D::Pos2(getPos().x - (attackDirection * radius * 1.1f), (getPos().y - (swoopDirection * radius * 0.56f))), 0.5f * attackSpeed));
 				swoopPath.push_back(std::pair<Game2D::Pos2, float>(Game2D::Pos2(getPos().x - (attackDirection * radius * 1.1f), getPos().y), 2.0f));
 				swoopPath.push_back(std::pair<Game2D::Pos2, float>(originalPath.at(0).first, 2.0f));
@@ -70,6 +95,11 @@ bool Enemy::isInRadius(Game2D::Rect r)
 		}
 		break;
 	case Enemy::ROTATING:
+		if (attackRadius.isColliding(r) && canRotate) {
+			canRotate = false;
+			return true;
+		}
+		return false;
 		break;
 	case Enemy::SHOOTING:
 		break;

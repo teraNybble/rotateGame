@@ -11,6 +11,7 @@
 #include "glew.h"
 #include <GLFW/glfw3.h>
 #include "MainMenu.h"
+#include "PauseMenu.h"
 #include "Level.h"
 #include "Fonts.h"
 #include <string>
@@ -37,7 +38,7 @@ private:
 	static int screenWidth, screenHeight;
 	static Game2D::Button testButton;
 	static MainMenu mainMenu;
-
+	static PauseMenu pauseMenu;
 
 	static InputManager inputManager;
 	/*
@@ -74,6 +75,7 @@ public:
 	static bool createWindow();
 
 	static void processMainMenu();
+	static void processPauseMenu();
 
 	static int mainLoop();
 };
