@@ -36,6 +36,18 @@ Game::Game()
 
 	inputManager.addAction(Level::RESET, GLFW_KEY_R);
 	inputManager.addAction(Level::PAUSE, GLFW_KEY_ESCAPE);
+#ifdef _DEV
+	inputManager.addAction(-10, GLFW_KEY_LEFT_SHIFT);
+	inputManager.addAction(-10, GLFW_KEY_RIGHT_SHIFT);
+	inputManager.addAction(-11, GLFW_KEY_LEFT_CONTROL);
+	inputManager.addAction(-11, GLFW_KEY_RIGHT_CONTROL);
+	inputManager.addAction(-1, GLFW_KEY_1);
+	inputManager.addAction(-2, GLFW_KEY_2);
+	inputManager.addAction(-3, GLFW_KEY_3);
+	inputManager.addAction(-4, GLFW_KEY_4);
+	inputManager.addAction(-99, GLFW_KEY_0);
+#endif // _DEV
+
 	//!Key actions
 
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
@@ -139,6 +151,7 @@ void Game::loadLevelsFromFile()
 				temp.setHead((Enemy::Direction)((int)(g)));
 				temp.setAttackRadius(h);
 				levels.back().addEnemy(temp);
+				//std::cout << "Enemy start" << a << ", " << b << " end " << d << ", " << f << " speed " << c << " type " << i << " head " << g << " radius " << h << "\n";
 				break;
 			}
 			case '5':
@@ -166,8 +179,25 @@ void Game::display()
 	glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glClearColor(0.118f, 0.118f, 0.118f,1.0f);
-
 	glLoadIdentity();
+
+	/*
+	glMatrixMode(GL_COLOR);
+	glLoadIdentity();
+
+	std::vector<GLfloat> colourModMat(4 * 4, 0);
+	colourModMat[1] = 1;
+	colourModMat[4] = 1;
+	colourModMat[10] = 1;
+	colourModMat[15] = 1;
+	
+	glMultMatrixf(&colourModMat[0]);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();*/
+
+
+
 	switch (currentState)
 	{
 		case PLAYING:
@@ -199,12 +229,17 @@ void Game::display()
 		default:
 			break;
 	}
+
 	glDisable(GL_BLEND);
 	glFlush();
 }
 
 void Game::init()
 {
+#ifdef _DEV
+	Debug::setColourBlindFilter(Debug::NORMAL);
+#endif // _DEV
+
 	glfwSetWindowSizeCallback(window, resize_callback);
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
@@ -311,6 +346,24 @@ void Game::update()
 	//elapsedTime = std::chrono::duration_cast<Microseconds>(endTime - startTime).count() / 1000000.0f;
 //	std::cout << "elapsedTime:\t" << elapsedTime << "\n";			
 	inputManager.update();
+#ifdef _DEV
+	if (inputManager.getAction(-10) == InputManager::DOWN) {
+		if (inputManager.getAction(-11) == InputManager::DOWN) {
+			if (inputManager.getAction(-99) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::NORMAL); }
+			if (inputManager.getAction(-1) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::PROTANOPIA); }
+			if (inputManager.getAction(-2) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::DEUTERANOPIA); }
+			if (inputManager.getAction(-3) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::TRITANOPIA); }
+			if (inputManager.getAction(-4) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::ACHROMATOPSIA); }
+		} else {
+			if (inputManager.getAction(-99) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::NORMAL); }
+			if (inputManager.getAction(-1) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::PROTANOMALY); }
+			if (inputManager.getAction(-2) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::DEUTERANOMALY); }
+			if (inputManager.getAction(-3) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::TRITANOMALY); }
+			if (inputManager.getAction(-4) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::ACHROMATOMALY); }
+		}
+	}
+#endif // _DEV
+
 	switch (currentState)
 	{
 		case PLAYING:

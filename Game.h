@@ -21,6 +21,10 @@
 #include "TextureManager.h"
 //#include <experimental/filesystem>
 
+#ifdef _DEV
+#include "Debug.h"
+#endif // _DEV
+
 
 class Game
 {

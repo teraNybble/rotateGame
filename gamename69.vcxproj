@@ -241,6 +241,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BCCcollision.cpp" />
+    <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="freetype.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -258,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BCCcollision.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="freetype.h" />
     <ClInclude Include="Game.h" />
