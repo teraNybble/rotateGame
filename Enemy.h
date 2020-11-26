@@ -69,10 +69,12 @@ public:
 
 	inline void draw() {
 		MovingPlatform::draw();
-		Game2D::Sprite temp(headBox);
-		temp.setColour(Game2D::Colour(0, 1, 1, 0.5f));
-		temp.draw();
-		attackRadius.draw();
+		if (Debug::getDrawHitboxes()) {
+			Game2D::Sprite temp(headBox);
+			temp.setColour(Game2D::Colour(0, 1, 1, 0.5f));
+			temp.draw();
+			attackRadius.draw();
+		}
 	}
 #endif
 };

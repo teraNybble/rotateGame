@@ -35,7 +35,8 @@ void Enemy::update(float time_us) {
 	case Enemy::MOVING:
 		break;
 	case Enemy::SWOOPING:
-		break;
+		break;	
+	case Enemy::SHOOTING:
 	case Enemy::ROTATING:
 		if (!canRotate) {
 			recharge += time_us;
@@ -44,8 +45,6 @@ void Enemy::update(float time_us) {
 				recharge = 0;
 			}
 		}
-		break;
-	case Enemy::SHOOTING:
 		break;
 	case Enemy::BOSS:
 		break;
@@ -94,14 +93,13 @@ bool Enemy::isInRadius(Game2D::Rect r)
 			}
 		}
 		break;
+	case Enemy::SHOOTING:
 	case Enemy::ROTATING:
 		if (attackRadius.isColliding(r) && canRotate) {
 			canRotate = false;
 			return true;
 		}
 		return false;
-		break;
-	case Enemy::SHOOTING:
 		break;
 	case Enemy::BOSS:
 		break;

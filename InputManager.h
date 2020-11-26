@@ -9,7 +9,9 @@ class InputManager
 private:
 	std::map<int, KeyMap> actions;
 public:
-	enum ActionState { NONE, DOWN, WAS_DOWN };
+	enum ActionState { DOWN, WAS_DOWN, NONE };
+
+	~InputManager();
 
 	//to be used in a keyCallback
 	void updateKeys(int key, bool down);

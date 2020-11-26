@@ -11,6 +11,7 @@
 #include "MovingPlatform.h"
 #include "TextureManager.h"
 #include "Enemy.h"
+#include "Projectile.h"
 
 using Time = std::chrono::steady_clock;
 using Microseconds = std::chrono::microseconds;
@@ -32,6 +33,7 @@ private:
 	std::vector<Game2D::Sprite> sprites;
 	std::vector<std::pair<Enemy, bool>> enemies;
 	std::vector<Game2D::Sprite> noRotateZones;
+	std::vector<Projectile> projectiles;
 
 	Game2D::Pos2 startPos;
 
@@ -60,6 +62,7 @@ private:
 	void checkRotate();
 	void processMovingPlatforms(float time_us);
 	bool processEnemies(float time_us);
+	void processProjectiles(float time_us);
 	bool enemyAligned(Enemy::Direction dir);
 public:
 	enum SpriteFlip { NONE = 0b00, X = 0b01, Y = 0b10, BOTH = 0b11, ROT = 0b100, ROTX = 0b101, ROTY = 0b110, ROTXY = 0b111 };

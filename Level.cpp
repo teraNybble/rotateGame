@@ -368,15 +368,29 @@ bool Level::processEnemies(float time_us)
 		//std::cout << (it.second ? "true" : "false") << "\n";
 		if (it.second) {
 			it.first.update(time_us);
-			if (it.first.isInRadius(player.getRect()) && it.first.getType()) {
-				//do a rotate thing
-				rotating = true;
-				previousPlayerRot = player.getRot();
-				levelRotation += 90;
-				playerRot -= 90;
-				noRotates++;
-				player.setCanRotate(false);
-				player.lockRotate();
+			if (it.first.isInRadius(player.getRect())) {
+				switch (it.first.getType())
+				{
+				case Enemy::ROTATING:
+					//do a rotate thing
+					rotating = true;
+					previousPlayerRot = player.getRot();
+					levelRotation += 90;
+					playerRot -= 90;
+					noRotates++;
+					player.setCanRotate(false);
+					player.lockRotate();
+					break;
+				case Enemy::SHOOTING:
+				{
+					//add projectile
+					Projectile tempProjectile(it.first.getPos());
+					tempProjectile.setDirection(player.getPos() - it.first.getPos());
+					projectiles.push_back(tempProjectile);
+				}
+				default:
+					break;
+				}
 			}
 
 #if _DEV
@@ -402,6 +416,25 @@ bool Level::processEnemies(float time_us)
 	}
 
 	return false;
+}
+
+void Level::processProjectiles(float time_us) 
+{
+	std::vector<GameObject> solidObjects = walls;
+	solidObjects.insert(solidObjects.end(), movingPlatforms.begin(), movingPlatforms.end());
+
+	//has to be a better way than a double nested for loop
+	for (auto it = projectiles.begin(); it != projectiles.end(); it++) {
+		it->update(time_us);
+		for (auto& it2 : solidObjects) {
+			if (checkCollision(*it, it2) || checkCollision(it2, *it)) {
+				//projectile has hit wall remove it
+				projectiles.erase(it);
+				it--;
+			}
+			//else if colliding with player kill them
+		}
+	}
 }
 
 bool Level::enemyAligned(Enemy::Direction dir) {
@@ -452,6 +485,7 @@ int Level::update(const InputManager& actions)
 		if (processEnemies(elapsedTime)) {
 			init();
 		}
+		processProjectiles(elapsedTime);
 		//processMovingPlatforms(elapsedTime);
 		/*
 		for (auto& it : movingPlatforms) {
@@ -521,6 +555,7 @@ void Level::init()
 		it.first.reset();
 		it.second = true;//set all the enimies to alive
 	}
+	projectiles.clear();//remove all projectiles
 }
 
 void Level::draw()
@@ -543,6 +578,11 @@ void Level::draw()
 		it.draw();
 	}
 
+	for (const auto& it : projectiles) {
+		it.draw();
+		//std::cout << "Drawing projectile at " << it.getPos() << "\n";
+	}
+
 	for (auto it : enemies) {
 		if (it.second) {
 			it.first.draw();
@@ -550,10 +590,12 @@ void Level::draw()
 	}
 
 #if _DEV
-	for (auto it : killPlanes) {
-		Game2D::Sprite temp(it);
-		temp.setColour(Game2D::Colour(1, 0, 0, 0.5f));
-		temp.draw();
+	if (Debug::getDrawHitboxes()) {
+		for (auto it : killPlanes) {
+			Game2D::Sprite temp(it);
+			temp.setColour(Game2D::Colour(1, 0, 0, 0.5f));
+			temp.draw();
+		}
 	}
 #endif
 

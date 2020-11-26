@@ -32,12 +32,14 @@ public:
 #if _DEV
 	inline void draw() {
 		GameObject::draw(); 
-		Game2D::Sprite temp(headBox);
-		temp.setColour(Game2D::Colour(0, 1, 0, 0.5f));
-		temp.draw();
-		Game2D::Sprite temp2(footBox);
-		temp2.setColour(Game2D::Colour(1, 0, 1, 0.5f));
-		temp2.draw();
+		if (Debug::getDrawHitboxes()) {
+			Game2D::Sprite temp(headBox);
+			temp.setColour(Game2D::Colour(0, 1, 0, 0.5f));
+			temp.draw();
+			Game2D::Sprite temp2(footBox);
+			temp2.setColour(Game2D::Colour(1, 0, 1, 0.5f));
+			temp2.draw();
+		}
 	}
 #endif
 };

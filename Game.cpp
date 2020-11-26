@@ -1,18 +1,19 @@
 #include "Game.h"
 
 Game::GameState Game::currentState;
-std::map<int,bool> Game::keyMap;
+//std::map<int,bool> Game::keyMap;
 GLFWwindow* Game::window;
 int Game::screenWidth, Game::screenHeight;
 Game2D::Button Game::testButton;
 Game2D::Pos2 Game::mousePos;
-std::map<int,Game2D::KeyState> Game::mouseButtons;
+//std::map<int,Game2D::KeyState> Game::mouseButtons;
 //Game2D::KeyMap Game::mouseButtons;
-std::map<int,Game2D::KeyState::State> Game::previousMouseStates;
+//std::map<int,Game2D::KeyState::State> Game::previousMouseStates;
 MainMenu Game::mainMenu;
 PauseMenu Game::pauseMenu;
 //Level Game::testLevel;
 InputManager Game::inputManager;
+InputManager Game::mouseButtons;
 //bool Game::paused;
 int Game::currentLevel;
 std::vector<Level> Game::levels;
@@ -26,30 +27,6 @@ Game::Game()
 	mousePos = Game2D::Pos2(screenWidth,screenHeight);
 	currentState = Game::MAIN_MENU;
 
-	//Key actions
-	inputManager.addAction(Level::PLAYER_LEFT,GLFW_KEY_A);
-	inputManager.addAction(Level::PLAYER_RIGHT,GLFW_KEY_D);
-	inputManager.addAction(Level::PLAYER_JUMP,GLFW_KEY_W);
-
-	inputManager.addAction(Level::ROTATE_CLOCKWISE,GLFW_KEY_E);
-	inputManager.addAction(Level::ROTATE_ANTICLOCKWISE,GLFW_KEY_Q);
-
-	inputManager.addAction(Level::RESET, GLFW_KEY_R);
-	inputManager.addAction(Level::PAUSE, GLFW_KEY_ESCAPE);
-#ifdef _DEV
-	inputManager.addAction(-10, GLFW_KEY_LEFT_SHIFT);
-	inputManager.addAction(-10, GLFW_KEY_RIGHT_SHIFT);
-	inputManager.addAction(-11, GLFW_KEY_LEFT_CONTROL);
-	inputManager.addAction(-11, GLFW_KEY_RIGHT_CONTROL);
-	inputManager.addAction(-1, GLFW_KEY_1);
-	inputManager.addAction(-2, GLFW_KEY_2);
-	inputManager.addAction(-3, GLFW_KEY_3);
-	inputManager.addAction(-4, GLFW_KEY_4);
-	inputManager.addAction(-99, GLFW_KEY_0);
-#endif // _DEV
-
-	//!Key actions
-
 	Game2D::ScreenCoord::init(screenWidth, screenHeight);
 	currentLevel = 0;
 }
@@ -61,7 +38,13 @@ void Game::loadLevelsFromFile()
 	for (auto it : std::filesystem::directory_iterator("levels")) {
 		dirs.push_back(it.path().string());
 	}
-	std::sort(dirs.begin(), dirs.end());
+	try {
+		std::sort(dirs.begin(), dirs.end());
+	}
+	catch (std::exception e) {
+		std::cerr << e.what() << "\n";
+		exit(-1);
+	}
 	
 	//for (auto it : std::filesystem::directory_iterator("levels")) {
 	for(auto it : dirs)	{
@@ -238,6 +221,7 @@ void Game::init()
 {
 #ifdef _DEV
 	Debug::setColourBlindFilter(Debug::NORMAL);
+	Debug::setDrawHitBoxes(false);
 #endif // _DEV
 
 	glfwSetWindowSizeCallback(window, resize_callback);
@@ -245,8 +229,8 @@ void Game::init()
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
-	mouseButtons.insert(std::pair<int,Game2D::KeyState>(GLFW_MOUSE_BUTTON_LEFT,Game2D::KeyState()));
-	previousMouseStates.insert(std::pair<int,Game2D::KeyState::State>(GLFW_MOUSE_BUTTON_LEFT,Game2D::KeyState::UP));
+	//mouseButtons.insert(std::pair<int,Game2D::KeyState>(GLFW_MOUSE_BUTTON_LEFT,Game2D::KeyState()));
+	//previousMouseStates.insert(std::pair<int,Game2D::KeyState::State>(GLFW_MOUSE_BUTTON_LEFT,Game2D::KeyState::UP));
 
 	testButton = Game2D::Button(Game2D::Rect(25,25,20,10));
 	Game2D::Sprite red = Game2D::Sprite(Game2D::Rect(25,25,20,10));
@@ -277,6 +261,32 @@ void Game::init()
 	mainMenu.init();
 	pauseMenu.init();
 
+	//Key actions
+	inputManager.addAction(Level::PLAYER_LEFT, GLFW_KEY_A);
+	inputManager.addAction(Level::PLAYER_RIGHT, GLFW_KEY_D);
+	inputManager.addAction(Level::PLAYER_JUMP, GLFW_KEY_W);
+
+	inputManager.addAction(Level::ROTATE_CLOCKWISE, GLFW_KEY_E);
+	inputManager.addAction(Level::ROTATE_ANTICLOCKWISE, GLFW_KEY_Q);
+
+	inputManager.addAction(Level::RESET, GLFW_KEY_R);
+	inputManager.addAction(Level::PAUSE, GLFW_KEY_ESCAPE);
+	mouseButtons.addAction(LEFT_MOUSE, GLFW_MOUSE_BUTTON_LEFT);
+#ifdef _DEV
+	inputManager.addAction(-10, GLFW_KEY_LEFT_SHIFT);
+	inputManager.addAction(-10, GLFW_KEY_RIGHT_SHIFT);
+	inputManager.addAction(-11, GLFW_KEY_LEFT_CONTROL);
+	inputManager.addAction(-11, GLFW_KEY_RIGHT_CONTROL);
+	inputManager.addAction(-1, GLFW_KEY_1);
+	inputManager.addAction(-2, GLFW_KEY_2);
+	inputManager.addAction(-3, GLFW_KEY_3);
+	inputManager.addAction(-4, GLFW_KEY_4);
+	inputManager.addAction(-99, GLFW_KEY_0);
+	inputManager.addAction(-101, GLFW_KEY_F1);
+#endif // _DEV
+
+	//!Key actions
+
 	levelSelect.init(levels.size());
 }
 
@@ -302,6 +312,8 @@ void Game::key_callback(GLFWwindow* window, int key, int scancode, int action, i
 
 void Game::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
+	//std::cout << "mouse button callback\n";
+	//std::cout << button << " " << action << "\n";
 	/*
 	try
 	{
@@ -310,8 +322,14 @@ void Game::mouse_button_callback(GLFWwindow* window, int button, int action, int
 	}catch(...) {}*/
 	try
 	{
-		if(action == GLFW_PRESS) mouseButtons.at(button).update(true);
-		else if(action == GLFW_RELEASE) mouseButtons.at(button).update(false);
+		if (action == GLFW_PRESS) {
+			mouseButtons.updateKeys(button, true);
+			mouseButtons.update();//update the input manager so we know a mouse button is down during the update function
+		} else if (action == GLFW_RELEASE) {
+			mouseButtons.updateKeys(button, false);
+		}
+		//if(action == GLFW_PRESS) mouseButtons.at(button).update(true);
+		//else if(action == GLFW_RELEASE) mouseButtons.at(button).update(false);
 		//std::cout << mouseButtons.at(button).getState() << "\n";
 	}catch(...) {}
 }
@@ -325,6 +343,7 @@ void Game::cursor_position_callback(GLFWwindow* window, double xpos, double ypos
 
 void Game::processKeys()
 {
+	/*
 	for(auto it = previousMouseStates.begin(); it != previousMouseStates.end();it++)
 	{
 		if (it->second == Game2D::KeyState::RELEASED)
@@ -332,6 +351,7 @@ void Game::processKeys()
 
 		it->second = mouseButtons.at(it->first).getState();
 	}
+	*/
 }
 
 void Game::processMouse()
@@ -346,6 +366,8 @@ void Game::update()
 	//elapsedTime = std::chrono::duration_cast<Microseconds>(endTime - startTime).count() / 1000000.0f;
 //	std::cout << "elapsedTime:\t" << elapsedTime << "\n";			
 	inputManager.update();
+	//std::cout << "mouse button manager update\n";
+	//mouseButtons.update();
 #ifdef _DEV
 	if (inputManager.getAction(-10) == InputManager::DOWN) {
 		if (inputManager.getAction(-11) == InputManager::DOWN) {
@@ -361,6 +383,12 @@ void Game::update()
 			if (inputManager.getAction(-3) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::TRITANOMALY); }
 			if (inputManager.getAction(-4) == InputManager::DOWN) { Debug::setColourBlindFilter(Debug::ACHROMATOMALY); }
 		}
+	}
+	if (inputManager.getAction(-101) == InputManager::DOWN && inputManager.getAction(-10) == InputManager::DOWN) {
+		Debug::setDrawHitBoxes(true);
+	}
+	if (inputManager.getAction(-101) == InputManager::DOWN && inputManager.getAction(-11) == InputManager::DOWN) {
+		Debug::setDrawHitBoxes(false);
 	}
 #endif // _DEV
 
@@ -397,7 +425,7 @@ void Game::update()
 			break;
 		case LEVEL_SELECT:
 		{
-			int result = levelSelect.update(mousePos, mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState(), 1);
+			int result = levelSelect.update(mousePos, (Game2D::KeyState::State)mouseButtons.getAction(LEFT_MOUSE)/*mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState()Game2D::KeyState::UP*/, 1);
 			switch (result)
 			{
 			case -1:
@@ -428,6 +456,8 @@ void Game::update()
 			std::cerr << "We're in an invalid game state" << std::endl;
 			break;
 	}
+
+	mouseButtons.update();//now we have processed all the mouse buttons check to see if they have changed
 }
 
 bool Game::createWindow()
@@ -477,7 +507,7 @@ bool Game::createWindow()
 
 void Game::processMainMenu()
 {
-	mainMenu.update(mousePos, mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState(), 1);
+	mainMenu.update(mousePos, (Game2D::KeyState::State)mouseButtons.getAction(LEFT_MOUSE)/*mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState()Game2D::KeyState::UP*/, 1);
 	switch (mainMenu.getResult())
 	{
 		case 1:
@@ -497,7 +527,7 @@ void Game::processMainMenu()
 
 void Game::processPauseMenu()
 {
-	pauseMenu.update(mousePos, mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState(), 1);
+	pauseMenu.update(mousePos, (Game2D::KeyState::State)mouseButtons.getAction(LEFT_MOUSE)/*mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState() Game2D::KeyState::UP*/, 1);
 	switch (pauseMenu.getResult())
 	{
 	case 1:
@@ -544,6 +574,9 @@ int Game::mainLoop()
 		if(currentState == QUITTING) break;
 	}
 
+	//std::cout << "Terminating GLFW\n";
 	glfwTerminate();
+
+	//std::cout << "Done (I hope)\n";
 	return 0;
 }

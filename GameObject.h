@@ -43,7 +43,7 @@ public:
 
 	void moveSansRot(Game2D::Pos2 pos, float rot);
 
-	void draw();
+	void draw() const;
 };
 
 

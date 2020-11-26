@@ -49,7 +49,7 @@ void GameObject::moveSansRot(Game2D::Pos2 pos, float rot) {
 	}
 }
 
-void GameObject::draw()
+void GameObject::draw() const
 {
 	//std::cout << hitBox << "\n" << sprite.getRect() << "\n\n";
 	//colour.draw();

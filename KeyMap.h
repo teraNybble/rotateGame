@@ -12,6 +12,8 @@ private:
 	std::map<int, bool> keys;
 public:
 	KeyMap();
+	~KeyMap();
+
 	inline void addKey(int keyId) { keys.insert(std::pair<int,bool>(keyId,false)); }
 
 	//void update(const std::map<int,bool>& keyList);

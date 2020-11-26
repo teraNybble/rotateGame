@@ -6,6 +6,11 @@ KeyMap::KeyMap()
 	this->isDown = this->wasDown = false;
 }
 
+KeyMap::~KeyMap()
+{
+	keys.clear();
+}
+
 void KeyMap::updateKeys(int key, bool down)
 {
 	//std::cout << "setting key (" << key << ") to " << (down ? "true":"false") << "\n";

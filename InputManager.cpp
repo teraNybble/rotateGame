@@ -1,6 +1,11 @@
 #include "InputManager.h"
 #include <iostream>
 
+InputManager::~InputManager()
+{
+	actions.clear();
+}
+
 void InputManager::addAction(int id, int key)
 {
 	try
@@ -32,6 +37,7 @@ InputManager::ActionState InputManager::getAction(int id) const
 
 void InputManager::updateKeys(int key, bool down)
 {
+	//std::cout << actions.size() << "\n";
 	for (auto it = actions.begin(); it != actions.end(); it++) {
 		it->second.updateKeys(key, down);
 	}

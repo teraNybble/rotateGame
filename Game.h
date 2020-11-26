@@ -25,6 +25,7 @@
 #include "Debug.h"
 #endif // _DEV
 
+#define LEFT_MOUSE -1000
 
 class Game
 {
@@ -32,9 +33,9 @@ private:
 	enum GameState { PLAYING, PAUSED, LEVEL_SELECT, MAIN_MENU, OPTIONS_MENU, VICTORY, LOSS, QUITTING };
 
 	static GameState currentState;
-	static std::map<int,bool> keyMap;
-	static std::map<int,Game2D::KeyState> mouseButtons;
-	static std::map<int,Game2D::KeyState::State> previousMouseStates;
+	//static std::map<int,bool> keyMap;
+	//static std::map<int,Game2D::KeyState> mouseButtons;
+	//static std::map<int,Game2D::KeyState::State> previousMouseStates;
 	//static Game2D::KeyMap mouseButtons;
 	static Game2D::Pos2 mousePos;
 
@@ -45,6 +46,7 @@ private:
 	static PauseMenu pauseMenu;
 
 	static InputManager inputManager;
+	static InputManager mouseButtons;
 	/*
 	 * test code
 	static GameObject testObject;
