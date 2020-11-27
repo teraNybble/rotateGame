@@ -36,6 +36,9 @@ namespace Game2D
 		static int screenHeight;
 		static bool inited;
 	public:
+		//~Font() { std::cout << "fontDestructor\n"; fonts.clear(); }
+		//inline static void clear() { fonts.clear(); std::cout << fonts.size() << "\n"; }
+
 		inline static void insert(unsigned int h) {
 			freetype::font_data temp;
 			fonts.emplace(h, temp);

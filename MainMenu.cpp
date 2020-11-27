@@ -76,5 +76,8 @@ void MainMenu::draw()
 	play.draw();
 	options.draw();
 	quit.draw();
-//	freetype::print(Game2D::Font::getFont(20), 30, 30, "Test text");
+	Game2D::ScreenCoord::alignRight();
+	int length = freetype::getLength(Game2D::Font::getFont(20), VerNo);
+	freetype::print(Game2D::Font::getFont(20), -5-length, -47, VerNo);
+	Game2D::ScreenCoord::alignCentre();
 }

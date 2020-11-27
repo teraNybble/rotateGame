@@ -12,6 +12,7 @@
 #include "TextureManager.h"
 #include "Enemy.h"
 #include "Projectile.h"
+#include <AnimatedSprite.h>
 
 using Time = std::chrono::steady_clock;
 using Microseconds = std::chrono::microseconds;
@@ -20,11 +21,13 @@ using Clock = std::chrono::steady_clock::time_point;
 class Level
 {
 private:
+	enum LevelState { PLAYING, DYING };
 	const float moveSpeedX = 50;
 	const float moveSpeedY = 160;
 	const float gravity = 450;
 	const float maxVelY = 200;
 	const float maxVelX = 1;
+	LevelState levelState;
 	Player player;
 	GameObject exit;
 	std::vector<GameObject> walls;
@@ -34,6 +37,7 @@ private:
 	std::vector<std::pair<Enemy, bool>> enemies;
 	std::vector<Game2D::Sprite> noRotateZones;
 	std::vector<Projectile> projectiles;
+	std::vector<Game2D::AnimatedSprite> animatedSprites;
 
 	Game2D::Pos2 startPos;
 
@@ -63,7 +67,10 @@ private:
 	void processMovingPlatforms(float time_us);
 	bool processEnemies(float time_us);
 	void processProjectiles(float time_us);
+	void processAnimatedSprites(float time_us);
 	bool enemyAligned(Enemy::Direction dir);
+
+	void addDeathAnim(Game2D::Pos2 pos, Game2D::Colour colour);
 public:
 	enum SpriteFlip { NONE = 0b00, X = 0b01, Y = 0b10, BOTH = 0b11, ROT = 0b100, ROTX = 0b101, ROTY = 0b110, ROTXY = 0b111 };
 	enum LevelActions { PLAYER_LEFT, PLAYER_RIGHT, PLAYER_JUMP, RESET, ROTATE_CLOCKWISE, ROTATE_ANTICLOCKWISE, PAUSE };

@@ -408,6 +408,9 @@ bool Level::processEnemies(float time_us)
 				player.velocityY = 3 * moveSpeedY / 4.0f;
 				player.unlockRotate();
 				player.setCanRotate(true);
+				//add death animation to animated sprite
+				addDeathAnim(it.first.getPos(), it.first.getColour());
+				//std::cout << "Adding death anims\n";
 			}
 			else if (checkCollision(it.first, player) || checkCollision(player, it.first)) {
 				return true;
@@ -426,6 +429,14 @@ void Level::processProjectiles(float time_us)
 	//has to be a better way than a double nested for loop
 	for (auto it = projectiles.begin(); it != projectiles.end(); it++) {
 		it->update(time_us);
+		if (checkCollision(*it, player) || checkCollision(player, *it)) {
+			//projectile has hit wall remove it
+			projectiles.erase(it);
+			it--;
+			levelState = DYING;
+			//init();//player has been hit with a projectile restart the level
+			continue;
+		}
 		for (auto& it2 : solidObjects) {
 			if (checkCollision(*it, it2) || checkCollision(it2, *it)) {
 				//projectile has hit wall remove it
@@ -433,6 +444,16 @@ void Level::processProjectiles(float time_us)
 				it--;
 			}
 			//else if colliding with player kill them
+		}
+	}
+}
+
+void Level::processAnimatedSprites(float time_us)
+{
+	for (auto it = animatedSprites.begin(); it != animatedSprites.end(); it++) {
+		if (it->update(time_us)) {
+			animatedSprites.erase(it);
+			it--;
 		}
 	}
 }
@@ -447,6 +468,28 @@ bool Level::enemyAligned(Enemy::Direction dir) {
 	}
 
 	return false;
+}
+
+void Level::addDeathAnim(Game2D::Pos2 pos, Game2D::Colour colour)
+{
+	animatedSprites.push_back(Game2D::AnimatedSprite(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.11f, 0.0f, 0.2f, 0.19f))));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.11f, 0.19f, 0.19f, -0.19f)));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.30f, 0.00f, 0.19f, +0.19f)));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.30f, 0.19f, 0.19f, -0.19f)));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.50f, 0.00f, 0.19f, +0.19f)));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.50f, 0.19f, 0.19f, -0.19f)));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.70f, 0.00f, 0.19f, +0.19f)));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.70f, 0.19f, 0.19f, -0.19f)));
+	animatedSprites.back().addFrame(Game2D::Sprite(Game2D::Rect(pos, 10, 10), Game2D::Rect(0.90f, 0.00f, 0.00f, +0.00f)));
+	//animatedSprites.back().setFrameTime(0.125f);
+	animatedSprites.back().setFrameTime(0.125f);
+	//animatedSprites.back().reset();
+	animatedSprites.back().setLooping(false);
+	animatedSprites.back().setPlayDirection(Game2D::Forward);
+	animatedSprites.back().setColour(colour);
+	animatedSprites.back().setFrame(0);
+	animatedSprites.back().setElapsedTimeToZero();
+	animatedSprites.back().play();
 }
 
 int Level::update(const InputManager& actions)
@@ -483,9 +526,11 @@ int Level::update(const InputManager& actions)
 		processMovingPlatforms(elapsedTime);
 		checkPlayerCollision(elapsedTime);
 		if (processEnemies(elapsedTime)) {
-			init();
+			//init();
+			levelState = DYING;
 		}
 		processProjectiles(elapsedTime);
+		processAnimatedSprites(elapsedTime);
 		//processMovingPlatforms(elapsedTime);
 		/*
 		for (auto& it : movingPlatforms) {
@@ -502,7 +547,8 @@ int Level::update(const InputManager& actions)
 		}
 
 		if (checkKillPlanes(elapsedTime)) {
-			init();
+			//init();
+			levelState = DYING;
 		}
 		if (exit.isInside(player.getRect())) {
 			std::cout << "Level Done!\n";
@@ -533,12 +579,17 @@ int Level::update(const InputManager& actions)
 	checkRotate();
 	startTime = Time::now();
 
+	if (levelState == DYING) {
+		init();
+	}
+
 	return 0;
 }
 
 void Level::init()
 {
 	startTime = Time::now();
+	levelState = PLAYING;
 	panX = panY = 0;
 	drawRot = previousRot = levelRotation = 0;
 	player.setPos(startPos);
@@ -548,6 +599,8 @@ void Level::init()
 	player.setRot(0);
 	noRotates = 0;
 	elapsedLevelTime = 0.0f;
+	player.velocityX = 0;
+	player.velocityY = 0;
 	for (auto& it : movingPlatforms) {
 		it.reset();
 	}
@@ -556,6 +609,7 @@ void Level::init()
 		it.second = true;//set all the enimies to alive
 	}
 	projectiles.clear();//remove all projectiles
+	animatedSprites.clear();
 }
 
 void Level::draw()
@@ -601,6 +655,10 @@ void Level::draw()
 
 	player.draw();
 
+	for (const auto& it : animatedSprites) {
+		it.draw();
+	}
+
 	for (auto& it : noRotateZones) {
 		it.draw();
 	}
@@ -611,6 +669,8 @@ void Level::draw()
 	Game2D::ScreenCoord::alignLeft();
 	freetype::print(Game2D::Font::getFont(20), 2.5, 45, "Rotates:    %d", noRotates);
 	freetype::print(Game2D::Font::getFont(20), 2.5, 40, "Time:    %2.2f", elapsedLevelTime);
+	//std::cout << Game2D::ScreenCoord::getAspectRatio() << "\n";
+	//std::cout << (5 * (Game2D::ScreenCoord::getAspectRatio() / (1.77778f))) << "\n";
 	Game2D::ScreenCoord::alignCentre();
 
 	/*

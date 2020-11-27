@@ -4,6 +4,14 @@
 #include "TextureManager.h"
 #include <Button.h>
 #include "Fonts.h"
+#include <ScreenCoord.h>
+
+#ifdef _DEV
+#define VerNo "0.0.0(Dev)"
+#else
+#define VerNo "0.0.0"
+#endif // _DEV
+
 
 class MainMenu
 {

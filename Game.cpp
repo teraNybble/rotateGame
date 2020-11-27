@@ -297,6 +297,8 @@ void Game::resize_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 	Game2D::ScreenCoord::init(width, height);
 	Game2D::ScreenCoord::alignCentre();
+	Game2D::Font::init(height);
+	Game2D::Font::initFonts();
 }
 
 void Game::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -574,9 +576,9 @@ int Game::mainLoop()
 		if(currentState == QUITTING) break;
 	}
 
-	//std::cout << "Terminating GLFW\n";
 	glfwTerminate();
 
-	//std::cout << "Done (I hope)\n";
+//	Game2D::Font::clear();
+
 	return 0;
 }

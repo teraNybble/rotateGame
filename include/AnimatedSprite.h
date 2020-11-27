@@ -33,6 +33,7 @@ namespace Game2D
 		inline void setFrame(unsigned int frame) {if(frame < anim.size()) currentFrame = frame; }
 		inline unsigned int getFrame() const { return currentFrame; }
 		inline void setFrameTime(float time) { frameTime = time; }
+		inline void setColour(Game2D::Colour colour) { for (auto& it : anim) { it.setColour(colour); } }
 
 		inline void setLooping(bool loop) { looping = loop; }
 		inline void setPlayDirection(PlayDirection direction) { playDirection = direction; }
@@ -44,7 +45,7 @@ namespace Game2D
 
 		inline int getSize() const { return anim.size(); }
 
-		void update(float time);
+		bool update(float time); //returns true if the sprite has finnished playing
 		void draw() const;
 	};
 }
