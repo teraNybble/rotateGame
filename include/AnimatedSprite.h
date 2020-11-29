@@ -35,6 +35,9 @@ namespace Game2D
 		inline void setFrameTime(float time) { frameTime = time; }
 		inline void setColour(Game2D::Colour colour) { for (auto& it : anim) { it.setColour(colour); } }
 
+		inline float getElapsedTime() const { return elapsedTime; }
+		inline float getFrameTime() const { return frameTime; }
+
 		inline void setLooping(bool loop) { looping = loop; }
 		inline void setPlayDirection(PlayDirection direction) { playDirection = direction; }
 

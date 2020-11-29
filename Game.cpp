@@ -11,6 +11,7 @@ Game2D::Pos2 Game::mousePos;
 //std::map<int,Game2D::KeyState::State> Game::previousMouseStates;
 MainMenu Game::mainMenu;
 PauseMenu Game::pauseMenu;
+LoseScreen Game::loseScreen;
 //Level Game::testLevel;
 InputManager Game::inputManager;
 InputManager Game::mouseButtons;
@@ -206,6 +207,7 @@ void Game::display()
 		case VICTORY:
 			break;
 		case LOSS:
+			loseScreen.draw();
 			break;
 		case QUITTING:
 			break;
@@ -248,6 +250,7 @@ void Game::init()
 	//fonts
 	Game2D::Font::init(screenHeight);
 	Game2D::Font::insert(20);
+	Game2D::Font::insert(40);
 	Game2D::Font::initFonts();
 	//!fonts
 
@@ -260,6 +263,7 @@ void Game::init()
 	//paused = false;
 	mainMenu.init();
 	pauseMenu.init();
+	loseScreen.init();
 
 	//Key actions
 	inputManager.addAction(Level::PLAYER_LEFT, GLFW_KEY_A);
@@ -392,6 +396,13 @@ void Game::update()
 	if (inputManager.getAction(-101) == InputManager::DOWN && inputManager.getAction(-11) == InputManager::DOWN) {
 		Debug::setDrawHitBoxes(false);
 	}
+	if (inputManager.getAction(-11) == InputManager::DOWN && inputManager.getAction(Level::RESET) == InputManager::DOWN) {
+		levels.clear();
+		loadLevelsFromFile();
+		if (!(currentLevel < levels.size())) {
+			currentState = MAIN_MENU;
+		} else { levels.at(currentLevel).init(); }
+	}
 #endif // _DEV
 
 	switch (currentState)
@@ -412,6 +423,9 @@ void Game::update()
 				}
 				levels.at(currentLevel).init();
 				break;
+			case 2:
+				currentState = LOSS;
+				//YOU DIED
 			default:
 				break;
 			}
@@ -420,7 +434,7 @@ void Game::update()
 			if (inputManager.getAction(Level::PAUSE) == InputManager::WAS_DOWN) {
 				//paused = true;;
 				currentState = PLAYING;
-				levels.at(currentState).unPause();
+				levels.at(currentLevel).unPause();
 			} else {
 				processPauseMenu();
 			}
@@ -451,6 +465,23 @@ void Game::update()
 		case VICTORY:
 			break;
 		case LOSS:
+			loseScreen.update(mousePos, (Game2D::KeyState::State)mouseButtons.getAction(LEFT_MOUSE), 1);
+			switch (loseScreen.getResult()) 
+			{
+			case 0:
+				break;
+			case 1:
+				levels.at(currentLevel).init();
+				levels.at(currentLevel).update(inputManager);
+				currentState = PLAYING;
+				break;
+			case 2:
+				currentState = MAIN_MENU;
+				break;
+			case 3:
+				currentState = QUITTING;
+				break;
+			}
 			break;
 		case QUITTING:
 			break;

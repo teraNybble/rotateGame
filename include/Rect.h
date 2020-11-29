@@ -18,9 +18,8 @@ namespace Game2D
 
 		inline bool contains(Pos2 p)
 		{
-			bool temp = (((p.x > pos.x && p.x < pos.x + width) || (p.x < pos.x && p.x > pos.x + width))
+			return (((p.x > pos.x && p.x < pos.x + width) || (p.x < pos.x && p.x > pos.x + width))
 					&& ((p.y > pos.y && p.y < pos.y + height)||(p.y < pos.y && p.y > pos.y + height)));
-			return temp;
 		}
 	};
 

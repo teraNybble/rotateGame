@@ -38,6 +38,7 @@ private:
 	std::vector<Game2D::Sprite> noRotateZones;
 	std::vector<Projectile> projectiles;
 	std::vector<Game2D::AnimatedSprite> animatedSprites;
+	Game2D::AnimatedSprite playerDeathAnim;
 
 	Game2D::Pos2 startPos;
 

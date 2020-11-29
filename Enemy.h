@@ -30,7 +30,7 @@ public:
 
 	inline void setHead(Direction dir) {
 		headDirection = dir;
-		headBox = Game2D::Rect(0, 0, 5, 2.5f);
+		headBox = Game2D::Rect(0, 0, 5.1, 2.6f);
 		switch (dir)
 		{
 		case Enemy::NONE:

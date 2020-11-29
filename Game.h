@@ -12,6 +12,7 @@
 #include <GLFW/glfw3.h>
 #include "MainMenu.h"
 #include "PauseMenu.h"
+#include "LoseScreen.h"
 #include "Level.h"
 #include "Fonts.h"
 #include <string>
@@ -44,6 +45,7 @@ private:
 	static Game2D::Button testButton;
 	static MainMenu mainMenu;
 	static PauseMenu pauseMenu;
+	static LoseScreen loseScreen;
 
 	static InputManager inputManager;
 	static InputManager mouseButtons;

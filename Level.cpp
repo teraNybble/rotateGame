@@ -33,6 +33,7 @@ void Level::processActions(const InputManager& actions, float time_us)
 		player.inAir = true;
 	}
 
+
 	if ((actions.getAction(ROTATE_ANTICLOCKWISE) == InputManager::DOWN) && player.getCanRotate()) {
 		rotating = true;
 		levelRotation += 90;
@@ -442,6 +443,7 @@ void Level::processProjectiles(float time_us)
 				//projectile has hit wall remove it
 				projectiles.erase(it);
 				it--;
+				//std::cout << "Removing projectile\n";
 			}
 			//else if colliding with player kill them
 		}
@@ -499,13 +501,22 @@ int Level::update(const InputManager& actions)
 	elapsedLevelTime += elapsedTime;
 	//checkRotate();
 	
-	if (rotating) {
+	if (levelState == DYING) {
+		//std::cout << elapsedTime << "\n";
+		processAnimatedSprites(elapsedTime);
+		if (playerDeathAnim.update(elapsedTime)) {
+			return 2;
+		}
+		//std::cout << playerDeathAnim.getElapsedTime() << "\n";
+		//std::cout << playerDeathAnim.getFrameTime() << "\n";
+	} else if (rotating) {
 		rotateTime += elapsedTime;
 		if (std::abs(levelRotation - previousRot) > 90) {
 			previousRot += 360 * (levelRotation - previousRot > 0 ? 1 : -1);
 		}
 		drawRot = previousRot + ((levelRotation-previousRot) * (rotateTime / 1.0f));
 		player.setRot(previousPlayerRot + (playerRot - previousPlayerRot) * (rotateTime / 1.0f));
+		//checkPlayerCollision(elapsedTime);
 		//drawRot = (levelRotation / previousRot) * rotateTime;
 
 		if (rotateTime > 1) {
@@ -515,11 +526,15 @@ int Level::update(const InputManager& actions)
 			if (playerRot > 360) { playerRot -= 360; }
 			if (playerRot < 0) { playerRot += 360; }
 			player.setRot(playerRot);
+			applyGravity(elapsedTime);
+			checkPlayerCollision(elapsedTime);
 			player.velocityY = 0;
 			//player.inAir = true;
 		}
 	} else {
 		processActions(actions, elapsedTime);
+
+		if (rotating) { return 0; }
 
 		
 		applyGravity(elapsedTime);
@@ -554,6 +569,30 @@ int Level::update(const InputManager& actions)
 			std::cout << "Level Done!\n";
 			return 1;
 		}
+
+		if (levelState == DYING) {
+			//init();
+			//return 2;
+			//addDeathAnim(player.getPos(), player.getColour());
+			playerDeathAnim = Game2D::AnimatedSprite(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.11f, 0.0f, 0.2f, 0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.11f, 0.19f, 0.19f, -0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.30f, 0.00f, 0.19f, +0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.30f, 0.19f, 0.19f, -0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.50f, 0.00f, 0.19f, +0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.50f, 0.19f, 0.19f, -0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.70f, 0.00f, 0.19f, +0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.70f, 0.19f, 0.19f, -0.19f)));
+			playerDeathAnim.addFrame(Game2D::Sprite(Game2D::Rect(player.getPos(), 10, 10), Game2D::Rect(0.90f, 0.00f, 0.00f, +0.00f)));
+			//playerDeathAnim.setFrameTime(0.125f);
+			playerDeathAnim.setFrameTime(0.125f);
+			//playerDeathAnim.reset();
+			playerDeathAnim.setLooping(false);
+			playerDeathAnim.setPlayDirection(Game2D::Forward);
+			playerDeathAnim.setColour(player.getColour());
+			playerDeathAnim.setFrame(0);
+			playerDeathAnim.setElapsedTimeToZero();
+			playerDeathAnim.play();
+		}
 	}
 
 	//check to make sure the player isn't moving too fast
@@ -579,9 +618,8 @@ int Level::update(const InputManager& actions)
 	checkRotate();
 	startTime = Time::now();
 
-	if (levelState == DYING) {
-		init();
-	}
+	
+	
 
 	return 0;
 }
@@ -632,6 +670,7 @@ void Level::draw()
 		it.draw();
 	}
 
+	//std::cout << projectiles.size() << "\n";
 	for (const auto& it : projectiles) {
 		it.draw();
 		//std::cout << "Drawing projectile at " << it.getPos() << "\n";
@@ -653,7 +692,11 @@ void Level::draw()
 	}
 #endif
 
-	player.draw();
+	if (levelState == DYING) {
+		playerDeathAnim.draw();
+	} else {
+		player.draw();
+	}
 
 	for (const auto& it : animatedSprites) {
 		it.draw();

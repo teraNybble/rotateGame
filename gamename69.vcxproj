@@ -250,6 +250,7 @@
     <ClCompile Include="KeyMap.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelSelect.cpp" />
+    <ClCompile Include="LoseScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MovingPlatform.cpp" />
@@ -270,6 +271,7 @@
     <ClInclude Include="KeyMap.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelSelect.h" />
+    <ClInclude Include="LoseScreen.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MovingPlatform.h" />
     <ClInclude Include="PauseMenu.h" />
