@@ -8,6 +8,7 @@
 #include <string>
 #include <Rect.h>
 #include <png.h>
+#include <string.h>
 
 class TextureManager
 {

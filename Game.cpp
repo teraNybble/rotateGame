@@ -256,7 +256,7 @@ void Game::init()
 
 	//textures
 	TextureManager::loadTextures("textures/buttonSprites.png", 1);
-	TextureManager::loadTextures("textures/levelSelectSprites.png", 2,GL_NEAREST);
+	TextureManager::loadTextures("textures/LevelSelectSprites.png", 2 ,GL_NEAREST);
 	TextureManager::loadTextures("textures/LevelSprites.png", 3);
 	//!textures
 

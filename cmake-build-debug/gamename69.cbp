@@ -88,6 +88,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/BCCcollision.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/BCCcollision.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Debug.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Debug.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Enemy.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Enemy.h">
+			<Option target="gamename69"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/Game.cpp">
 			<Option target="gamename69"/>
 		</Unit>
@@ -136,10 +154,28 @@
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/MovingPlatform.h">
 			<Option target="gamename69"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/PauseMenu.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/PauseMenu.h">
+			<Option target="gamename69"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/Player.cpp">
 			<Option target="gamename69"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/Player.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Projectile.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Projectile.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/TextureManager.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/TextureManager.h">
 			<Option target="gamename69"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/freetype.cpp">
