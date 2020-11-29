@@ -19,6 +19,7 @@
 #include <filesystem>
 #include "LevelSelect.h"
 #include "TextureManager.h"
+#include <algorithm>
 //#include <experimental/filesystem>
 
 #ifdef _DEV

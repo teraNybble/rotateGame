@@ -4,6 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/dan/CLionProjects/gamename69Git/BCCcollision.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/BCCcollision.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/Debug.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Debug.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/Enemy.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Enemy.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Game.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Game.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/GameObject.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/GameObject.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/InputManager.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/InputManager.cpp.o"
@@ -12,7 +15,10 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/CLionProjects/gamename69Git/LevelSelect.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/LevelSelect.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/MainMenu.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/MainMenu.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/MovingPlatform.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/MovingPlatform.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/PauseMenu.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/PauseMenu.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Player.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Player.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/Projectile.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Projectile.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/TextureManager.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/TextureManager.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/freetype.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/freetype.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/main.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/main.cpp.o"
   )

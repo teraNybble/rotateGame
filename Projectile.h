@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include <Pos2.h>
+#include <math.h>
 
 class Projectile : public GameObject
 {

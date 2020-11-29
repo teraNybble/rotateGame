@@ -123,6 +123,87 @@ gamename69/fast:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/build
 .PHONY : gamename69/fast
 
+BCCcollision.o: BCCcollision.cpp.o
+
+.PHONY : BCCcollision.o
+
+# target to build an object file
+BCCcollision.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/BCCcollision.cpp.o
+.PHONY : BCCcollision.cpp.o
+
+BCCcollision.i: BCCcollision.cpp.i
+
+.PHONY : BCCcollision.i
+
+# target to preprocess a source file
+BCCcollision.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/BCCcollision.cpp.i
+.PHONY : BCCcollision.cpp.i
+
+BCCcollision.s: BCCcollision.cpp.s
+
+.PHONY : BCCcollision.s
+
+# target to generate assembly for a file
+BCCcollision.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/BCCcollision.cpp.s
+.PHONY : BCCcollision.cpp.s
+
+Debug.o: Debug.cpp.o
+
+.PHONY : Debug.o
+
+# target to build an object file
+Debug.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Debug.cpp.o
+.PHONY : Debug.cpp.o
+
+Debug.i: Debug.cpp.i
+
+.PHONY : Debug.i
+
+# target to preprocess a source file
+Debug.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Debug.cpp.i
+.PHONY : Debug.cpp.i
+
+Debug.s: Debug.cpp.s
+
+.PHONY : Debug.s
+
+# target to generate assembly for a file
+Debug.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Debug.cpp.s
+.PHONY : Debug.cpp.s
+
+Enemy.o: Enemy.cpp.o
+
+.PHONY : Enemy.o
+
+# target to build an object file
+Enemy.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Enemy.cpp.o
+.PHONY : Enemy.cpp.o
+
+Enemy.i: Enemy.cpp.i
+
+.PHONY : Enemy.i
+
+# target to preprocess a source file
+Enemy.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Enemy.cpp.i
+.PHONY : Enemy.cpp.i
+
+Enemy.s: Enemy.cpp.s
+
+.PHONY : Enemy.s
+
+# target to generate assembly for a file
+Enemy.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Enemy.cpp.s
+.PHONY : Enemy.cpp.s
+
 Game.o: Game.cpp.o
 
 .PHONY : Game.o
@@ -339,6 +420,33 @@ MovingPlatform.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/MovingPlatform.cpp.s
 .PHONY : MovingPlatform.cpp.s
 
+PauseMenu.o: PauseMenu.cpp.o
+
+.PHONY : PauseMenu.o
+
+# target to build an object file
+PauseMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/PauseMenu.cpp.o
+.PHONY : PauseMenu.cpp.o
+
+PauseMenu.i: PauseMenu.cpp.i
+
+.PHONY : PauseMenu.i
+
+# target to preprocess a source file
+PauseMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/PauseMenu.cpp.i
+.PHONY : PauseMenu.cpp.i
+
+PauseMenu.s: PauseMenu.cpp.s
+
+.PHONY : PauseMenu.s
+
+# target to generate assembly for a file
+PauseMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/PauseMenu.cpp.s
+.PHONY : PauseMenu.cpp.s
+
 Player.o: Player.cpp.o
 
 .PHONY : Player.o
@@ -365,6 +473,60 @@ Player.s: Player.cpp.s
 Player.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Player.cpp.s
 .PHONY : Player.cpp.s
+
+Projectile.o: Projectile.cpp.o
+
+.PHONY : Projectile.o
+
+# target to build an object file
+Projectile.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Projectile.cpp.o
+.PHONY : Projectile.cpp.o
+
+Projectile.i: Projectile.cpp.i
+
+.PHONY : Projectile.i
+
+# target to preprocess a source file
+Projectile.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Projectile.cpp.i
+.PHONY : Projectile.cpp.i
+
+Projectile.s: Projectile.cpp.s
+
+.PHONY : Projectile.s
+
+# target to generate assembly for a file
+Projectile.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Projectile.cpp.s
+.PHONY : Projectile.cpp.s
+
+TextureManager.o: TextureManager.cpp.o
+
+.PHONY : TextureManager.o
+
+# target to build an object file
+TextureManager.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/TextureManager.cpp.o
+.PHONY : TextureManager.cpp.o
+
+TextureManager.i: TextureManager.cpp.i
+
+.PHONY : TextureManager.i
+
+# target to preprocess a source file
+TextureManager.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/TextureManager.cpp.i
+.PHONY : TextureManager.cpp.i
+
+TextureManager.s: TextureManager.cpp.s
+
+.PHONY : TextureManager.s
+
+# target to generate assembly for a file
+TextureManager.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/TextureManager.cpp.s
+.PHONY : TextureManager.cpp.s
 
 freetype.o: freetype.cpp.o
 
@@ -429,6 +591,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... gamename69"
+	@echo "... BCCcollision.o"
+	@echo "... BCCcollision.i"
+	@echo "... BCCcollision.s"
+	@echo "... Debug.o"
+	@echo "... Debug.i"
+	@echo "... Debug.s"
+	@echo "... Enemy.o"
+	@echo "... Enemy.i"
+	@echo "... Enemy.s"
 	@echo "... Game.o"
 	@echo "... Game.i"
 	@echo "... Game.s"
@@ -453,9 +624,18 @@ help:
 	@echo "... MovingPlatform.o"
 	@echo "... MovingPlatform.i"
 	@echo "... MovingPlatform.s"
+	@echo "... PauseMenu.o"
+	@echo "... PauseMenu.i"
+	@echo "... PauseMenu.s"
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"
+	@echo "... Projectile.o"
+	@echo "... Projectile.i"
+	@echo "... Projectile.s"
+	@echo "... TextureManager.o"
+	@echo "... TextureManager.i"
+	@echo "... TextureManager.s"
 	@echo "... freetype.o"
 	@echo "... freetype.i"
 	@echo "... freetype.s"

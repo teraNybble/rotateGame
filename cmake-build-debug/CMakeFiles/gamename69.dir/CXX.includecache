@@ -63,8 +63,6 @@ Pos2.h
 /home/dan/CLionProjects/Game2D/ScreenCoord.h
 glew.h
 /home/dan/CLionProjects/Game2D/glew.h
-iostream
--
 
 /home/dan/CLionProjects/Game2D/Sprite.h
 DrawableObject.h
@@ -98,6 +96,24 @@ GL/glu.h
 stdexcept
 -
 
+/home/dan/CLionProjects/gamename69Git/BCCcollision.h
+vector
+-
+Rect.h
+-
+glew.h
+/home/dan/CLionProjects/gamename69Git/glew.h
+Colour.h
+-
+
+/home/dan/CLionProjects/gamename69Git/Debug.h
+
+/home/dan/CLionProjects/gamename69Git/Enemy.h
+MovingPlatform.h
+/home/dan/CLionProjects/gamename69Git/MovingPlatform.h
+BCCcollision.h
+/home/dan/CLionProjects/gamename69Git/BCCcollision.h
+
 /home/dan/CLionProjects/gamename69Git/Game.cpp
 Game.h
 /home/dan/CLionProjects/gamename69Git/Game.h
@@ -119,6 +135,8 @@ GLFW/glfw3.h
 -
 MainMenu.h
 /home/dan/CLionProjects/gamename69Git/MainMenu.h
+PauseMenu.h
+/home/dan/CLionProjects/gamename69Git/PauseMenu.h
 Level.h
 /home/dan/CLionProjects/gamename69Git/Level.h
 Fonts.h
@@ -131,6 +149,12 @@ filesystem
 -
 LevelSelect.h
 /home/dan/CLionProjects/gamename69Git/LevelSelect.h
+TextureManager.h
+/home/dan/CLionProjects/gamename69Git/TextureManager.h
+algorithm
+-
+Debug.h
+/home/dan/CLionProjects/gamename69Git/Debug.h
 
 /home/dan/CLionProjects/gamename69Git/GameObject.h
 Rect.h
@@ -157,6 +181,14 @@ ScreenCoord.h
 /home/dan/CLionProjects/gamename69Git/ScreenCoord.h
 MovingPlatform.h
 /home/dan/CLionProjects/gamename69Git/MovingPlatform.h
+TextureManager.h
+/home/dan/CLionProjects/gamename69Git/TextureManager.h
+Enemy.h
+/home/dan/CLionProjects/gamename69Git/Enemy.h
+Projectile.h
+/home/dan/CLionProjects/gamename69Git/Projectile.h
+AnimatedSprite.h
+-
 
 /home/dan/CLionProjects/gamename69Git/LevelSelect.h
 ScreenCoord.h
@@ -165,20 +197,58 @@ vector
 -
 Button.h
 -
+TextureManager.h
+/home/dan/CLionProjects/gamename69Git/TextureManager.h
 
 /home/dan/CLionProjects/gamename69Git/MainMenu.h
+TextureManager.h
+/home/dan/CLionProjects/gamename69Git/TextureManager.h
+Button.h
+-
+Fonts.h
+/home/dan/CLionProjects/gamename69Git/Fonts.h
+ScreenCoord.h
+-
+
+/home/dan/CLionProjects/gamename69Git/MovingPlatform.h
+GameObject.h
+/home/dan/CLionProjects/gamename69Git/GameObject.h
+vector
+-
+
+/home/dan/CLionProjects/gamename69Git/PauseMenu.h
+TextureManager.h
+/home/dan/CLionProjects/gamename69Git/TextureManager.h
 Button.h
 -
 Fonts.h
 /home/dan/CLionProjects/gamename69Git/Fonts.h
 
-/home/dan/CLionProjects/gamename69Git/MovingPlatform.h
-GameObject.h
-/home/dan/CLionProjects/gamename69Git/GameObject.h
-
 /home/dan/CLionProjects/gamename69Git/Player.h
 GameObject.h
 /home/dan/CLionProjects/gamename69Git/GameObject.h
+
+/home/dan/CLionProjects/gamename69Git/Projectile.h
+GameObject.h
+/home/dan/CLionProjects/gamename69Git/GameObject.h
+Pos2.h
+-
+math.h
+-
+
+/home/dan/CLionProjects/gamename69Git/TextureManager.h
+glew.h
+/home/dan/CLionProjects/gamename69Git/glew.h
+map
+-
+string
+-
+Rect.h
+-
+png.h
+-
+string.h
+-
 
 /home/dan/CLionProjects/gamename69Git/glew.h
 stddef.h
@@ -237,16 +307,46 @@ GL/glu.h
 /usr/include/freetype2/freetype/freetype.h
 ft2build.h
 -
+freetype/fttypes.h
+-
+freetype/fterrors.h
+-
+
+/usr/include/freetype2/freetype/fterrdef.h
+
+/usr/include/freetype2/freetype/fterrors.h
+freetype/ftmoderr.h
+-
+freetype/fterrdef.h
+-
 
 /usr/include/freetype2/freetype/ftglyph.h
-ft2build.h
+freetype/freetype.h
 -
+
+/usr/include/freetype2/freetype/ftimage.h
+
+/usr/include/freetype2/freetype/ftmoderr.h
 
 /usr/include/freetype2/freetype/ftoutln.h
-ft2build.h
+freetype/freetype.h
 -
 
+/usr/include/freetype2/freetype/ftsystem.h
+
 /usr/include/freetype2/freetype/fttrigon.h
+freetype/freetype.h
+-
+
+/usr/include/freetype2/freetype/fttypes.h
+ft2build.h
+-
+freetype/ftsystem.h
+-
+freetype/ftimage.h
+-
+stddef.h
+-
 
 /usr/include/freetype2/ft2build.h
 freetype/config/ftheader.h
