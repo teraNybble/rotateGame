@@ -15,7 +15,7 @@ void PauseMenu::init()
 		tempSprite.setColour(Game2D::Colour::White);
 		Game2D::Rect tempRect = texRect;
 		//the play buton is the 4th sprite along
-		tempRect.pos.x = 0 * texRect.width;
+		tempRect.pos.x = 2 * texRect.width;
 		tempRect.pos.y = (4 + i) * texRect.height;
 		tempSprite.setTextureCoords(tempRect);
 		backSprites.addFrame(tempSprite);

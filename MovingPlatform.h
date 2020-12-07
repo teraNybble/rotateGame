@@ -19,8 +19,10 @@ private:
 	std::vector<std::pair<Game2D::Pos2, float>> path;
 	int pathPos;
 public:
+	static Game2D::Colour platformColour;
+
 	MovingPlatform();
-	MovingPlatform(Game2D::Rect rect, Game2D::Pos2 endPos, float travelTime);
+	MovingPlatform(Game2D::Rect rect, Game2D::Pos2 endPos, float travelTime, float pauseTime);
 
 	//inline void setEndPos(Game2D::Pos2 pos) { endPos = pos; }
 	//inline void setTravelTime(float time_us) { travelTime_us = time_us; }

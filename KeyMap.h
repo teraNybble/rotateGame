@@ -24,6 +24,8 @@ public:
 
 	inline bool getIsDown() const { return isDown; }
 	inline bool getWasDown() const { return wasDown; }
+
+	inline void setFalse() { isDown = wasDown = false; }
 };
 
 

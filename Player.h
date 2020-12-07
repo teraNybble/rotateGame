@@ -13,6 +13,9 @@ private:
 	bool canRotate;
 	bool rotateLock;
 public:
+	static Game2D::Colour playerColour;
+	static Game2D::Colour noRotateColour;
+
 	Player();
 
 	Game2D::Rect getRotateBox() const { return rotateBox; }

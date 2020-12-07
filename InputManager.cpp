@@ -48,3 +48,17 @@ void InputManager::update()
 	for(auto it = actions.begin(); it != actions.end(); it++)
 		it->second.update();
 }
+
+/*void InputManager::setAll(bool down)
+{
+	for (auto it = actions.begin(); it != actions.end(); it++) {
+		it->second.
+	}
+}*/
+
+void InputManager::setAllFalse()
+{
+	for (auto it = actions.begin(); it != actions.end(); it++) {
+		it->second.setFalse();
+	}
+}

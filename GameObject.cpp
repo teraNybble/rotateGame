@@ -53,5 +53,9 @@ void GameObject::draw() const
 {
 	//std::cout << hitBox << "\n" << sprite.getRect() << "\n\n";
 	//colour.draw();
-	sprite.draw();
+	try {
+		sprite.draw();
+	} catch (std::exception e) {
+		std::cerr << "[ERROR] " << e.what() << std::endl;
+	}
 }

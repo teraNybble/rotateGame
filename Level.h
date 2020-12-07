@@ -56,6 +56,8 @@ private:
 	int noRotates;
 	float elapsedLevelTime;
 
+	bool lockedKeys[7];
+
 	void processActions(const InputManager& actions, float time_us);
 	void applyGravity(float time_us);
 	bool checkCollision(GameObject a, GameObject b);
@@ -80,7 +82,7 @@ public:
 	inline void setStartPos(Game2D::Pos2 pos) { startPos = pos; }
 	inline void setExitPos(Game2D::Pos2 pos) { exit.setPos(pos); }
 	inline void setExitRext(Game2D::Rect rect) { exit.setRect(rect); }
-	inline void addWall(Game2D::Rect wall) { walls.push_back(GameObject(wall)); walls.back().setColour(Game2D::Colour::Green); }
+	inline void addWall(Game2D::Rect wall) { walls.push_back(GameObject(wall)); /*walls.back().setColour(Game2D::Colour::Green);*/ walls.back().setColour(Game2D::Colour(0.322, 0.776, 0.322)); }
 	inline void addKillPlane(Game2D::Rect plane) { killPlanes.push_back(plane); }
 	inline void addMovingPlatform(MovingPlatform platform) { movingPlatforms.push_back(platform); }
 	inline void addEnemy(Enemy enemy) { enemies.push_back(std::pair<Enemy, bool>(enemy, true)); }
@@ -89,6 +91,7 @@ public:
 	//end level creation
 
 	void init();
+	void setActionLockOut(const InputManager& actions);
 
 	int update(const InputManager& actions);
 

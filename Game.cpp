@@ -114,8 +114,8 @@ void Game::loadLevelsFromFile()
 				break;
 			case '2':
 			{
-				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h);
-				MovingPlatform platform(Game2D::Rect(a, b, c, d), Game2D::Pos2(g, h),f);
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i);
+				MovingPlatform platform(Game2D::Rect(a, b, c, d), Game2D::Pos2(g, h),f,i);
 				//platform.setEndPos(Game2D::Pos2(g, h));
 				//platform.setTravelTime(f);
 				levels.back().addMovingPlatform(platform);
@@ -127,13 +127,14 @@ void Game::loadLevelsFromFile()
 				break;
 			case '4':
 			{
-				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i);
-				//levels.back().addEnemy(Game2D::Pos2(a, b));
+				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i, &j);
+				//levels.back().addEnemy(Game2D::Pos2(a, b)); 
 				Enemy temp(Game2D::Pos2(a, b), Game2D::Pos2(d, f),c, (Enemy::Type)((int)i));
 				//temp.setEndPos(Game2D::Pos2(d, f));
 				//temp.setTravelTime(c);
 				temp.setHead((Enemy::Direction)((int)(g)));
 				temp.setAttackRadius(h);
+				temp.setAttackSpeed(j);
 				levels.back().addEnemy(temp);
 				//std::cout << "Enemy start" << a << ", " << b << " end " << d << ", " << f << " speed " << c << " type " << i << " head " << g << " radius " << h << "\n";
 				break;
@@ -307,6 +308,7 @@ void Game::resize_callback(GLFWwindow* window, int width, int height)
 
 void Game::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+	//std::cout << key << " " << action << "\n";
 	try
 	{
 		if (action == GLFW_PRESS)
@@ -421,6 +423,9 @@ void Game::update()
 					currentLevel = 0;
 					break;
 				}
+				//
+				//inputManager.setAllFalse();
+				levels.at(currentLevel).setActionLockOut(inputManager);
 				levels.at(currentLevel).init();
 				break;
 			case 2:

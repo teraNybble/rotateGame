@@ -1,5 +1,7 @@
 #include "MovingPlatform.h"
 
+Game2D::Colour MovingPlatform::platformColour = Game2D::Colour(0.49, 0.31, 0.19);
+
 MovingPlatform::MovingPlatform() : GameObject()
 {
 	/*
@@ -9,19 +11,22 @@ MovingPlatform::MovingPlatform() : GameObject()
 	elapsedTime_us = 0;
 	pathPos = 0;
 	*/
-	MovingPlatform(Game2D::Rect(0, 0, 0, 0),Game2D::Pos2(0,0),0.0f);
+	MovingPlatform(Game2D::Rect(0, 0, 0, 0),Game2D::Pos2(0,0),0.0f,0.0f);
 }
 
-MovingPlatform::MovingPlatform(Game2D::Rect rect, Game2D::Pos2 endPos, float travelTime) : GameObject(rect)
+MovingPlatform::MovingPlatform(Game2D::Rect rect, Game2D::Pos2 endPos, float travelTime, float pauseTime) : GameObject(rect)
 {
-	setColour(Game2D::Colour(0.66f, 0.26f, 0.0f));
+	//platformColour = Game2D::Colour(0.49, 0.31, 0.19);
+	setColour(platformColour);
 	startPos = rect.pos;
 	this->endPos = endPos;
 	flipped = false;
 	elapsedTime_us = 0;
 	pathPos = 0;
 	path.push_back(std::pair<Game2D::Pos2, float>(rect.pos, travelTime));
+	path.push_back(std::pair<Game2D::Pos2, float>(rect.pos, pauseTime));
 	path.push_back(std::pair<Game2D::Pos2, float>(endPos, travelTime));
+	path.push_back(std::pair<Game2D::Pos2, float>(endPos, pauseTime));
 }
 
 void MovingPlatform::setPath(std::vector<std::pair<Game2D::Pos2, float>> path)

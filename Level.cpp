@@ -17,24 +17,30 @@ void Level::addSprite(Game2D::Rect rect, Game2D::Rect sprite, SpriteFlip flip)
 
 void Level::processActions(const InputManager& actions, float time_us)
 {
+	for (int i = 0; i < 7; i++) {
+		if (lockedKeys[i]) {
+			lockedKeys[i] = (actions.getAction(i) == InputManager::DOWN);
+		}
+	}
+
 	if(actions.getAction(RESET) == InputManager::DOWN)
 		init();
 
-	if (actions.getAction(PLAYER_LEFT) == InputManager::DOWN) {
+	if (!lockedKeys[PLAYER_LEFT] && actions.getAction(PLAYER_LEFT) == InputManager::DOWN) {
 		player.velocityX = -moveSpeedX;
-	} else if (actions.getAction(PLAYER_RIGHT) == InputManager::DOWN) {
+	} else if (!lockedKeys[PLAYER_RIGHT] && actions.getAction(PLAYER_RIGHT) == InputManager::DOWN) {
 		player.velocityX = +moveSpeedX;
 	} else {
 		player.velocityX = 0;
 	}
 
-	if (actions.getAction(PLAYER_JUMP) == InputManager::DOWN && !player.inAir) {
+	if (!lockedKeys[PLAYER_JUMP] && actions.getAction(PLAYER_JUMP) == InputManager::DOWN && !player.inAir) {
 		player.velocityY = moveSpeedY;
 		player.inAir = true;
 	}
 
 
-	if ((actions.getAction(ROTATE_ANTICLOCKWISE) == InputManager::DOWN) && player.getCanRotate()) {
+	if (!lockedKeys[ROTATE_ANTICLOCKWISE] && (actions.getAction(ROTATE_ANTICLOCKWISE) == InputManager::DOWN) && player.getCanRotate()) {
 		rotating = true;
 		levelRotation += 90;
 		previousPlayerRot = player.getRot();
@@ -43,7 +49,7 @@ void Level::processActions(const InputManager& actions, float time_us)
 		player.setCanRotate(false);
 		player.lockRotate();
 	}
-	if ((actions.getAction(ROTATE_CLOCKWISE) == InputManager::DOWN) && player.getCanRotate()) {
+	if (!lockedKeys[ROTATE_CLOCKWISE] && (actions.getAction(ROTATE_CLOCKWISE) == InputManager::DOWN) && player.getCanRotate()) {
 		rotating = true;
 		previousPlayerRot = player.getRot();
 		levelRotation -= 90;
@@ -648,6 +654,13 @@ void Level::init()
 	}
 	projectiles.clear();//remove all projectiles
 	animatedSprites.clear();
+}
+
+void Level::setActionLockOut(const InputManager& actions)
+{
+	for (int i = 0; i < 7; i++) {
+		lockedKeys[i] = (actions.getAction(i) == InputManager::DOWN);
+	}
 }
 
 void Level::draw()

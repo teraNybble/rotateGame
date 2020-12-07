@@ -133,12 +133,12 @@ int LevelSelect::update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, fl
 	}
 
 	Game2D::Pos2 leftMousePos = mousePos;
-	leftMousePos.x += (50*(16.0f/9.0f));
+	leftMousePos.x += (50*Game2D::ScreenCoord::getAspectRatio());
 	if (buttons[0].update(leftMousePos, state, time) == Game2D::ClickableObject::CLICK) {
 		return -2;
 	}
 	Game2D::Pos2 rightMousePos = mousePos;
-	rightMousePos.x -= (50 * (16.0f / 9.0f));
+	rightMousePos.x -= (50 * Game2D::ScreenCoord::getAspectRatio());
 	if (buttons[1].update(rightMousePos, state, time) == Game2D::ClickableObject::CLICK) {
 		if (pageNo > 0) { 
 			pageNo--; 
