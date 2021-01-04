@@ -21,6 +21,14 @@ namespace Game2D
 			return (float)screenWidth / (float)screenHeight;
 		}
 
+		inline static int getHeight() {
+			return screenHeight;
+		}
+
+		inline static int getWidth() {
+			return screenWidth;
+		}
+
 		inline static void alignRight() {
 
 

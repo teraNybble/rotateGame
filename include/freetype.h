@@ -81,6 +81,42 @@ namespace freetype {
 	float print(const font_data &ft_font, float x, float y, const char *fmt, ...);
 
 	float getLength(const font_data& ft_font, const char* fmt, ...);
+	inline float getHeight(const font_data& ft_font) 
+	{ 
+		float h = ft_font.h / .63f;
+		float projectionMatMine[4][4];
+		glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatMine[0][0]);
+
+		//pushScreenCoordinateMatrix();
+		glPushAttrib(GL_TRANSFORM_BIT);
+		GLint	viewport[4];
+		glGetIntegerv(GL_VIEWPORT, viewport);
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+		//gluOrtho2D(viewport[0], viewport[2], viewport[1], viewport[3]);
+		glOrtho(viewport[0], viewport[2], viewport[1], viewport[3], 0, 100);
+		//gluOrtho2D(left, right, bottom, top);
+		glPopAttrib();
+		//!
+
+		float projectionMatScreen[4][4];
+		glGetFloatv(GL_PROJECTION_MATRIX, &projectionMatScreen[0][0]);
+
+		glPushAttrib(GL_TRANSFORM_BIT);
+		glMatrixMode(GL_PROJECTION);
+		glPopMatrix();
+		glPopAttrib();
+
+		h = h * projectionMatScreen[1][1];
+		h = (h - projectionMatMine[3][1]) / projectionMatMine[1][1];
+
+		//std::cout << "Matrix things\t";
+		//std::cout << projectionMatScreen[1][1] << "\t";
+		//std::cout << projectionMatMine[3][1] << "\t" << projectionMatMine[1][1] << "\n";
+
+		return h;
+	}
 
 }                                               // Close The Namespace
 

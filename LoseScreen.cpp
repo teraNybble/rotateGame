@@ -77,7 +77,7 @@ void LoseScreen::draw()
 	menu.draw();
 	quit.draw();
 	//Game2D::ScreenCoord::alignRight();
-	int length = freetype::getLength(Game2D::Font::getFont(40), "You Died");
-	freetype::print(Game2D::Font::getFont(40), 0-(length/2.0f), 15, "You Died");
+	int length = freetype::getLength(Game2D::Font::getFont(6), "You Died");
+	freetype::print(Game2D::Font::getFont(6), 0-(length/2.0f), 15, "You Died");
 	//Game2D::ScreenCoord::alignCentre();
 }

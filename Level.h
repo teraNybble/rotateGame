@@ -23,7 +23,7 @@ class Level
 private:
 	enum LevelState { PLAYING, DYING };
 	const float moveSpeedX = 50;
-	const float moveSpeedY = 160;
+	const float moveSpeedY = 170;
 	const float gravity = 450;
 	const float maxVelY = 200;
 	const float maxVelX = 1;

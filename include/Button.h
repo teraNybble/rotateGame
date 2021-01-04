@@ -4,6 +4,7 @@
 //#include "freetype.h"
 #include "ClickableObject.h"
 #include "AnimatedSprite.h"
+#include <string>
 
 namespace Game2D
 {
@@ -16,6 +17,10 @@ namespace Game2D
 		int stateFrames[5];
 		int currentFrame;
 		int newFrame;
+
+		std::string text;
+		unsigned int fontSize;
+		Colour fontColour;
 
 		int id;
 
@@ -35,6 +40,13 @@ namespace Game2D
 
 		inline void setID(int id) { this->id = id; }
 		inline int getID() const { return id; }
+
+		inline void setText(std::string text) { this->text = text; }
+		inline std::string getText() const { return text; }
+		inline void setFontSize(unsigned int size) { fontSize = size; }
+		inline void setFontColour(Colour c) { fontColour = c; }
+
+		inline void setAnimPoss(Pos2 pos) { buttonAnims.setPoss(pos); }
 
 		void draw() const;
 	};

@@ -4,12 +4,14 @@ Game::GameState Game::currentState;
 //std::map<int,bool> Game::keyMap;
 GLFWwindow* Game::window;
 int Game::screenWidth, Game::screenHeight;
+int Game::windowHintFlags;
 Game2D::Button Game::testButton;
 Game2D::Pos2 Game::mousePos;
 //std::map<int,Game2D::KeyState> Game::mouseButtons;
 //Game2D::KeyMap Game::mouseButtons;
 //std::map<int,Game2D::KeyState::State> Game::previousMouseStates;
 MainMenu Game::mainMenu;
+OptionsMenu Game::optionsMenu;
 PauseMenu Game::pauseMenu;
 LoseScreen Game::loseScreen;
 //Level Game::testLevel;
@@ -23,8 +25,11 @@ LevelSelect Game::levelSelect;
 Game::Game()
 {
 	//std::cout << "Game constructor\n";
-	screenWidth = 1280;
-	screenHeight = 720;
+	//screenWidth = 1280;
+	//screenHeight = 720;
+	readDisplayConfig();
+	//screenWidth = 1920;
+	//screenHeight = 1080;
 	mousePos = Game2D::Pos2(screenWidth,screenHeight);
 	currentState = Game::MAIN_MENU;
 
@@ -158,6 +163,42 @@ void Game::loadLevelsFromFile()
 #endif // _DEV
 }
 
+void Game::readDisplayConfig()
+{
+	std::ifstream file;
+	file.open("options.rgo");
+
+	if (!file.is_open()) {
+		screenWidth = 1280;
+		screenHeight = 720;
+		windowHintFlags = 0;
+
+		//glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
+	}
+	file >> screenWidth;
+	file >> screenHeight;
+	int temp;
+	file >> temp;
+	windowHintFlags |= (temp ? 1 << 0 : 0 << 0);
+	//glfwWindowHint(GLFW_MAXIMIZED, temp);
+
+	file.close();
+}
+
+void Game::writeDisplayConfig()
+{
+	std::ofstream file;
+	file.open("options.rgo");
+
+	if (!file.is_open()) {
+		std::cerr << "[ERROR] Couldn't write options to file" << std::endl;
+	}
+	file << screenWidth << " " << screenHeight << "\n";
+	file << glfwGetWindowAttrib(window, GLFW_MAXIMIZED) << "\n";
+
+	file.close();
+}
+
 void Game::display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -204,6 +245,7 @@ void Game::display()
 			mainMenu.draw();
 			break;
 		case OPTIONS_MENU:
+			optionsMenu.draw();
 			break;
 		case VICTORY:
 			break;
@@ -250,6 +292,8 @@ void Game::init()
 
 	//fonts
 	Game2D::Font::init(screenHeight);
+	Game2D::Font::insert(3);
+	Game2D::Font::insert(6);
 	Game2D::Font::insert(20);
 	Game2D::Font::insert(40);
 	Game2D::Font::initFonts();
@@ -263,6 +307,7 @@ void Game::init()
 
 	//paused = false;
 	mainMenu.init();
+	optionsMenu.init();
 	pauseMenu.init();
 	loseScreen.init();
 
@@ -466,6 +511,7 @@ void Game::update()
 			processMainMenu();
 			break;
 		case OPTIONS_MENU:
+			processOptionsMenu();
 			break;
 		case VICTORY:
 			break;
@@ -500,6 +546,8 @@ void Game::update()
 
 bool Game::createWindow()
 {
+	//readDisplayConfig();
+
 	if (!glfwInit())
 	{
 		std::cerr << "failed to init glfw with error: 0x" << std::hex << std::setw(8) << std::setfill('0') << glfwGetError(NULL) << "\n";
@@ -507,6 +555,8 @@ bool Game::createWindow()
 	}
 
 	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	//glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
+	glfwWindowHint(GLFW_MAXIMIZED, windowHintFlags & (1 << 0));
 
 	/* Create a windowed mode window and its OpenGL context */
 #if _DEV
@@ -543,6 +593,17 @@ bool Game::createWindow()
 	return true;
 }
 
+void Game::resize(float width, float height)
+{
+	//int maximized = glfwGetWindowAttrib(window, GLFW_MAXIMIZED);
+	//std::cout << maximized << "\n";
+	glfwSetWindowSize(window, width, height);
+	glViewport(0, 0, width, height);
+	Game2D::ScreenCoord::init(width,height);
+	Game2D::ScreenCoord::alignCentre();
+	display();
+}
+
 void Game::processMainMenu()
 {
 	mainMenu.update(mousePos, (Game2D::KeyState::State)mouseButtons.getAction(LEFT_MOUSE)/*mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState()Game2D::KeyState::UP*/, 1);
@@ -560,6 +621,21 @@ void Game::processMainMenu()
 		case 3:
 			currentState = QUITTING;
 			break;
+	}
+}
+
+void Game::processOptionsMenu()
+{
+	optionsMenu.update(mousePos, (Game2D::KeyState::State)mouseButtons.getAction(LEFT_MOUSE), 1);
+
+	switch (optionsMenu.getResult(resize))
+	{
+	case 1:
+	case 2:
+		currentState = MAIN_MENU;
+		break;
+	default:
+		break;
 	}
 }
 
@@ -611,6 +687,8 @@ int Game::mainLoop()
 
 		if(currentState == QUITTING) break;
 	}
+
+	writeDisplayConfig();
 
 	glfwTerminate();
 

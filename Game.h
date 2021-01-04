@@ -11,6 +11,7 @@
 #include "glew.h"
 #include <GLFW/glfw3.h>
 #include "MainMenu.h"
+#include "OptionsMenu.h"
 #include "PauseMenu.h"
 #include "LoseScreen.h"
 #include "Level.h"
@@ -43,8 +44,10 @@ private:
 
 	static GLFWwindow* window;
 	static int screenWidth, screenHeight;
+	static int windowHintFlags;
 	static Game2D::Button testButton;
 	static MainMenu mainMenu;
+	static OptionsMenu optionsMenu;
 	static PauseMenu pauseMenu;
 	static LoseScreen loseScreen;
 
@@ -69,6 +72,8 @@ private:
 	static LevelSelect levelSelect;
 
 	static void loadLevelsFromFile();
+	static void readDisplayConfig();
+	static void writeDisplayConfig();
 public:
 	Game();
 
@@ -82,8 +87,10 @@ public:
 	static void processMouse();
 	static void update();
 	static bool createWindow();
+	static void resize(float width, float height);
 
 	static void processMainMenu();
+	static void processOptionsMenu();
 	static void processPauseMenu();
 
 	static int mainLoop();

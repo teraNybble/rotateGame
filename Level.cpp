@@ -147,16 +147,16 @@ void Level::checkPlayerCollision(float time_us)
 				switch ((int)levelRotation) {
 				case 360:
 				case 0:
-					moveDist = ((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
+					moveDist = ((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				case 90:
-					moveDist = ((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
+					moveDist = ((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				case 180:
-					moveDist = -((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
+					moveDist = -((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				case 270:
-					moveDist = -((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
+					moveDist = -((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				}
 				player.moveSansRot(Game2D::Pos2(0, moveDist), levelRotation);
@@ -167,16 +167,16 @@ void Level::checkPlayerCollision(float time_us)
 				switch ((int)levelRotation) {
 				case 360:
 				case 0:
-					moveDist = ((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
+					moveDist = ((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				case 90:
-					moveDist = ((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
+					moveDist = ((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				case 180:
-					moveDist = -((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
+					moveDist = -((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				case 270:
-					moveDist = -((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
+					moveDist = -((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				}
 				player.moveSansRot(Game2D::Pos2(0, moveDist), levelRotation);
@@ -200,16 +200,16 @@ void Level::checkPlayerCollision(float time_us)
 				{
 				case 360:
 				case 0:
-					moveDist = ((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
+					moveDist = ((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				case 90:
-					moveDist = -((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
+					moveDist = -((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				case 180:
-					moveDist = -((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
+					moveDist = -((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				case 270:
-					moveDist = ((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
+					moveDist = ((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				}
 				player.moveSansRot(Game2D::Pos2(moveDist, 0),levelRotation);
@@ -221,16 +221,16 @@ void Level::checkPlayerCollision(float time_us)
 				{
 				case 360:
 				case 0:
-					moveDist = ((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - (player.getRect().width / 2.0f)));
+					moveDist = ((wall.getPos().x + (wall.getRect().width / 2.0f)) - (player.getPos().x - ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				case 90:
-					moveDist = -((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + (player.getRect().height / 2.0f)));
+					moveDist = -((wall.getPos().y - (wall.getRect().height / 2.0f)) - (player.getPos().y + ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				case 180:
-					moveDist = -((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + (player.getRect().width / 2.0f)));
+					moveDist = -((wall.getPos().x - (wall.getRect().width / 2.0f)) - (player.getPos().x + ((player.getRect().width / 2.0f)+0.001)));
 					break;
 				case 270:
-					moveDist = ((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - (player.getRect().height / 2.0f)));
+					moveDist = ((wall.getPos().y + (wall.getRect().height / 2.0f)) - (player.getPos().y - ((player.getRect().height / 2.0f)+0.001)));
 					break;
 				}
 				player.moveSansRot(Game2D::Pos2(moveDist, 0),levelRotation);
@@ -723,8 +723,8 @@ void Level::draw()
 
 	Game2D::Colour(1, 1, 1).draw();
 	Game2D::ScreenCoord::alignLeft();
-	freetype::print(Game2D::Font::getFont(20), 2.5, 45, "Rotates:    %d", noRotates);
-	freetype::print(Game2D::Font::getFont(20), 2.5, 40, "Time:    %2.2f", elapsedLevelTime);
+	freetype::print(Game2D::Font::getFont(3), 2.5, 45, "Rotates:    %d", noRotates);
+	freetype::print(Game2D::Font::getFont(3), 2.5, 40, "Time:    %2.2f", elapsedLevelTime);
 	//std::cout << Game2D::ScreenCoord::getAspectRatio() << "\n";
 	//std::cout << (5 * (Game2D::ScreenCoord::getAspectRatio() / (1.77778f))) << "\n";
 	Game2D::ScreenCoord::alignCentre();
