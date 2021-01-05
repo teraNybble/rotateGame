@@ -4,6 +4,10 @@
 #include "MovingPlatform.h"
 #include "BCCcollision.h"
 
+#ifdef _DEV
+#include "Debug.h"
+#endif
+
 class Enemy : public MovingPlatform
 {
 public:

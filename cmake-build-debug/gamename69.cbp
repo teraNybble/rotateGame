@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-D_DEV=1"/>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
 					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
@@ -69,6 +70,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-D_DEV=1"/>
 					<Add directory="/home/dan/CLionProjects/Game2D"/>
 					<Add directory="/home/dan/glfw/include"/>
 					<Add directory="/usr/include/freetype2"/>
@@ -142,6 +144,12 @@
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/LevelSelect.h">
 			<Option target="gamename69"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/LoseScreen.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/LoseScreen.h">
+			<Option target="gamename69"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/MainMenu.cpp">
 			<Option target="gamename69"/>
 		</Unit>
@@ -152,6 +160,12 @@
 			<Option target="gamename69"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/MovingPlatform.h">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/OptionsMenu.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/OptionsMenu.h">
 			<Option target="gamename69"/>
 		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/PauseMenu.cpp">

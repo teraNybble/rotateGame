@@ -17,6 +17,7 @@ CMakeFiles/gamename69.dir/Enemy.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
 CMakeFiles/gamename69.dir/Enemy.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
 CMakeFiles/gamename69.dir/Enemy.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/gamename69.dir/Enemy.cpp.o: ../BCCcollision.h
+CMakeFiles/gamename69.dir/Enemy.cpp.o: ../Debug.h
 CMakeFiles/gamename69.dir/Enemy.cpp.o: ../Enemy.cpp
 CMakeFiles/gamename69.dir/Enemy.cpp.o: ../Enemy.h
 CMakeFiles/gamename69.dir/Enemy.cpp.o: ../GameObject.h
@@ -28,6 +29,7 @@ CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/ClickableObject.h
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/DrawableObject.h
+CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/Dropdown.h
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/Fonts.h
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/KeyMap.h
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/KeyState.h
@@ -45,8 +47,10 @@ CMakeFiles/gamename69.dir/Game.cpp.o: ../GameObject.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../InputManager.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../Level.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../LevelSelect.h
+CMakeFiles/gamename69.dir/Game.cpp.o: ../LoseScreen.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../MainMenu.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../MovingPlatform.h
+CMakeFiles/gamename69.dir/Game.cpp.o: ../OptionsMenu.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../PauseMenu.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../Player.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../Projectile.h
@@ -93,6 +97,7 @@ CMakeFiles/gamename69.dir/Level.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/gamename69.dir/Level.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
 CMakeFiles/gamename69.dir/Level.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../BCCcollision.h
+CMakeFiles/gamename69.dir/Level.cpp.o: ../Debug.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../Enemy.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../GameObject.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../InputManager.h
@@ -130,6 +135,35 @@ CMakeFiles/gamename69.dir/LevelSelect.cpp.o: /home/dan/CLionProjects/Game2D/glew
 CMakeFiles/gamename69.dir/LevelSelect.cpp.o: ../LevelSelect.cpp
 CMakeFiles/gamename69.dir/LevelSelect.cpp.o: ../LevelSelect.h
 CMakeFiles/gamename69.dir/LevelSelect.cpp.o: ../TextureManager.h
+
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/ClickableObject.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/DrawableObject.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/Fonts.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/KeyState.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: ../LoseScreen.cpp
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: ../LoseScreen.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: ../TextureManager.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/freetype.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/fterrors.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/ftglyph.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/ftimage.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/ftmoderr.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/ftoutln.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/ftsystem.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/fttrigon.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/freetype/fttypes.h
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: /usr/include/freetype2/ft2build.h
 
 CMakeFiles/gamename69.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
 CMakeFiles/gamename69.dir/MainMenu.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
@@ -170,6 +204,36 @@ CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../GameObject.h
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../MovingPlatform.cpp
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../MovingPlatform.h
 
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/ClickableObject.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/DrawableObject.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/Dropdown.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/Fonts.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/KeyState.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: ../OptionsMenu.cpp
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: ../OptionsMenu.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: ../TextureManager.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: ../glew.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/freetype.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/fterrdef.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/fterrors.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/ftglyph.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/ftimage.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/ftmoderr.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/ftoutln.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/ftsystem.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/fttrigon.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/freetype/fttypes.h
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: /usr/include/freetype2/ft2build.h
+
 CMakeFiles/gamename69.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/AnimatedSprite.h
 CMakeFiles/gamename69.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
 CMakeFiles/gamename69.dir/PauseMenu.cpp.o: /home/dan/CLionProjects/Game2D/ClickableObject.h
@@ -204,6 +268,7 @@ CMakeFiles/gamename69.dir/Player.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
 CMakeFiles/gamename69.dir/Player.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
 CMakeFiles/gamename69.dir/Player.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/gamename69.dir/Player.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
+CMakeFiles/gamename69.dir/Player.cpp.o: ../Debug.h
 CMakeFiles/gamename69.dir/Player.cpp.o: ../GameObject.h
 CMakeFiles/gamename69.dir/Player.cpp.o: ../Player.cpp
 CMakeFiles/gamename69.dir/Player.cpp.o: ../Player.h
@@ -245,6 +310,7 @@ CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Button.h
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/ClickableObject.h
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/DrawableObject.h
+CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Dropdown.h
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Fonts.h
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/KeyMap.h
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/KeyState.h
@@ -261,8 +327,10 @@ CMakeFiles/gamename69.dir/main.cpp.o: ../GameObject.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../InputManager.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../Level.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../LevelSelect.h
+CMakeFiles/gamename69.dir/main.cpp.o: ../LoseScreen.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../MainMenu.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../MovingPlatform.h
+CMakeFiles/gamename69.dir/main.cpp.o: ../OptionsMenu.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../PauseMenu.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../Player.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../Projectile.h

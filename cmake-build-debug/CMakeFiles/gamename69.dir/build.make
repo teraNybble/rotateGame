@@ -174,9 +174,22 @@ CMakeFiles/gamename69.dir/LevelSelect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gamename69.dir/LevelSelect.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/gamename69Git/LevelSelect.cpp -o CMakeFiles/gamename69.dir/LevelSelect.cpp.s
 
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: CMakeFiles/gamename69.dir/flags.make
+CMakeFiles/gamename69.dir/LoseScreen.cpp.o: ../LoseScreen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/gamename69.dir/LoseScreen.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/LoseScreen.cpp.o -c /home/dan/CLionProjects/gamename69Git/LoseScreen.cpp
+
+CMakeFiles/gamename69.dir/LoseScreen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gamename69.dir/LoseScreen.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/gamename69Git/LoseScreen.cpp > CMakeFiles/gamename69.dir/LoseScreen.cpp.i
+
+CMakeFiles/gamename69.dir/LoseScreen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gamename69.dir/LoseScreen.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/gamename69Git/LoseScreen.cpp -o CMakeFiles/gamename69.dir/LoseScreen.cpp.s
+
 CMakeFiles/gamename69.dir/MainMenu.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/MainMenu.cpp.o: ../MainMenu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/gamename69.dir/MainMenu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/gamename69.dir/MainMenu.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/MainMenu.cpp.o -c /home/dan/CLionProjects/gamename69Git/MainMenu.cpp
 
 CMakeFiles/gamename69.dir/MainMenu.cpp.i: cmake_force
@@ -189,7 +202,7 @@ CMakeFiles/gamename69.dir/MainMenu.cpp.s: cmake_force
 
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../MovingPlatform.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/gamename69.dir/MovingPlatform.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/gamename69.dir/MovingPlatform.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/MovingPlatform.cpp.o -c /home/dan/CLionProjects/gamename69Git/MovingPlatform.cpp
 
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.i: cmake_force
@@ -200,9 +213,22 @@ CMakeFiles/gamename69.dir/MovingPlatform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gamename69.dir/MovingPlatform.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/gamename69Git/MovingPlatform.cpp -o CMakeFiles/gamename69.dir/MovingPlatform.cpp.s
 
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: CMakeFiles/gamename69.dir/flags.make
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.o: ../OptionsMenu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/gamename69.dir/OptionsMenu.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/OptionsMenu.cpp.o -c /home/dan/CLionProjects/gamename69Git/OptionsMenu.cpp
+
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gamename69.dir/OptionsMenu.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dan/CLionProjects/gamename69Git/OptionsMenu.cpp > CMakeFiles/gamename69.dir/OptionsMenu.cpp.i
+
+CMakeFiles/gamename69.dir/OptionsMenu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gamename69.dir/OptionsMenu.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dan/CLionProjects/gamename69Git/OptionsMenu.cpp -o CMakeFiles/gamename69.dir/OptionsMenu.cpp.s
+
 CMakeFiles/gamename69.dir/PauseMenu.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/PauseMenu.cpp.o: ../PauseMenu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/gamename69.dir/PauseMenu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/gamename69.dir/PauseMenu.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/PauseMenu.cpp.o -c /home/dan/CLionProjects/gamename69Git/PauseMenu.cpp
 
 CMakeFiles/gamename69.dir/PauseMenu.cpp.i: cmake_force
@@ -215,7 +241,7 @@ CMakeFiles/gamename69.dir/PauseMenu.cpp.s: cmake_force
 
 CMakeFiles/gamename69.dir/Player.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/Player.cpp.o: ../Player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/gamename69.dir/Player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/gamename69.dir/Player.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/Player.cpp.o -c /home/dan/CLionProjects/gamename69Git/Player.cpp
 
 CMakeFiles/gamename69.dir/Player.cpp.i: cmake_force
@@ -228,7 +254,7 @@ CMakeFiles/gamename69.dir/Player.cpp.s: cmake_force
 
 CMakeFiles/gamename69.dir/Projectile.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/Projectile.cpp.o: ../Projectile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/gamename69.dir/Projectile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/gamename69.dir/Projectile.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/Projectile.cpp.o -c /home/dan/CLionProjects/gamename69Git/Projectile.cpp
 
 CMakeFiles/gamename69.dir/Projectile.cpp.i: cmake_force
@@ -241,7 +267,7 @@ CMakeFiles/gamename69.dir/Projectile.cpp.s: cmake_force
 
 CMakeFiles/gamename69.dir/TextureManager.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/TextureManager.cpp.o: ../TextureManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/gamename69.dir/TextureManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/gamename69.dir/TextureManager.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/TextureManager.cpp.o -c /home/dan/CLionProjects/gamename69Git/TextureManager.cpp
 
 CMakeFiles/gamename69.dir/TextureManager.cpp.i: cmake_force
@@ -254,7 +280,7 @@ CMakeFiles/gamename69.dir/TextureManager.cpp.s: cmake_force
 
 CMakeFiles/gamename69.dir/freetype.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/freetype.cpp.o: ../freetype.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/gamename69.dir/freetype.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/gamename69.dir/freetype.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/freetype.cpp.o -c /home/dan/CLionProjects/gamename69Git/freetype.cpp
 
 CMakeFiles/gamename69.dir/freetype.cpp.i: cmake_force
@@ -267,7 +293,7 @@ CMakeFiles/gamename69.dir/freetype.cpp.s: cmake_force
 
 CMakeFiles/gamename69.dir/main.cpp.o: CMakeFiles/gamename69.dir/flags.make
 CMakeFiles/gamename69.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/gamename69.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/gamename69.dir/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gamename69.dir/main.cpp.o -c /home/dan/CLionProjects/gamename69Git/main.cpp
 
 CMakeFiles/gamename69.dir/main.cpp.i: cmake_force
@@ -289,8 +315,10 @@ gamename69_OBJECTS = \
 "CMakeFiles/gamename69.dir/KeyMap.cpp.o" \
 "CMakeFiles/gamename69.dir/Level.cpp.o" \
 "CMakeFiles/gamename69.dir/LevelSelect.cpp.o" \
+"CMakeFiles/gamename69.dir/LoseScreen.cpp.o" \
 "CMakeFiles/gamename69.dir/MainMenu.cpp.o" \
 "CMakeFiles/gamename69.dir/MovingPlatform.cpp.o" \
+"CMakeFiles/gamename69.dir/OptionsMenu.cpp.o" \
 "CMakeFiles/gamename69.dir/PauseMenu.cpp.o" \
 "CMakeFiles/gamename69.dir/Player.cpp.o" \
 "CMakeFiles/gamename69.dir/Projectile.cpp.o" \
@@ -310,8 +338,10 @@ gamename69: CMakeFiles/gamename69.dir/InputManager.cpp.o
 gamename69: CMakeFiles/gamename69.dir/KeyMap.cpp.o
 gamename69: CMakeFiles/gamename69.dir/Level.cpp.o
 gamename69: CMakeFiles/gamename69.dir/LevelSelect.cpp.o
+gamename69: CMakeFiles/gamename69.dir/LoseScreen.cpp.o
 gamename69: CMakeFiles/gamename69.dir/MainMenu.cpp.o
 gamename69: CMakeFiles/gamename69.dir/MovingPlatform.cpp.o
+gamename69: CMakeFiles/gamename69.dir/OptionsMenu.cpp.o
 gamename69: CMakeFiles/gamename69.dir/PauseMenu.cpp.o
 gamename69: CMakeFiles/gamename69.dir/Player.cpp.o
 gamename69: CMakeFiles/gamename69.dir/Projectile.cpp.o
@@ -333,7 +363,7 @@ gamename69: /usr/lib/libfreetype.so
 gamename69: /usr/lib/libpng.so
 gamename69: /usr/lib/libz.so
 gamename69: CMakeFiles/gamename69.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable gamename69"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable gamename69"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gamename69.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

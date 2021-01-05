@@ -366,6 +366,33 @@ LevelSelect.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/LevelSelect.cpp.s
 .PHONY : LevelSelect.cpp.s
 
+LoseScreen.o: LoseScreen.cpp.o
+
+.PHONY : LoseScreen.o
+
+# target to build an object file
+LoseScreen.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/LoseScreen.cpp.o
+.PHONY : LoseScreen.cpp.o
+
+LoseScreen.i: LoseScreen.cpp.i
+
+.PHONY : LoseScreen.i
+
+# target to preprocess a source file
+LoseScreen.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/LoseScreen.cpp.i
+.PHONY : LoseScreen.cpp.i
+
+LoseScreen.s: LoseScreen.cpp.s
+
+.PHONY : LoseScreen.s
+
+# target to generate assembly for a file
+LoseScreen.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/LoseScreen.cpp.s
+.PHONY : LoseScreen.cpp.s
+
 MainMenu.o: MainMenu.cpp.o
 
 .PHONY : MainMenu.o
@@ -419,6 +446,33 @@ MovingPlatform.s: MovingPlatform.cpp.s
 MovingPlatform.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/MovingPlatform.cpp.s
 .PHONY : MovingPlatform.cpp.s
+
+OptionsMenu.o: OptionsMenu.cpp.o
+
+.PHONY : OptionsMenu.o
+
+# target to build an object file
+OptionsMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/OptionsMenu.cpp.o
+.PHONY : OptionsMenu.cpp.o
+
+OptionsMenu.i: OptionsMenu.cpp.i
+
+.PHONY : OptionsMenu.i
+
+# target to preprocess a source file
+OptionsMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/OptionsMenu.cpp.i
+.PHONY : OptionsMenu.cpp.i
+
+OptionsMenu.s: OptionsMenu.cpp.s
+
+.PHONY : OptionsMenu.s
+
+# target to generate assembly for a file
+OptionsMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/OptionsMenu.cpp.s
+.PHONY : OptionsMenu.cpp.s
 
 PauseMenu.o: PauseMenu.cpp.o
 
@@ -618,12 +672,18 @@ help:
 	@echo "... LevelSelect.o"
 	@echo "... LevelSelect.i"
 	@echo "... LevelSelect.s"
+	@echo "... LoseScreen.o"
+	@echo "... LoseScreen.i"
+	@echo "... LoseScreen.s"
 	@echo "... MainMenu.o"
 	@echo "... MainMenu.i"
 	@echo "... MainMenu.s"
 	@echo "... MovingPlatform.o"
 	@echo "... MovingPlatform.i"
 	@echo "... MovingPlatform.s"
+	@echo "... OptionsMenu.o"
+	@echo "... OptionsMenu.i"
+	@echo "... OptionsMenu.s"
 	@echo "... PauseMenu.o"
 	@echo "... PauseMenu.i"
 	@echo "... PauseMenu.s"

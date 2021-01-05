@@ -2,6 +2,9 @@
 #define PLAYER_H
 
 #include "GameObject.h"
+#ifdef _DEV
+#include "Debug.h"
+#endif
 
 class Player : public GameObject
 {

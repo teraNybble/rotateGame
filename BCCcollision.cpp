@@ -1,5 +1,9 @@
 #include "BCCcollision.h"
 
+#ifdef _DEV
+#include <math.h>
+#endif
+
 std::vector<BCCcollision> BCCcollision::rectToBC(Game2D::Rect r) const
 {
 	std::vector<BCCcollision> temp;
@@ -50,16 +54,12 @@ bool BCCcollision::isColliding(Game2D::Rect r) const
 
 bool BCCcollision::isColliding(BCCcollision c) const
 {
-	if ((((getCentre(minPos.x, maxPos.x) - getCentre(c.minPos.x, c.maxPos.x)) *
-		(getCentre(minPos.x, maxPos.x) - getCentre(c.minPos.x, c.maxPos.x))) +
-		((getCentre(minPos.y, maxPos.y) - getCentre(c.minPos.y, c.maxPos.y)) *
-		(getCentre(minPos.y, maxPos.y) - getCentre(c.minPos.y, c.maxPos.y)))) <
-			((radius + c.radius) * (radius + c.radius)))
-	{
-		return true;
-	}
+	return (((getCentre(minPos.x, maxPos.x) - getCentre(c.minPos.x, c.maxPos.x)) *
+			 (getCentre(minPos.x, maxPos.x) - getCentre(c.minPos.x, c.maxPos.x))) +
+			((getCentre(minPos.y, maxPos.y) - getCentre(c.minPos.y, c.maxPos.y)) *
+			 (getCentre(minPos.y, maxPos.y) - getCentre(c.minPos.y, c.maxPos.y)))) <
+		   ((radius + c.radius) * (radius + c.radius));
 
-	return false;
 }
 
 void BCCcollision::draw() const

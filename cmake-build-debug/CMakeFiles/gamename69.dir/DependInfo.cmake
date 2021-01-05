@@ -13,8 +13,10 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/CLionProjects/gamename69Git/KeyMap.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/KeyMap.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Level.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Level.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/LevelSelect.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/LevelSelect.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/LoseScreen.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/LoseScreen.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/MainMenu.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/MainMenu.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/MovingPlatform.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/MovingPlatform.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/OptionsMenu.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/OptionsMenu.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/PauseMenu.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/PauseMenu.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Player.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Player.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Projectile.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Projectile.cpp.o"
@@ -23,6 +25,11 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/CLionProjects/gamename69Git/main.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "_DEV=1"
+  )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
