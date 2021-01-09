@@ -87,8 +87,8 @@ void MovingPlatform::moveOnTop(GameObject& object) {
 	if (object.inAir) { return; } //object is in the air not on the platform
 
 	Game2D::Rect moveRect = getRect();
-	moveRect.width += 2;
-	moveRect.height += 2;
+	moveRect.width += 0.5;
+	moveRect.height += 0.5;
 
 	if(moveRect.contains(Game2D::Pos2(object.getPos().x,object.getPos().y)) 
 		|| moveRect.contains(Game2D::Pos2(object.getPos().x, object.getPos().y + object.getRect().height))

@@ -293,13 +293,14 @@ void Level::processMovingPlatforms(float time_us)
 				collisionRect.pos.y -= collisionRect.height / 2.0f;
 				break;
 			case 90:
-				collisionRect.width += collisionRect.width / 2.0f;
+				collisionRect.pos.x += collisionRect.width / 2.0f;
 				break;
 			case 270:
 				//TODO make it so the collision rect sticks out one above 
-collisionRect.width += collisionRect.width / 2.0f;
-break;
+				collisionRect.pos.x -= collisionRect.width / 2.0f;
+				break;
 		}
+
 		if (!(player.inAir) && (checkCollision(player, collisionRect) || checkCollision(collisionRect, player))) {
 			//std::cout << (player.inAir ? "true" : "false") << "\n";
 			it.update(time_us);
@@ -375,6 +376,7 @@ bool Level::processEnemies(float time_us)
 		//std::cout << (it.second ? "true" : "false") << "\n";
 		if (it.second) {
 			it.first.update(time_us);
+			it.first.isInAngerRange(player.getRect());
 			if (it.first.isInRadius(player.getRect())) {
 				switch (it.first.getType())
 				{
@@ -401,6 +403,7 @@ bool Level::processEnemies(float time_us)
 			}
 
 #if _DEV
+			it.first.setAngerColour(Game2D::Colour(1,1,0,0.7));
 			if (it.first.isInRadius(player.getRect())) {
 				//std::cout << "ATTACK!\n";
 				it.first.setRadiusColour(Game2D::Colour(1, 0, 1, 0.7));

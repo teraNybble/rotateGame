@@ -1,7 +1,9 @@
 #include "Enemy.h"
 
 Game2D::Colour Enemy::enemyColour = Game2D::Colour(0.62, 0.165, 0.165);
+//Game2D::Colour Enemy::enemyColour = Game2D::Colour(1, 0, 0);
 Game2D::Colour Enemy::feetColour = Game2D::Colour(0.4, 0.255, 0.157);
+Game2D::Colour Enemy::eyeColour = Game2D::Colour::White;
 
 Enemy::Enemy() : MovingPlatform(Game2D::Rect(0, 0, 5.1, 5.1),Game2D::Pos2(0,0),0,0) 
 {
@@ -20,6 +22,7 @@ Enemy::Enemy(Game2D::Pos2 pos, Game2D::Pos2 endPos, float time, Type type) : Mov
 	//setColour(Game2D::Colour(1, 0, 0));
 	setColour(enemyColour);
 	attackRadius.setPoints(pos, pos, 0);
+	angerRadius.setPoints(pos, pos, 0);
 	originalPath.push_back(std::pair<Game2D::Pos2,float>(pos, time));
 	originalPath.push_back(std::pair<Game2D::Pos2, float>(endPos, time));
 	swooping = false;
@@ -57,6 +60,7 @@ Enemy::Enemy(Game2D::Pos2 pos, Game2D::Pos2 endPos, float time, Type type) : Mov
 void Enemy::setHead(Direction dir) {
 	headDirection = dir;
 	headBox = Game2D::Rect(0, 0, 5.1, 2.6f);
+	eyeSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0.201171875, 0.599609375, 0.1015625, 0.099609375));
 	switch (dir)
 	{
 	case Enemy::NONE:
@@ -72,20 +76,24 @@ void Enemy::setHead(Direction dir) {
 		headBoxOffset = Game2D::Pos2(+1.25f, 0);
 		feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0.1015625, 0.599609375, 0.1015625, 0.099609375));
 		feetSprite.setRot(270);
+		eyeSprite.setRot(270);
 		break;
 	case Enemy::SOUTH:
 		headBoxOffset = Game2D::Pos2(0, -1.25f);
 		feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0.1015625, 0.599609375, 0.1015625, 0.099609375));
 		feetSprite.setRot(180);
+		eyeSprite.setRot(180);
 		break;
 	case Enemy::WEST:
 		headBox = Game2D::Rect(0, 0, 2.5f, 5);
 		headBoxOffset = Game2D::Pos2(-1.25f, 0);
 		feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0.1015625, 0.599609375, 0.1015625, 0.099609375));
 		feetSprite.setRot(90);
+		eyeSprite.setRot(90);
 		break;
 	}
 	feetSprite.setColour(feetColour);
+	eyeSprite.setColour(eyeColour);
 }
 
 void Enemy::update(float time_us) {
@@ -96,7 +104,9 @@ void Enemy::update(float time_us) {
 	}
 	headBox.pos = getPos() + headBoxOffset;
 	attackRadius.setPoints(getPos(), getPos(), attackRadius.getRadius());
+	angerRadius.setPoints(getPos(), getPos(), angerRadius.getRadius());
 	feetSprite.setPos(getPos());
+	eyeSprite.setPos(getPos());
 	switch (type)
 	{
 	case Enemy::STILL:
@@ -188,4 +198,15 @@ bool Enemy::isInRadius(Game2D::Rect r)
 	
 
 	return false;
+}
+
+void Enemy::isInAngerRange(Game2D::Rect r)
+{
+	if(angerRadius.isColliding(r)){
+		//set eye texture coords to angery
+		eyeSprite.setTextureCoords(Game2D::Rect(0.30078125, 0.599609375, 0.1015625, 0.099609375));
+	} else {
+		//set eye texture coords to not angery
+		eyeSprite.setTextureCoords(Game2D::Rect(0.201171875, 0.599609375, 0.1015625, 0.099609375));
+	}
 }

@@ -200,6 +200,7 @@ CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: /home/dan/CLionProjects/Game2D/P
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
+CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../Debug.h
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../GameObject.h
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../MovingPlatform.cpp
 CMakeFiles/gamename69.dir/MovingPlatform.cpp.o: ../MovingPlatform.h

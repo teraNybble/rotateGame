@@ -139,6 +139,10 @@ void Game::loadLevelsFromFile()
 				//temp.setTravelTime(c);
 				temp.setHead((Enemy::Direction)((int)(g)));
 				temp.setAttackRadius(h);
+				if(h>0){
+					std::cout << "Attack radius " << h << " anger radius " << h+10 << "\n";
+					temp.setAngerRadius(h+10);
+				}
 				temp.setAttackSpeed(j);
 				levels.back().addEnemy(temp);
 				//std::cout << "Enemy start" << a << ", " << b << " end " << d << ", " << f << " speed " << c << " type " << i << " head " << g << " radius " << h << "\n";

@@ -4,6 +4,10 @@
 #include "GameObject.h"
 #include <vector>
 
+#ifdef _DEV
+#include "Debug.h"
+#endif
+
 class MovingPlatform : public GameObject
 {
 private:
@@ -39,7 +43,17 @@ public:
 	void moveOnTop(GameObject& object);
 	inline Game2D::Pos2 getPreviousPos() { return previousPos; }
 
-	//inline void draw() { std::cout << elapsedTime_us << "\n"; GameObject::draw(); }
+#ifdef _DEV
+	/*inline void draw() {
+		if(Debug::getDrawHitboxes()) {
+			Game2D::Sprite temp;
+			temp.setRect(Game2D::Rect(getRect().pos.x,(getRect().pos.y + getRect().height / 2.0f),getRect().width,getRect().height));
+			temp.setColour(Game2D::Colour(1, 1, 0, 0.5));
+			temp.draw();
+		}
+		GameObject::draw();
+	}*/
+#endif
 };
 
 #endif // !MOVINGPLATFORM_H
