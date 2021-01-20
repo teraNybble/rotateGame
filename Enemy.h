@@ -32,6 +32,7 @@ public:
 	static Game2D::Colour enemyColour;
 	static Game2D::Colour feetColour;
 	static Game2D::Colour eyeColour;
+	static Game2D::Colour angryEyeColour;
 
 	Enemy();
 	Enemy(Game2D::Pos2 pos, Game2D::Pos2 endPos, float time,Type type);
@@ -65,7 +66,6 @@ public:
 			Game2D::Sprite temp(headBox);
 			temp.setColour(Game2D::Colour(0, 1, 1, 0.5f));
 			temp.draw();
-			std::cout << "Drawing an anger radius of size " << angerRadius.getRadius() << "\n";
 			angerRadius.draw();
 			attackRadius.draw();
 		}

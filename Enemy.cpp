@@ -4,6 +4,7 @@ Game2D::Colour Enemy::enemyColour = Game2D::Colour(0.62, 0.165, 0.165);
 //Game2D::Colour Enemy::enemyColour = Game2D::Colour(1, 0, 0);
 Game2D::Colour Enemy::feetColour = Game2D::Colour(0.4, 0.255, 0.157);
 Game2D::Colour Enemy::eyeColour = Game2D::Colour::White;
+Game2D::Colour Enemy::angryEyeColour = Game2D::Colour(0.745, 0.475, 0.29);
 
 Enemy::Enemy() : MovingPlatform(Game2D::Rect(0, 0, 5.1, 5.1),Game2D::Pos2(0,0),0,0) 
 {
@@ -134,6 +135,12 @@ void Enemy::update(float time_us) {
 
 bool Enemy::isInRadius(Game2D::Rect r)
 {
+	if(attackRadius.isColliding(r)){
+		eyeSprite.setColour(angryEyeColour);
+	} else {
+		eyeSprite.setColour(eyeColour);
+	}
+
 	switch (type)
 	{
 	case Enemy::STILL:
