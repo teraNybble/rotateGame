@@ -10,7 +10,7 @@
 #include "ScreenCoord.h"
 #include "MovingPlatform.h"
 #include "TextureManager.h"
-#include "Enemy.h"
+#include "Boss.h"
 #include "Projectile.h"
 #include <AnimatedSprite.h>
 
@@ -35,6 +35,7 @@ private:
 	std::vector<MovingPlatform> movingPlatforms;
 	std::vector<Game2D::Sprite> sprites;
 	std::vector<std::pair<Enemy, bool>> enemies;
+	//std::vector<std::pair<Boss, bool>> bosses;
 	std::vector<Game2D::Sprite> noRotateZones;
 	std::vector<Projectile> projectiles;
 	std::vector<Game2D::AnimatedSprite> animatedSprites;
@@ -86,6 +87,7 @@ public:
 	inline void addKillPlane(Game2D::Rect plane) { killPlanes.push_back(plane); }
 	inline void addMovingPlatform(MovingPlatform platform) { movingPlatforms.push_back(platform); }
 	inline void addEnemy(Enemy enemy) { enemies.push_back(std::pair<Enemy, bool>(enemy, true)); }
+	inline void addBoss(Enemy enemy) { enemies.push_back(std::pair<Enemy, bool>(enemy, true)); }
 	inline void addNoRotateZone(Game2D::Rect rect) { noRotateZones.push_back(Game2D::Sprite(rect)); noRotateZones.back().setColour(Game2D::Colour(1, 0, 0, 0.25f)); }
 	void addSprite(Game2D::Rect rect, Game2D::Rect sprite, SpriteFlip flip = SpriteFlip::NONE);
 	//end level creation

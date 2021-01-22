@@ -8,6 +8,20 @@ CMakeFiles/gamename69.dir/BCCcollision.cpp.o: ../BCCcollision.cpp
 CMakeFiles/gamename69.dir/BCCcollision.cpp.o: ../BCCcollision.h
 CMakeFiles/gamename69.dir/BCCcollision.cpp.o: ../glew.h
 
+CMakeFiles/gamename69.dir/Boss.cpp.o: /home/dan/CLionProjects/Game2D/Colour.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: /home/dan/CLionProjects/Game2D/DrawableObject.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: /home/dan/CLionProjects/Game2D/Pos2.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: /home/dan/CLionProjects/Game2D/Rect.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../BCCcollision.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../Boss.cpp
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../Boss.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../Debug.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../Enemy.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../GameObject.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../MovingPlatform.h
+CMakeFiles/gamename69.dir/Boss.cpp.o: ../glew.h
+
 CMakeFiles/gamename69.dir/Debug.cpp.o: ../Debug.cpp
 CMakeFiles/gamename69.dir/Debug.cpp.o: ../Debug.h
 
@@ -39,6 +53,7 @@ CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/gamename69.dir/Game.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../BCCcollision.h
+CMakeFiles/gamename69.dir/Game.cpp.o: ../Boss.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../Debug.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../Enemy.h
 CMakeFiles/gamename69.dir/Game.cpp.o: ../Game.cpp
@@ -97,6 +112,7 @@ CMakeFiles/gamename69.dir/Level.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/gamename69.dir/Level.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
 CMakeFiles/gamename69.dir/Level.cpp.o: /home/dan/CLionProjects/Game2D/glew.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../BCCcollision.h
+CMakeFiles/gamename69.dir/Level.cpp.o: ../Boss.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../Debug.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../Enemy.h
 CMakeFiles/gamename69.dir/Level.cpp.o: ../GameObject.h
@@ -321,6 +337,7 @@ CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/ScreenCoord
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/Sprite.h
 CMakeFiles/gamename69.dir/main.cpp.o: /home/dan/CLionProjects/Game2D/freetype.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../BCCcollision.h
+CMakeFiles/gamename69.dir/main.cpp.o: ../Boss.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../Debug.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../Enemy.h
 CMakeFiles/gamename69.dir/main.cpp.o: ../Game.h

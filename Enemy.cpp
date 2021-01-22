@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Game2D::Colour Enemy::enemyColour = Game2D::Colour(0.62, 0.165, 0.165);
+//Game2D::Colour Enemy::enemyColour = Game2D::Colour(0.62, 0.165, 0.165);
 //Game2D::Colour Enemy::enemyColour = Game2D::Colour(1, 0, 0);
 Game2D::Colour Enemy::feetColour = Game2D::Colour(0.4, 0.255, 0.157);
 Game2D::Colour Enemy::eyeColour = Game2D::Colour::White;
@@ -14,12 +14,17 @@ Enemy::Enemy() : MovingPlatform(Game2D::Rect(0, 0, 5.1, 5.1),Game2D::Pos2(0,0),0
 
 Enemy::Enemy(Game2D::Pos2 pos, Game2D::Pos2 endPos, float time, Type type) : MovingPlatform(Game2D::Rect(pos, 5.1, 5.1),endPos,time,0)
 {
+	enemyColour = Game2D::Colour(0.62, 0.165, 0.165);
 	//headBoxOffset = Game2D::Pos2(0, 1.25f);
 	//enemyColour = Game2D::Colour(0.62, 0.165, 0.165);
 	//feetColour = Game2D::Colour(0.4, 0.255, 0.157);
 	headBox = Game2D::Rect(pos+headBoxOffset, 5.1, 2.6f);
 	headDirection = NORTH;
-	setSprite(Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0, 0.599609375, 0.1015625, 0.099609375)));
+	if(type == BOSS){
+		setSprite(Game2D::Sprite(Game2D::Rect(0, 0, 35, 35), Game2D::Rect(0, 0.599609375, 0.1015625, 0.099609375)));
+	} else {
+		setSprite(Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0, 0.599609375, 0.1015625, 0.099609375)));
+	}
 	//setColour(Game2D::Colour(1, 0, 0));
 	setColour(enemyColour);
 	attackRadius.setPoints(pos, pos, 0);

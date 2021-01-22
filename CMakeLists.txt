@@ -14,7 +14,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
     add_definitions(-D_DEV=1)
 endif()
 
-add_executable(gamename69 ${SOURCE_FILES} Game.cpp Game.h MainMenu.cpp MainMenu.h GameObject.cpp GameObject.h Player.cpp Player.h Player.cpp Player.h Level.cpp Level.h KeyMap.cpp KeyMap.h InputManager.cpp InputManager.h Enemy.cpp Enemy.h Projectile.cpp Projectile.h LoseScreen.cpp LoseScreen.h OptionsMenu.cpp OptionsMenu.h Debug.cpp Debug.h)
+add_executable(gamename69 ${SOURCE_FILES} Game.cpp Game.h MainMenu.cpp MainMenu.h GameObject.cpp GameObject.h Player.cpp Player.h Player.cpp Player.h Level.cpp Level.h KeyMap.cpp KeyMap.h InputManager.cpp InputManager.h Enemy.cpp Enemy.h Projectile.cpp Projectile.h LoseScreen.cpp LoseScreen.h OptionsMenu.cpp OptionsMenu.h Debug.cpp Debug.h Boss.cpp Boss.h)
 
 INCLUDE(FindPkgConfig)
 

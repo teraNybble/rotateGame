@@ -28,11 +28,13 @@ private:
 	Type type;
 	Game2D::Sprite feetSprite;
 	Game2D::Sprite eyeSprite;
-public:
-	static Game2D::Colour enemyColour;
+//public:
+protected:
+	Game2D::Colour enemyColour;
 	static Game2D::Colour feetColour;
 	static Game2D::Colour eyeColour;
 	static Game2D::Colour angryEyeColour;
+public:
 
 	Enemy();
 	Enemy(Game2D::Pos2 pos, Game2D::Pos2 endPos, float time,Type type);

@@ -133,18 +133,19 @@ void Game::loadLevelsFromFile()
 			case '4':
 			{
 				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i, &j);
-				//levels.back().addEnemy(Game2D::Pos2(a, b)); 
-				Enemy temp(Game2D::Pos2(a, b), Game2D::Pos2(d, f),c, (Enemy::Type)((int)i));
-				//temp.setEndPos(Game2D::Pos2(d, f));
-				//temp.setTravelTime(c);
-				temp.setHead((Enemy::Direction)((int)(g)));
-				temp.setAttackRadius(h);
-				if(h>0){
-					temp.setAngerRadius(h+10);
+				if(((Enemy::Type)(int)i) == Enemy::BOSS){
+					Boss temp(Game2D::Pos2(a,b));
+					levels.back().addEnemy(temp);
+				} else {
+					Enemy temp(Game2D::Pos2(a, b), Game2D::Pos2(d, f), c, (Enemy::Type) ((int) i));
+					temp.setHead((Enemy::Direction) ((int) (g)));
+					temp.setAttackRadius(h);
+					if (h > 0) {
+						temp.setAngerRadius(h + 10);
+					}
+					temp.setAttackSpeed(j);
+					levels.back().addEnemy(temp);
 				}
-				temp.setAttackSpeed(j);
-				levels.back().addEnemy(temp);
-				//std::cout << "Enemy start" << a << ", " << b << " end " << d << ", " << f << " speed " << c << " type " << i << " head " << g << " radius " << h << "\n";
 				break;
 			}
 			case '5':

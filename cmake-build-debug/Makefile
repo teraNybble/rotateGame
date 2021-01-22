@@ -150,6 +150,33 @@ BCCcollision.cpp.s:
 	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/BCCcollision.cpp.s
 .PHONY : BCCcollision.cpp.s
 
+Boss.o: Boss.cpp.o
+
+.PHONY : Boss.o
+
+# target to build an object file
+Boss.cpp.o:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Boss.cpp.o
+.PHONY : Boss.cpp.o
+
+Boss.i: Boss.cpp.i
+
+.PHONY : Boss.i
+
+# target to preprocess a source file
+Boss.cpp.i:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Boss.cpp.i
+.PHONY : Boss.cpp.i
+
+Boss.s: Boss.cpp.s
+
+.PHONY : Boss.s
+
+# target to generate assembly for a file
+Boss.cpp.s:
+	$(MAKE) -f CMakeFiles/gamename69.dir/build.make CMakeFiles/gamename69.dir/Boss.cpp.s
+.PHONY : Boss.cpp.s
+
 Debug.o: Debug.cpp.o
 
 .PHONY : Debug.o
@@ -648,6 +675,9 @@ help:
 	@echo "... BCCcollision.o"
 	@echo "... BCCcollision.i"
 	@echo "... BCCcollision.s"
+	@echo "... Boss.o"
+	@echo "... Boss.i"
+	@echo "... Boss.s"
 	@echo "... Debug.o"
 	@echo "... Debug.i"
 	@echo "... Debug.s"

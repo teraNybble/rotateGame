@@ -96,6 +96,12 @@
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/BCCcollision.h">
 			<Option target="gamename69"/>
 		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Boss.cpp">
+			<Option target="gamename69"/>
+		</Unit>
+		<Unit filename="/home/dan/CLionProjects/gamename69Git/Boss.h">
+			<Option target="gamename69"/>
+		</Unit>
 		<Unit filename="/home/dan/CLionProjects/gamename69Git/Debug.cpp">
 			<Option target="gamename69"/>
 		</Unit>

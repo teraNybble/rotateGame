@@ -8,6 +8,20 @@ CMakeFiles/gamename69.dir/BCCcollision.cpp.o
  /home/dan/CLionProjects/gamename69Git/BCCcollision.cpp
  /home/dan/CLionProjects/gamename69Git/BCCcollision.h
  /home/dan/CLionProjects/gamename69Git/glew.h
+CMakeFiles/gamename69.dir/Boss.cpp.o
+ /home/dan/CLionProjects/Game2D/Colour.h
+ /home/dan/CLionProjects/Game2D/DrawableObject.h
+ /home/dan/CLionProjects/Game2D/Pos2.h
+ /home/dan/CLionProjects/Game2D/Rect.h
+ /home/dan/CLionProjects/Game2D/Sprite.h
+ /home/dan/CLionProjects/gamename69Git/BCCcollision.h
+ /home/dan/CLionProjects/gamename69Git/Boss.cpp
+ /home/dan/CLionProjects/gamename69Git/Boss.h
+ /home/dan/CLionProjects/gamename69Git/Debug.h
+ /home/dan/CLionProjects/gamename69Git/Enemy.h
+ /home/dan/CLionProjects/gamename69Git/GameObject.h
+ /home/dan/CLionProjects/gamename69Git/MovingPlatform.h
+ /home/dan/CLionProjects/gamename69Git/glew.h
 CMakeFiles/gamename69.dir/Debug.cpp.o
  /home/dan/CLionProjects/gamename69Git/Debug.cpp
  /home/dan/CLionProjects/gamename69Git/Debug.h
@@ -40,6 +54,7 @@ CMakeFiles/gamename69.dir/Game.cpp.o
  /home/dan/CLionProjects/Game2D/Sprite.h
  /home/dan/CLionProjects/Game2D/freetype.h
  /home/dan/CLionProjects/gamename69Git/BCCcollision.h
+ /home/dan/CLionProjects/gamename69Git/Boss.h
  /home/dan/CLionProjects/gamename69Git/Debug.h
  /home/dan/CLionProjects/gamename69Git/Enemy.h
  /home/dan/CLionProjects/gamename69Git/Game.cpp
@@ -98,6 +113,7 @@ CMakeFiles/gamename69.dir/Level.cpp.o
  /home/dan/CLionProjects/Game2D/freetype.h
  /home/dan/CLionProjects/Game2D/glew.h
  /home/dan/CLionProjects/gamename69Git/BCCcollision.h
+ /home/dan/CLionProjects/gamename69Git/Boss.h
  /home/dan/CLionProjects/gamename69Git/Debug.h
  /home/dan/CLionProjects/gamename69Git/Enemy.h
  /home/dan/CLionProjects/gamename69Git/GameObject.h
@@ -322,6 +338,7 @@ CMakeFiles/gamename69.dir/main.cpp.o
  /home/dan/CLionProjects/Game2D/Sprite.h
  /home/dan/CLionProjects/Game2D/freetype.h
  /home/dan/CLionProjects/gamename69Git/BCCcollision.h
+ /home/dan/CLionProjects/gamename69Git/Boss.h
  /home/dan/CLionProjects/gamename69Git/Debug.h
  /home/dan/CLionProjects/gamename69Git/Enemy.h
  /home/dan/CLionProjects/gamename69Git/Game.h

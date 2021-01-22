@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dan/CLionProjects/gamename69Git/BCCcollision.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/BCCcollision.cpp.o"
+  "/home/dan/CLionProjects/gamename69Git/Boss.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Boss.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Debug.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Debug.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Enemy.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Enemy.cpp.o"
   "/home/dan/CLionProjects/gamename69Git/Game.cpp" "/home/dan/CLionProjects/gamename69Git/cmake-build-debug/CMakeFiles/gamename69.dir/Game.cpp.o"

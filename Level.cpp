@@ -374,56 +374,58 @@ bool Level::processEnemies(float time_us)
 	for (auto& it : enemies) {
 		//if the enemy is alive update it
 		//std::cout << (it.second ? "true" : "false") << "\n";
-		if (it.second) {
-			it.first.update(time_us);
-			it.first.isInAngerRange(player.getRect());
-			if (it.first.isInRadius(player.getRect())) {
-				switch (it.first.getType())
-				{
-				case Enemy::ROTATING:
-					//do a rotate thing
-					rotating = true;
-					previousPlayerRot = player.getRot();
-					levelRotation += 90;
-					playerRot -= 90;
-					noRotates++;
-					player.setCanRotate(false);
-					player.lockRotate();
-					break;
-				case Enemy::SHOOTING:
-				{
-					//add projectile
-					Projectile tempProjectile(it.first.getPos());
-					tempProjectile.setDirection(player.getPos() - it.first.getPos());
-					projectiles.push_back(tempProjectile);
+		if(it.first.getType() == Enemy::BOSS){
+			//cast to boss
+		} else {
+			if (it.second) {
+				it.first.update(time_us);
+				it.first.isInAngerRange(player.getRect());
+				if (it.first.isInRadius(player.getRect())) {
+					switch (it.first.getType()) {
+						case Enemy::ROTATING:
+							//do a rotate thing
+							rotating = true;
+							previousPlayerRot = player.getRot();
+							levelRotation += 90;
+							playerRot -= 90;
+							noRotates++;
+							player.setCanRotate(false);
+							player.lockRotate();
+							break;
+						case Enemy::SHOOTING: {
+							//add projectile
+							Projectile tempProjectile(it.first.getPos());
+							tempProjectile.setDirection(player.getPos() - it.first.getPos());
+							projectiles.push_back(tempProjectile);
+						}
+						default:
+							break;
+					}
 				}
-				default:
-					break;
-				}
-			}
+
 
 #if _DEV
-			it.first.setAngerColour(Game2D::Colour(1,1,0,0.7));
-			if (it.first.isInRadius(player.getRect())) {
-				//std::cout << "ATTACK!\n";
-				it.first.setRadiusColour(Game2D::Colour(1, 0, 1, 0.7));
-			}
-			else { it.first.setRadiusColour(Game2D::Colour(0, 1, 1, 0.7)); }
+				it.first.setAngerColour(Game2D::Colour(1, 1, 0, 0.7));
+				if (it.first.isInRadius(player.getRect())) {
+					//std::cout << "ATTACK!\n";
+					it.first.setRadiusColour(Game2D::Colour(1, 0, 1, 0.7));
+				} else { it.first.setRadiusColour(Game2D::Colour(0, 1, 1, 0.7)); }
 #endif
-			//std::cout << "checking\n";
-			//check to make sure the head is on the top relative to the player
-			if (enemyAligned(it.first.getHead()) && (checkCollision(player.getFootbox(), it.first.getHeadBox()) || checkCollision(it.first.getHeadBox(), player.getFootbox()))) {
-				//std::cout << "Dead\n";
-				it.second = false;//it has been killed
-				player.velocityY = 3 * moveSpeedY / 4.0f;
-				player.unlockRotate();
-				player.setCanRotate(true);
-				//add death animation to animated sprite
-				addDeathAnim(it.first.getPos(), it.first.getColour());
-				//std::cout << "Adding death anims\n";
-			}
-			else if (checkCollision(it.first, player) || checkCollision(player, it.first)) {
-				return true;
+				//std::cout << "checking\n";
+				//check to make sure the head is on the top relative to the player
+				if (enemyAligned(it.first.getHead()) && (checkCollision(player.getFootbox(), it.first.getHeadBox()) ||
+														 checkCollision(it.first.getHeadBox(), player.getFootbox()))) {
+					//std::cout << "Dead\n";
+					it.second = false;//it has been killed
+					player.velocityY = 3 * moveSpeedY / 4.0f;
+					player.unlockRotate();
+					player.setCanRotate(true);
+					//add death animation to animated sprite
+					addDeathAnim(it.first.getPos(), it.first.getColour());
+					//std::cout << "Adding death anims\n";
+				} else if (checkCollision(it.first, player) || checkCollision(player, it.first)) {
+					return true;
+				}
 			}
 		}
 	}
@@ -728,6 +730,11 @@ void Level::draw()
 	Game2D::ScreenCoord::alignLeft();
 	freetype::print(Game2D::Font::getFont(3), 2.5, 45, "Rotates:    %d", noRotates);
 	freetype::print(Game2D::Font::getFont(3), 2.5, 40, "Time:    %2.2f", elapsedLevelTime);
+#if _DEV
+	freetype::print(Game2D::Font::getFont(3), 2.5, 35, "PlayerXY:    %2.2f,%2.2f", player.getPos().x,player.getPos().y);
+	freetype::print(Game2D::Font::getFont(3), 2.5, 30, "LevelPanXY:    %2.2f,%2.2f", panX,panY);
+	freetype::print(Game2D::Font::getFont(3), 2.5, 25, "PlayerOnScreenXY:    %2.2f,%2.2f", player.getPos().x+panX,player.getPos().y+panY);
+#endif
 	//std::cout << Game2D::ScreenCoord::getAspectRatio() << "\n";
 	//std::cout << (5 * (Game2D::ScreenCoord::getAspectRatio() / (1.77778f))) << "\n";
 	Game2D::ScreenCoord::alignCentre();

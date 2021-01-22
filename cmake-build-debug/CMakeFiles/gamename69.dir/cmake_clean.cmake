@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/gamename69.dir/BCCcollision.cpp.o"
+  "CMakeFiles/gamename69.dir/Boss.cpp.o"
   "CMakeFiles/gamename69.dir/Debug.cpp.o"
   "CMakeFiles/gamename69.dir/Enemy.cpp.o"
   "CMakeFiles/gamename69.dir/Game.cpp.o"
