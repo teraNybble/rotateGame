@@ -8,7 +8,7 @@ Projectile::Projectile() : GameObject(Game2D::Rect(0, 0, 1, 1))
 Projectile::Projectile(Game2D::Pos2 pos) : GameObject(Game2D::Rect(pos,1,1))
 {
 	speed = 100;
-	setSprite(Game2D::Sprite(Game2D::Rect(pos,1,1), Game2D::Rect(0.934f, 0.56f, 0.035f, 0.035f)));
+	setSprite(Game2D::Sprite(Game2D::Rect(pos,1,1), Game2D::Rect(0, 0.5, 0.19921875, 0.19921875)));
 	setColour(Game2D::Colour::White);
 	//setTexture(Rect(0.934f, 0.035f, 0.56f, 0.035f));
 }
