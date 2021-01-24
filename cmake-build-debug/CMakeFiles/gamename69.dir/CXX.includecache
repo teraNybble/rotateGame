@@ -40,11 +40,15 @@ glew.h
 Colour.h
 -
 
-/home/dan/CLionProjects/gamename69Git/Debug.h
+/home/dan/CLionProjects/gamename69Git/Boss.cpp
+Boss.h
+/home/dan/CLionProjects/gamename69Git/Boss.h
 
-/home/dan/CLionProjects/gamename69Git/Enemy.cpp
+/home/dan/CLionProjects/gamename69Git/Boss.h
 Enemy.h
 /home/dan/CLionProjects/gamename69Git/Enemy.h
+
+/home/dan/CLionProjects/gamename69Git/Debug.h
 
 /home/dan/CLionProjects/gamename69Git/Enemy.h
 MovingPlatform.h

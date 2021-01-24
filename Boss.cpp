@@ -8,6 +8,7 @@ Boss::Boss()
 Boss::Boss(Game2D::Pos2 pos) : Enemy(pos,pos,0,Enemy::BOSS)
 {
 	setRect(Game2D::Rect(pos,35,35));
+	setHead(NORTH);
 	//enemyColour = Game2D::Colour::Magenta;
 	//setColour(enemyColour);
 	//set

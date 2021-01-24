@@ -21,13 +21,13 @@ Enemy::Enemy(Game2D::Pos2 pos, Game2D::Pos2 endPos, float time, Type type) : Mov
 	headBox = Game2D::Rect(pos+headBoxOffset, 5.1, 2.6f);
 	headDirection = NORTH;
 	//setSprite(Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0, 0.599609375, 0.1015625, 0.099609375)));
-	setSprite(Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0, 0.5, 0.19921875, 0.19921875)));
+	setSprite(Game2D::Sprite(getRect(), Game2D::Rect(0, 0.5, 0.19921875, 0.19921875)));
 	//0.203187251
-	if(type == BOSS){
+	/*if(type == BOSS){
 		setSprite(Game2D::Sprite(Game2D::Rect(0, 0, 35, 35), Game2D::Rect(0, 0.599609375, 0.1015625, 0.099609375)));
 	} else {
 		setSprite(Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0, 0.599609375, 0.1015625, 0.099609375)));
-	}
+	}*/
 	//setColour(Game2D::Colour(1, 0, 0));
 	setColour(enemyColour);
 	attackRadius.setPoints(pos, pos, 0);
@@ -70,8 +70,9 @@ void Enemy::setHead(Direction dir) {
 	headDirection = dir;
 	headBox = Game2D::Rect(0, 0, 5.1, 2.6f);
 	//eyeSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0.201171875, 0.599609375, 0.1015625, 0.099609375));
-	eyeSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), Game2D::Rect(0.3984375, 0.5, 0.19921875, 0.19921875));
-	Game2D::Rect feetSpriteRect(0.19921875, 0.5, 0.19921875, 0.19921875);
+	eyeSprite = Game2D::Sprite(getRect(), Game2D::Rect(0.3984375, 0.5, 0.19921875, 0.19921875));
+	feetSprite = Game2D::Sprite(getRect(),Game2D::Rect(0.19921875, 0.5, 0.19921875, 0.19921875));
+	//Game2D::Rect feetSpriteRect(0.19921875, 0.5, 0.19921875, 0.19921875);
 	switch (dir)
 	{
 	case Enemy::NONE:
@@ -80,25 +81,25 @@ void Enemy::setHead(Direction dir) {
 		break;
 	case Enemy::NORTH:
 		headBoxOffset = Game2D::Pos2(0, +1.25f);
-		feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
+		//feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
 		break;
 	case Enemy::EAST:
 		headBox = Game2D::Rect(0, 0, 2.5f, 5);
 		headBoxOffset = Game2D::Pos2(+1.25f, 0);
-		feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
+		//feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
 		feetSprite.setRot(270);
 		eyeSprite.setRot(270);
 		break;
 	case Enemy::SOUTH:
 		headBoxOffset = Game2D::Pos2(0, -1.25f);
-		feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
+		//feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
 		feetSprite.setRot(180);
 		eyeSprite.setRot(180);
 		break;
 	case Enemy::WEST:
 		headBox = Game2D::Rect(0, 0, 2.5f, 5);
 		headBoxOffset = Game2D::Pos2(-1.25f, 0);
-		feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
+		//feetSprite = Game2D::Sprite(Game2D::Rect(0, 0, 5.1, 5.1), feetSpriteRect);
 		feetSprite.setRot(90);
 		eyeSprite.setRot(90);
 		break;
