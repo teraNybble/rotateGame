@@ -220,7 +220,11 @@ bool Enemy::isInRadius(Game2D::Rect r)
 
 void Enemy::isInAngerRange(Game2D::Rect r)
 {
-	if(angerRadius.isColliding(r)){
+	if (!canRotate && (recharge/attackSpeed < 0.75f)) {
+		//std::cout << recharge / attackSpeed << "\n";
+	//if(recharge > (0.75 * attackSpeed)) {
+		eyeSprite.setTextureCoords(Game2D::Rect(0.80078125, 0.5, 0.19921875, 0.19921875));
+	} else if(angerRadius.isColliding(r)){
 		//set eye texture coords to angery
 		eyeSprite.setTextureCoords(Game2D::Rect(0.59765625, 0.5, 0.19921875, 0.19921875));
 	} else {

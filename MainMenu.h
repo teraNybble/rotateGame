@@ -7,9 +7,9 @@
 #include <ScreenCoord.h>
 
 #ifdef _DEV
-#define VerNo "0.0.5(Dev)"
+#define VerNo "0.0.6(Dev)"
 #else
-#define VerNo "0.0.5"
+#define VerNo "0.0.6"
 #endif // _DEV
 
 
