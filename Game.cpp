@@ -24,12 +24,7 @@ LevelSelect Game::levelSelect;
 
 Game::Game()
 {
-	//std::cout << "Game constructor\n";
-	//screenWidth = 1280;
-	//screenHeight = 720;
 	readDisplayConfig();
-	//screenWidth = 1920;
-	//screenHeight = 1080;
 	mousePos = Game2D::Pos2(screenWidth,screenHeight);
 	currentState = Game::MAIN_MENU;
 
@@ -52,7 +47,6 @@ void Game::loadLevelsFromFile()
 		exit(-1);
 	}
 	
-	//for (auto it : std::filesystem::directory_iterator("levels")) {
 	for(auto it : dirs)	{
 		levels.push_back(Level());
 
@@ -90,8 +84,6 @@ void Game::loadLevelsFromFile()
 			exitRect.height = 6;
 		}
 
-		//std::cout << playerStartPos << "\t" << exitRect << "\n";
-
 		levels.back().setExitRext(exitRect);
 
 		/*
@@ -105,7 +97,6 @@ void Game::loadLevelsFromFile()
 		*5 - no rotate zone
 		*/
 		while (std::getline(levelFile, line)) {
-			//std::cout << "Reading new line\n";
 			float a, b, c, d, e, f, g, h, i, j;
 			switch (line[0])
 			{
@@ -121,8 +112,6 @@ void Game::loadLevelsFromFile()
 			{
 				std::sscanf(line.c_str(), "%f %f %f %f %f %f %f %f %f", &e, &a, &b, &c, &d, &f, &g, &h, &i);
 				MovingPlatform platform(Game2D::Rect(a, b, c, d), Game2D::Pos2(g, h),f,i);
-				//platform.setEndPos(Game2D::Pos2(g, h));
-				//platform.setTravelTime(f);
 				levels.back().addMovingPlatform(platform);
 				break;
 			}
@@ -155,8 +144,6 @@ void Game::loadLevelsFromFile()
 #if _DEV
 			case '!':
 				//comment I want printed out (use # for a comment in the file
-				//std::sscanf()
-				//print out the line sans the '!'
 				std::cout << line.substr(1, line.size() - 1) << "\n";
 #endif // _DEV
 			}
@@ -176,15 +163,12 @@ void Game::readDisplayConfig()
 		screenWidth = 1280;
 		screenHeight = 720;
 		windowHintFlags = 0;
-
-		//glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 	}
 	file >> screenWidth;
 	file >> screenHeight;
 	int temp;
 	file >> temp;
 	windowHintFlags |= (temp ? 1 << 0 : 0 << 0);
-	//glfwWindowHint(GLFW_MAXIMIZED, temp);
 
 	file.close();
 }
@@ -210,23 +194,6 @@ void Game::display()
 
 	glClearColor(0.118f, 0.118f, 0.118f,1.0f);
 	glLoadIdentity();
-
-	/*
-	glMatrixMode(GL_COLOR);
-	glLoadIdentity();
-
-	std::vector<GLfloat> colourModMat(4 * 4, 0);
-	colourModMat[1] = 1;
-	colourModMat[4] = 1;
-	colourModMat[10] = 1;
-	colourModMat[15] = 1;
-	
-	glMultMatrixf(&colourModMat[0]);
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();*/
-
-
 
 	switch (currentState)
 	{
@@ -278,9 +245,6 @@ void Game::init()
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
-	//mouseButtons.insert(std::pair<int,Game2D::KeyState>(GLFW_MOUSE_BUTTON_LEFT,Game2D::KeyState()));
-	//previousMouseStates.insert(std::pair<int,Game2D::KeyState::State>(GLFW_MOUSE_BUTTON_LEFT,Game2D::KeyState::UP));
-
 	testButton = Game2D::Button(Game2D::Rect(25,25,20,10));
 	Game2D::Sprite red = Game2D::Sprite(Game2D::Rect(25,25,20,10));
 	red.setColour(Game2D::Colour::Red);
@@ -309,7 +273,6 @@ void Game::init()
 	TextureManager::loadTextures("textures/LevelSprites.png", 3);
 	//!textures
 
-	//paused = false;
 	mainMenu.init();
 	optionsMenu.init();
 	pauseMenu.init();
@@ -338,7 +301,6 @@ void Game::init()
 	inputManager.addAction(-99, GLFW_KEY_0);
 	inputManager.addAction(-101, GLFW_KEY_F1);
 #endif // _DEV
-
 	//!Key actions
 
 	levelSelect.init(levels.size());
@@ -357,7 +319,6 @@ void Game::resize_callback(GLFWwindow* window, int width, int height)
 
 void Game::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	//std::cout << key << " " << action << "\n";
 	try
 	{
 		if (action == GLFW_PRESS)
@@ -369,14 +330,6 @@ void Game::key_callback(GLFWwindow* window, int key, int scancode, int action, i
 
 void Game::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
-	//std::cout << "mouse button callback\n";
-	//std::cout << button << " " << action << "\n";
-	/*
-	try
-	{
-		if(action == GLFW_PRESS) mouseButtons.update(button,true);
-		else if(action == GLFW_RELEASE) mouseButtons.update(button,false);
-	}catch(...) {}*/
 	try
 	{
 		if (action == GLFW_PRESS) {
@@ -385,9 +338,6 @@ void Game::mouse_button_callback(GLFWwindow* window, int button, int action, int
 		} else if (action == GLFW_RELEASE) {
 			mouseButtons.updateKeys(button, false);
 		}
-		//if(action == GLFW_PRESS) mouseButtons.at(button).update(true);
-		//else if(action == GLFW_RELEASE) mouseButtons.at(button).update(false);
-		//std::cout << mouseButtons.at(button).getState() << "\n";
 	}catch(...) {}
 }
 
@@ -400,15 +350,6 @@ void Game::cursor_position_callback(GLFWwindow* window, double xpos, double ypos
 
 void Game::processKeys()
 {
-	/*
-	for(auto it = previousMouseStates.begin(); it != previousMouseStates.end();it++)
-	{
-		if (it->second == Game2D::KeyState::RELEASED)
-			mouseButtons.at(it->first).update(false);
-
-		it->second = mouseButtons.at(it->first).getState();
-	}
-	*/
 }
 
 void Game::processMouse()
@@ -417,14 +358,7 @@ void Game::processMouse()
 
 void Game::update()
 {
-	//endTime = Time::now();
-	//testButton.update(mousePos,mouseButtons.at(GLFW_MOUSE_BUTTON_LEFT).getState(),1);
-	//auto temp = std::chrono::duration<Microseconds>(endTime - startTime);
-	//elapsedTime = std::chrono::duration_cast<Microseconds>(endTime - startTime).count() / 1000000.0f;
-//	std::cout << "elapsedTime:\t" << elapsedTime << "\n";			
 	inputManager.update();
-	//std::cout << "mouse button manager update\n";
-	//mouseButtons.update();
 #ifdef _DEV
 	if (inputManager.getAction(-10) == InputManager::DOWN) {
 		if (inputManager.getAction(-11) == InputManager::DOWN) {
@@ -461,10 +395,8 @@ void Game::update()
 		case PLAYING:
 
 			if (inputManager.getAction(Level::PAUSE) == InputManager::WAS_DOWN) {
-				//paused = true;;
 				currentState = PAUSED;
 			}
-			//testLevel.update(inputManager);
 			switch (levels.at(currentLevel).update(inputManager)) {
 			case 1:
 				if (++currentLevel == levels.size()) {
@@ -472,21 +404,17 @@ void Game::update()
 					currentLevel = 0;
 					break;
 				}
-				//
-				//inputManager.setAllFalse();
 				levels.at(currentLevel).setActionLockOut(inputManager);
 				levels.at(currentLevel).init();
 				break;
 			case 2:
 				currentState = LOSS;
-				//YOU DIED
 			default:
 				break;
 			}
 			break;
 		case PAUSED:
 			if (inputManager.getAction(Level::PAUSE) == InputManager::WAS_DOWN) {
-				//paused = true;;
 				currentState = PLAYING;
 				levels.at(currentLevel).unPause();
 			} else {
@@ -550,16 +478,12 @@ void Game::update()
 
 bool Game::createWindow()
 {
-	//readDisplayConfig();
-
 	if (!glfwInit())
 	{
 		std::cerr << "failed to init glfw with error: 0x" << std::hex << std::setw(8) << std::setfill('0') << glfwGetError(NULL) << "\n";
 		return false;
 	}
 
-	//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-	//glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
 	glfwWindowHint(GLFW_MAXIMIZED, windowHintFlags & (1 << 0));
 
 	/* Create a windowed mode window and its OpenGL context */
@@ -584,23 +508,17 @@ bool Game::createWindow()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	//set screen coords
-	//glOrtho(0, 100.0f * (screenWidth / (float)screenHeight), 0, 100, 0, 100);
 	float coordWidth = (100.0f * (screenWidth / (float)screenHeight))/2.0f;
 	glOrtho(-coordWidth, +coordWidth, -50, 50, -50, 50);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	//TODO add in input class
-	//input.setWindow(window);
 	return true;
 }
 
 void Game::resize(float width, float height)
 {
-	//int maximized = glfwGetWindowAttrib(window, GLFW_MAXIMIZED);
-	//std::cout << maximized << "\n";
 	glfwSetWindowSize(window, width, height);
 	glViewport(0, 0, width, height);
 	Game2D::ScreenCoord::init(width,height);
@@ -614,10 +532,8 @@ void Game::processMainMenu()
 	switch (mainMenu.getResult())
 	{
 		case 1:
-			//testLevel.init();
 			levels.at(currentLevel).init();
 			currentState = LEVEL_SELECT;
-			//currentState = PLAYING;
 			break;
 		case 2:
 			currentState = OPTIONS_MENU;
@@ -649,11 +565,6 @@ void Game::processPauseMenu()
 	switch (pauseMenu.getResult())
 	{
 	case 1:
-		//testLevel.init();
-		//levels.at(currentLevel).init();
-		//currentState = LEVEL_SELECT;
-		//currentState = PLAYING;
-		//rrstd::cout << "Unpause\n";
 		currentState = PLAYING;
 		levels.at(currentLevel).unPause();
 		break;
@@ -695,8 +606,6 @@ int Game::mainLoop()
 	writeDisplayConfig();
 
 	glfwTerminate();
-
-//	Game2D::Font::clear();
 
 	return 0;
 }

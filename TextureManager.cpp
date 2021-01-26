@@ -139,7 +139,6 @@ bool TextureManager::loadPNGFromFile(const char* name, Game2D::Rect& rect, bool&
 
 GLuint TextureManager::loadPNG(const char* path,int filter)
 {
-	//nv::Image img;
 	GLuint texID;
 	GLubyte* image = NULL;
 	Game2D::Rect imageRect;
@@ -147,8 +146,6 @@ GLuint TextureManager::loadPNG(const char* path,int filter)
 
 	if (loadPNGFromFile(path, imageRect, hasAlpha, &image))
 	{
-		//std::cout << imageRect << "\n";
-		//std::cout << (hasAlpha ? "image has alpha" : "image doesn't have alpha") << "\n";
 		glGenTextures(1, &texID);
 		glBindTexture(GL_TEXTURE_2D, texID);
 		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);

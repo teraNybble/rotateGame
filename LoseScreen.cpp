@@ -20,7 +20,7 @@ void LoseScreen::init()
 		playSprites.addFrame(tempSprite);
 	}
 	playSprites.setFrameTime(0);
-	//what fram of the animation eath state starts at
+	//what frame of the animation each state starts at
 	int temp[5] = { 0,1,2,3,4 };
 	play.addAnims(playSprites, temp);
 
@@ -76,8 +76,6 @@ void LoseScreen::draw()
 	play.draw();
 	menu.draw();
 	quit.draw();
-	//Game2D::ScreenCoord::alignRight();
 	int length = freetype::getLength(Game2D::Font::getFont(6), "You Died");
 	freetype::print(Game2D::Font::getFont(6), 0-(length/2.0f), 15, "You Died");
-	//Game2D::ScreenCoord::alignCentre();
 }

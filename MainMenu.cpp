@@ -6,9 +6,6 @@ void MainMenu::init()
 	options	= Game2D::Button(Game2D::Rect(0,-20,20,10));
 	quit	= Game2D::Button(Game2D::Rect(0,-30,20,10));
 
-	//play.setText("play");
-	//play.setFontSize(20);
-
 	Game2D::Rect texRect(Game2D::Rect(0, 0, 0.1455f, 0.0762f));
 
 	Game2D::AnimatedSprite playSprites(Game2D::Rect(0, -10, 20, 10));
@@ -23,7 +20,7 @@ void MainMenu::init()
 		playSprites.addFrame(tempSprite);
 	}
 	playSprites.setFrameTime(0);
-	//what fram of the animation eath state starts at
+	//what frame of the animation each state starts at
 	int temp[5] = { 0,1,2,3,4 };
 	play.addAnims(playSprites, temp);
 
@@ -80,9 +77,6 @@ void MainMenu::draw()
 	options.draw();
 	quit.draw();
 	Game2D::ScreenCoord::alignRight();
-	//std::cout << freetype::getHeight(Game2D::Font::getFont(3)) << "\t";
-	//std::cout << freetype::getHeight(Game2D::Font::getFont(20)) << "\t";
-	//std::cout << freetype::getHeight(Game2D::Font::getFont(40)) << "\n";
 	int length = freetype::getLength(Game2D::Font::getFont(3), VerNo);
 	freetype::print(Game2D::Font::getFont(3), -5-length, -47, VerNo);
 	Game2D::ScreenCoord::alignCentre();

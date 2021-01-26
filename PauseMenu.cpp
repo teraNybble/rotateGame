@@ -21,7 +21,7 @@ void PauseMenu::init()
 		backSprites.addFrame(tempSprite);
 	}
 	backSprites.setFrameTime(0);
-	//what fram of the animation eath state starts at
+	//what frame of the animation each state starts at
 	int temp[5] = { 0,1,2,3,4 };
 	back.addAnims(backSprites, temp);
 
@@ -77,5 +77,4 @@ void PauseMenu::draw()
 	back.draw();
 	menu.draw();
 	quit.draw();
-	//	freetype::print(Game2D::Font::getFont(20), 30, 30, "Test text");
 }

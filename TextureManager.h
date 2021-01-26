@@ -13,7 +13,6 @@
 class TextureManager
 {
 private:
-	//should be std::map
 	static std::map<int, GLuint> textures;
 	static bool loadPNGFromFile(const char* name, Game2D::Rect& rect, bool& outHasAlpha, GLubyte** outData);
 	static GLuint loadPNG(const char* path,int filter);

@@ -11,10 +11,6 @@ std::vector<BCCcollision> BCCcollision::rectToBC(Game2D::Rect r) const
 	temp.push_back(BCCcollision(Game2D::Pos2(r.pos.x - (r.width / 2.0f), r.pos.y + (r.height / 2.0f)), Game2D::Pos2(r.pos.x - (r.width / 2.0f), r.pos.y + (r.height / 2.0f)), 0));
 	temp.push_back(BCCcollision(Game2D::Pos2(r.pos.x + (r.width / 2.0f), r.pos.y - (r.height / 2.0f)), Game2D::Pos2(r.pos.x + (r.width / 2.0f), r.pos.y - (r.height / 2.0f)), 0));
 	temp.push_back(BCCcollision(Game2D::Pos2(r.pos.x + (r.width / 2.0f), r.pos.y + (r.height / 2.0f)), Game2D::Pos2(r.pos.x + (r.width / 2.0f), r.pos.y + (r.height / 2.0f)), 0));
-	//temp.push_back(BCCcollision(r.pos.x, r.pos.x, r.pos.y, r.pos.y, 0));
-	//temp.push_back(BCCcollision(r.pos.x, r.pos.x, r.pos.y + r.height, r.pos.y + r.height, 0));
-	//temp.push_back(BCCcollision(r.pos.x, c.getMaxX(), c.getMaxY(), c.getMaxY(), 0));
-	//temp.push_back(BCCcollision(r.pos.x, c.getMaxX(), c.getMinY(), c.getMinY(), 0));
 
 	return temp;
 }
@@ -42,7 +38,6 @@ void BCCcollision::setPoints(Game2D::Pos2 min, Game2D::Pos2 max, float r)
 bool BCCcollision::isColliding(Game2D::Rect r) const
 {
 	std::vector<BCCcollision> temp = rectToBC(r);
-//	for (std::vector<BCCollision>::iterator it = temp.begin(); it != temp.end(); it++)
 	for (const auto& it : temp) {
 		if (isColliding(it)) {
 			return true;
@@ -65,7 +60,6 @@ bool BCCcollision::isColliding(BCCcollision c) const
 void BCCcollision::draw() const
 {
 #if _DEV
-	//glColor4f(0.0f, 1.0f, 1.0f, 0.7f);
 	drawColour.draw();
 	glBegin(GL_POLYGON);
 	for (float i = 0; i < 360; i += 5)

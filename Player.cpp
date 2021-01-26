@@ -5,14 +5,10 @@ Game2D::Colour Player::noRotateColour = Game2D::Colour(0.745, 0.475, 0.29);
 
 Player::Player() : GameObject(Game2D::Rect(0,0,5,10))
 {
-	//playerColour =  Game2D::Colour(0.38, 0.835, 0.835);
-	//noRotateColour = Game2D::Colour(0.745, 0.475, 0.29);
 	hitBox = Game2D::Rect(0, 0, 5, 10);
 	rotateBox = Game2D::Rect(0, 0, 10, 10);
 	headBox = Game2D::Rect(0, +2.5f, 5, 5);
 	footBox = Game2D::Rect(0, -4.5f, 5, 1);
-	//setRect(Game2D::Rect(0,0,5,10));
-	//setColour(Game2D::Colour::Cyan);
 	setColour(playerColour);
 	rotateLock = false;
 }
@@ -31,12 +27,10 @@ void Player::setRot(float rot)
 	GameObject::setRot(rot);
 	if (rot < 0) { rot += 360; }
 	if (rot > 360) { rot -= 360; }
-	//std::cout << "Setting player Rot " << rot << "\n";
 	switch (int(rot)) {
 	case 360:
 	case 0:
 	case 180:
-		//GameObject::getPos
 		hitBox = (Game2D::Rect(getPos(), 5, 10));
 		headBox = (Game2D::Rect(getPos().x, getPos().y + (rot == 180 ? -2.5f : +2.5f), 5, 5));
 		footBox = (Game2D::Rect(getPos().x, getPos().y + (rot == 180 ? +4.5f : -4.5f), 5, 1));

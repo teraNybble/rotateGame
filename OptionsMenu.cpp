@@ -41,11 +41,9 @@ void OptionsMenu::init()
 		playSprites.addFrame(tempSprite);
 	}
 	playSprites.setFrameTime(0);
-	//what fram of the animation eath state starts at
+	//what frame of the animation each state starts at
 	int temp[5] = { 0,1,2,3,4 };
 	play.addAnims(playSprites, temp);
-
-	//Game2D::Rect texRect(Game2D::Rect(0, 0, 0.1455f, 0.0762f));
 
 	Game2D::AnimatedSprite backSprites(Game2D::Rect(20, -40, 20, 10));
 	for (int i = 0; i < 4; i++) {
@@ -61,7 +59,6 @@ void OptionsMenu::init()
 	backSprites.setFrameTime(0);
 	int tempFrames[5] = { 4,1,2,3,3 };
 
-	//buttons.push_back(Game2D::Button(Game2D::Rect(20, -40, 20, 10))); //back button
 	back.addAnims(backSprites, tempFrames);
 
 	Game2D::AnimatedSprite applySprites(Game2D::Rect(-15, -40, 20, 10));
@@ -76,9 +73,7 @@ void OptionsMenu::init()
 		applySprites.addFrame(tempSprite);
 	}
 	applySprites.setFrameTime(0);
-	//tempFrames[5] = { 4,1,2,3,3 };
 
-	//buttons.push_back(Game2D::Button(Game2D::Rect(20, -40, 20, 10))); //back button
 	apply.addAnims(applySprites, tempFrames);
 	Game2D::Rect tempRect = Game2D::Rect(-10, 10, 25, 5);
 	Game2D::AnimatedSprite resolutionSprite(tempRect);
@@ -126,7 +121,6 @@ void OptionsMenu::init()
 
 void OptionsMenu::update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, float time)
 {
-	//play.update(mousePos, state, time);
 	Game2D::Pos2 leftMousePos = mousePos;
 	leftMousePos.x += (50 * Game2D::ScreenCoord::getAspectRatio());
 	Game2D::Pos2 rightMousePos = mousePos;
@@ -139,18 +133,12 @@ void OptionsMenu::update(Game2D::Pos2 mousePos, Game2D::KeyState::State state, f
 
 int OptionsMenu::getResult(void(resize(float, float)))
 {
-	//if (play.getState() == Game2D::ClickableObject::CLICK) 		return 1;
 	if (back.getState() == Game2D::ClickableObject::CLICK)		return 2;
 	if (apply.getState() == Game2D::ClickableObject::CLICK) {
 		std::string res = resolutions.getText();
 		std::string w = res.substr(0, res.find("x"));
 		std::string h = res.substr(res.find("x")+1, res.size()-1);
 		resize(std::stoi(w), std::stoi(h));
-		//std::cout << w << "\t" << h << "\n";
-		//glfwSetWindowSize(window, 640, 480);
-		//glViewport(0, 0, std::stoi(w), std::stoi(h));
-		//Game2D::ScreenCoord::init(std::stoi(w),std::stoi(h));
-		//Game2D::ScreenCoord::alignCentre();
 	}
 	if (aspectRatio.getSelectedItem() != previousAspect) {
 		previousAspect = aspectRatio.getSelectedItem();
@@ -168,7 +156,6 @@ int OptionsMenu::getResult(void(resize(float, float)))
 			//N/A
 			break;
 		}
-		//std::cout << aspectRatio.getText() << "\t" << aspectRatio.getSelectedItem() << "\n";
 	}
 
 	return 0;
@@ -178,9 +165,6 @@ void OptionsMenu::draw()
 {
 	glBindTexture(GL_TEXTURE_2D, TextureManager::getTexture(1));
 
-	//play.draw();
-	
-
 	Game2D::ScreenCoord::alignLeft();
 	back.draw();
 	Game2D::ScreenCoord::alignRight();
@@ -189,6 +173,4 @@ void OptionsMenu::draw()
 
 	resolutions.draw();
 	aspectRatio.draw();
-	//freetype::print(Game2D::Font::getFont(20), 0, -50, "Test1234567890");
-	//std::cout << freetype::getHeight(Game2D::Font::getFont(4)) << "\n";
 }

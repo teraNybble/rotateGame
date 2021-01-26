@@ -16,7 +16,6 @@ public:
 
 	inline void addKey(int keyId) { keys.insert(std::pair<int,bool>(keyId,false)); }
 
-	//void update(const std::map<int,bool>& keyList);
 	//to be used in a key callback
 	void updateKeys(int key, bool down);
 

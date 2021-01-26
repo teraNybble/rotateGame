@@ -30,7 +30,7 @@ private:
 	Game2D::Sprite eyeSprite;
 //public:
 protected:
-	Game2D::Colour enemyColour;
+	static Game2D::Colour enemyColour;
 	static Game2D::Colour feetColour;
 	static Game2D::Colour eyeColour;
 	static Game2D::Colour angryEyeColour;
@@ -48,14 +48,17 @@ public:
 	inline Enemy::Direction getHead() const { return headDirection; }
 	inline Type getType() const { return type; }
 
-	void update(float time_us);
+	//only a bool because of its inheratied always returns false
+	bool update(float time_us) override;
 	bool isInRadius(Game2D::Rect r);
 	void isInAngerRange(Game2D::Rect r);
 
-	inline void reset() {
+	inline void reset() override {
 		swooping = false;
 		setPath(originalPath);
 		MovingPlatform::reset();
+		canRotate = true;
+		recharge = 0;
 	}
 
 	inline void draw()

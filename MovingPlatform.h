@@ -37,9 +37,9 @@ public:
 	inline float& getTime() { return elapsedTime_us; }
 	*/
 
-	void reset();
+	virtual void reset();
 
-	bool update(float time_us);//returns true if it reaches the end of the vector
+	virtual bool update(float time_us);//returns true if it reaches the end of the vector
 	void moveOnTop(GameObject& object);
 	inline Game2D::Pos2 getPreviousPos() { return previousPos; }
 

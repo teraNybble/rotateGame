@@ -22,7 +22,6 @@
 #include "LevelSelect.h"
 #include "TextureManager.h"
 #include <algorithm>
-//#include <experimental/filesystem>
 
 #ifdef _DEV
 #include "Debug.h"
@@ -36,10 +35,6 @@ private:
 	enum GameState { PLAYING, PAUSED, LEVEL_SELECT, MAIN_MENU, OPTIONS_MENU, VICTORY, LOSS, QUITTING };
 
 	static GameState currentState;
-	//static std::map<int,bool> keyMap;
-	//static std::map<int,Game2D::KeyState> mouseButtons;
-	//static std::map<int,Game2D::KeyState::State> previousMouseStates;
-	//static Game2D::KeyMap mouseButtons;
 	static Game2D::Pos2 mousePos;
 
 	static GLFWwindow* window;
@@ -53,21 +48,9 @@ private:
 
 	static InputManager inputManager;
 	static InputManager mouseButtons;
-	/*
-	 * test code
-	static GameObject testObject;
-	static Player testPlayer;
-	static Clock startTime;
-	static Clock endTime;
-	static float elapsedTime;
-	//static Clock startTime;
-	//static Clock endTime;
-	 */
-	//static Level testLevel;
-	//static bool paused;
+
 	static int currentLevel;
 	static std::vector<Level> levels;
-	//static int currentLevel;
 
 	static LevelSelect levelSelect;
 

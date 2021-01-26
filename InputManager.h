@@ -21,7 +21,6 @@ public:
 	void addAction(int id, int key);
 	ActionState getAction(int id) const;
 
-	//void setAll(bool down);
 	void setAllFalse();
 };
 

@@ -2,9 +2,7 @@
 #define LEVEL_H
 
 #include "Player.h"
-//#include <map>
 #include <chrono>
-//#include <vector>
 #include "InputManager.h"
 #include "Fonts.h"
 #include "ScreenCoord.h"
@@ -35,7 +33,6 @@ private:
 	std::vector<MovingPlatform> movingPlatforms;
 	std::vector<Game2D::Sprite> sprites;
 	std::vector<std::pair<Enemy, bool>> enemies;
-	//std::vector<std::pair<Boss, bool>> bosses;
 	std::vector<Game2D::Sprite> noRotateZones;
 	std::vector<Projectile> projectiles;
 	std::vector<Game2D::AnimatedSprite> animatedSprites;
@@ -83,7 +80,7 @@ public:
 	inline void setStartPos(Game2D::Pos2 pos) { startPos = pos; }
 	inline void setExitPos(Game2D::Pos2 pos) { exit.setPos(pos); }
 	inline void setExitRext(Game2D::Rect rect) { exit.setRect(rect); }
-	inline void addWall(Game2D::Rect wall) { walls.push_back(GameObject(wall)); /*walls.back().setColour(Game2D::Colour::Green);*/ walls.back().setColour(Game2D::Colour(0.322, 0.776, 0.322)); }
+	inline void addWall(Game2D::Rect wall) { walls.push_back(GameObject(wall)); walls.back().setColour(Game2D::Colour(0.322, 0.776, 0.322)); }
 	inline void addKillPlane(Game2D::Rect plane) { killPlanes.push_back(plane); }
 	inline void addMovingPlatform(MovingPlatform platform) { movingPlatforms.push_back(platform); }
 	inline void addEnemy(Enemy enemy) { enemies.push_back(std::pair<Enemy, bool>(enemy, true)); }
